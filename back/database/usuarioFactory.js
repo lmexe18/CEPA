@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const usuarioFactory = async (ctos=4) => {
     
- 
     let factory = []
     let lista=[
         {nombre:'Primer Usuario', email: 'example@example.com'},
