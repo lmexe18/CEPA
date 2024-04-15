@@ -6,21 +6,21 @@ module.exports = (sequelize, DataTypes) => {
   class departamento extends Model {
 
     static associate(models) {
-      Departamento.belongsToMany(models.Usuario, {
+      departamento.belongsToMany(models.usuarios, {
         through: models.UsuariosDepartamento,
         as: process.env.TABLA_USUARIOS,
-        foreignKey: process.env.ID_DEPARTAMENTO,
-        otherKey: process.env.ID_USUARIO
+        foreignKey: 'id',
       });
 
       // Un departamento tiene muchas asignaturas
-      Departamento.hasMany(models.Asignatura, {
-        foreignKey: 'departamentoId',
+      departamento.hasMany(models.asignaturas, {
+        foreignKey: 'id',
         as: 'asignaturasPorDepartamento'
       });
+
     }
   }
-  Departamento.init({
+  departamento.init({
     nombre: DataTypes.STRING,
     nombreFoto: DataTypes.STRING,
     extensionFoto:DataTypes.STRING,
