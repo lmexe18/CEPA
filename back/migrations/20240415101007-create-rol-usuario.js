@@ -28,6 +28,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable(process.env.TABLA_ROL_USUARIO);
+    await queryInterface.dropTable(process.env.TABLA_ROLES_USUARIOS);
   }
 };
