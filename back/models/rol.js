@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class rol extends Model {
     static associate(models) {
       this.hasMany(models.rolUsuario, {
-        foreignKey: process.env.ID_ROL,
+        foreignKey: 'id',
         as: process.env.ROL_USUARIO
       });
     }

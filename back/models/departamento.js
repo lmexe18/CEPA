@@ -7,10 +7,10 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       Departamento.belongsToMany(models.Usuario, {
-        through: models.UsuarioDepartamento,
-        as: 'usuarios',
-        foreignKey: 'departamentoId',
-        otherKey: 'usuarioId'
+        through: models.UsuariosDepartamento,
+        as: process.env.TABLA_USUARIOS,
+        foreignKey: process.env.ID_DEPARTAMENTO,
+        otherKey: process.env.ID_USUARIO
       });
 
       // Un departamento tiene muchas asignaturas
@@ -29,8 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     activo: DataTypes.INTEGER,
   }, {
     sequelize,
-    modelName: 'departamento',
-    tableName: 'departamentos'
+    modelName: process.env.MODEL_DEPARTAMENTO,
+    tableName: process.env.TABLA_DEPARTAMENTO
   });
   return departamento;
 };

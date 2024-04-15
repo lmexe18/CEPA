@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
   class rolUsuario extends Model {
     static associate(models) {
       this.belongsTo(models.usuario, {
-        foreignKey: process.env.ID_USUARIO,
+        foreignKey: 'id',
         as: process.env.MODEL_USUARIO
       });
       this.belongsTo(models.rol, {
-        foreignKey: process.env.ID_ROL,
+        foreignKey: 'id',
         as: process.env.MODEL_ROL
       });
     }
