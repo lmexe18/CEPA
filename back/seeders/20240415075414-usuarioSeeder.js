@@ -4,7 +4,7 @@ const { usuarioFactory } = require('../factories/usuarioFactory');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    const usuarios = await userFactory(4);
+    const usuarios = await usuarioFactory(4);
     await queryInterface.bulkInsert(process.env.TABLA_USUARIOS, usuarios, {});
   },
 
