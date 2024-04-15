@@ -1,8 +1,8 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
-const { noticiasSocketController } = require('../controllers/noticiasSocketController');
-const { eventosSocketController } = require('../controllers/eventoSocketController')
+// const { noticiasSocketController } = require('../controllers/noticiasSocketController');
+// const { eventosSocketController } = require('../controllers/eventoSocketController')
 
 class Server {
     constructor() {
@@ -42,7 +42,7 @@ class Server {
         */
         this.middlewares();
         this.routes();
-        this.sockets();
+        // this.sockets();
     }
     middlewares() {
         this.app.use(cors({origin:'*'}));
@@ -76,10 +76,12 @@ class Server {
         this.app.use(this.uploadsFotoEventosPath, require('../routes/uploadsFotoEventos'))
         this.app.use(this.uploadsGaleriasPath, require('../routes/uploadsGaleriaRoutes'))*/
     }
+    /*
     sockets() {
-        this.io.on('connection', noticiasSocketController);
-        this.io.on('connection', eventosSocketController)
+         this.io.on('connection', noticiasSocketController);
+         this.io.on('connection', eventosSocketController)
     }
+    */
 
 
     listen() {
