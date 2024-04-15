@@ -6,13 +6,13 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class usuario extends Model {
     static associate(models) {
-      this.hasMany(models.rolAsignado, {
+      this.hasMany(models.process.env.MODEL_ROL_USUARIO, {
         foreignKey: process.env.FK_USUARIO,
-        as: process.env.ROLES_USUARIO,
+        as: process.env.ROL_USUARIO,
       });
     }
   }
-  user.init({
+  usuario.init({
     nombre: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING
