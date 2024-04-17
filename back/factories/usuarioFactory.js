@@ -15,7 +15,7 @@ const usuarioFactory = async (ctos=4) => {
             nombre: lista[i].nombre,
             email: lista[i].email,
             password: password,
-   
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }
