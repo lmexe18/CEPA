@@ -1,0 +1,3 @@
+/**
+ * Obtener información de contacto ej teléfono, dirección...
+ */

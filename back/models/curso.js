@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
 
       // Un curso tiene muchos profesores
       curso.belongsToMany(models.Usuario, {
-        through: models.asignaturasCursos,
+        through: models.asignaturaCurso,
         foreignKey: process.env.ID_CURSO,
         as: 'cursoProfesor'
       });
@@ -38,12 +38,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   curso.init({
     numeroCurso: DataTypes.INTEGER,
-    fechaInicio: DataTypes.DATE,
-    fechaFinalizacion: DataTypes.DATE,
-    idHorario: DataTypes.STRING,
-    idTipoGrupo: DataTypes.INTEGER,
+    idTurno: DataTypes.INTEGER,
+    horario: DataTypes.STRING, // Es un link de drive que contiene el horario, el tutor y la clase
+    idTipoCurso: DataTypes.INTEGER,
     idTutor: DataTypes.INTEGER,
-    activo: DataTypes.INTEGER
+    activo: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: process.env.MODEL_CURSO,
