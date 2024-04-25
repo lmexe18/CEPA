@@ -3,7 +3,9 @@ const departamentoUsuarioFactory = async (ctos=4) => {
     for (let i=2 ; i<ctos ; i++){
         let departamentoUsuario = {
             usuarioId : i,
-            departamentoId : i
+            departamentoId : i,
+            createdAt: new Date(),
+            updatedAt: new Date()
         }
         factory.push(departamentoUsuario)
     }

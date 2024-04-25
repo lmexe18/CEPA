@@ -4,7 +4,9 @@ const asignaturaFactory = async (ctos=4) => {
         let asignatura = {
             nombre : i,
             departamentoId: i,
-            activo: Math.random() < 0.5 ? true : false
+            activo: Math.random() < 0.5 ? true : false,
+            createdAt: new Date(),
+            updatedAt: new Date()
         }
         factory.push(asignatura)
     }

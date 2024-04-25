@@ -32,18 +32,22 @@ module.exports = (sequelize, DataTypes) => {
         as: 'cursoProfesor'
       });
 
+      // Un curso tiene alumnos
+
     }
   }
-  Grupo.init({
+  curso.init({
     numeroCurso: DataTypes.INTEGER,
+    fechaInicio: DataTypes.DATE,
+    fechaFinalizacion: DataTypes.DATE,
     idHorario: DataTypes.STRING,
     idTipoGrupo: DataTypes.INTEGER,
     idTutor: DataTypes.INTEGER,
     activo: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Grupo',
-    tableName: 'grupos'
+    modelName: process.env.MODEL_CURSO,
+    tableName: process.env.TABLA_CURSOS
   });
-  return Grupo;
+  return curso;
 };
