@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     departamentoId: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: process.env.MODEL_DEPA_USER,
-    tableName: process.env.TABLA_DEPA_USER
+    modelName: process.env.MODEL_USER_DEPA,
+    tableName: process.env.TABLA_USERS_DEPA
   });
   return UsuarioDepartamento;
 };

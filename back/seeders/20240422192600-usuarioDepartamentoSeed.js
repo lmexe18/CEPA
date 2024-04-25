@@ -1,25 +1,13 @@
 'use strict';
-
+const {usuarioDepartamentoFactory}=require('../factories/usuarioDepartamentoFactory')
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+    const usuario = await usuarioDepartamentoFactory(1);
+    await queryInterface.bulkInsert(process.env.TABLA_USERS_DEPA, usuario, {});
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    return queryInterface.bulkDelete(process.env.TABLA_USERS_DEPA, null, {});
   }
 };
