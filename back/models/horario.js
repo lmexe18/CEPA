@@ -1,0 +1,6 @@
+/**
+ * HORA INICIO
+ * HORA FIN
+ * TURNO (DIURNO O NOCTURNO)
+ * IDAULA
+ */
