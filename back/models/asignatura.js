@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
   Asignatura.init({
     nombre: DataTypes.STRING,
     departamentoId: DataTypes.INTEGER,
-    activado: DataTypes.INTEGER
+    activo: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: process.env.MODEL_ASIGNATURA,
