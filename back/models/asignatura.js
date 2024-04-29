@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  Asignatura.init({
+  asignatura.init({
     nombre: DataTypes.STRING,
     departamentoId: DataTypes.INTEGER,
     activo: DataTypes.INTEGER
