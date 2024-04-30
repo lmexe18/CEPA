@@ -10,11 +10,27 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      usuarioId: {
-        type: Sequelize.INTEGER
+      idUsuario: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: process.env.TABLA_USUARIOS,
+          },
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
-      departamentoId: {
-        type: Sequelize.INTEGER
+      idDepartamento: {
+        type: Sequelize.INTEGER,
+        allowNull: false, 
+        references: {
+          model: {
+            tableName: process.env.TABLA_DEPARTAMENTOS
+          },
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

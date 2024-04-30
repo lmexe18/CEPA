@@ -11,30 +11,36 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nombreFoto:{
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: true
       },
       extensionFoto:{
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: true
       },
       nombre: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       descripcion: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false
       },
-      jefeDepartamentoId: {
+      idJefeDepartamento: {
         type: Sequelize.INTEGER,
+        allowNull: true,
         references: {
           model: {
-            tableName:'usuarios'
+            tableName:process.env.TABLA_USUARIOS
           },
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
       },
       activo: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: 0
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,

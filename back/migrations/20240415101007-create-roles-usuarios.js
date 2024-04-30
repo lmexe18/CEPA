@@ -11,10 +11,25 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idUsuario: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: process.env.TABLA_USUARIOS
+          },
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       idRol: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: process.env.TABLA_ROLES
+          },
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

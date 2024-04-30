@@ -10,19 +10,24 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nombre: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      departamentoId: {
+      idDepartamento: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: {
-            tableName:'departamentos'
+            tableName:process.env.TABLA_DEPARTAMENTOS
           },
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
       },
-      activado: {
-        type: Sequelize.INTEGER
+      activo: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
