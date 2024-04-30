@@ -18,5 +18,5 @@ const cursoFactory = async (ctos=4) => {
 }
 
 module.exports = {
-    asignaturaFactory
+    cursoFactory
 }
