@@ -11,18 +11,36 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idCurso: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model:{
+            tableName: process.env.TABLA_CURSOS
+          },
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       idUsuario: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references:{
+          model:{
+            tableName: process.env.TABLA_USUARIOS
+          },
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       }
     })
   },
