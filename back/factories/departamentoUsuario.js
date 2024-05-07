@@ -2,8 +2,8 @@ const departamentoUsuarioFactory = async (ctos=4) => {
     let factory = []
     for (let i=2 ; i<ctos ; i++){
         let departamentoUsuario = {
-            usuarioId : i,
-            departamentoId : i,
+            idUsuario : i,
+            idDepartamento : i,
             createdAt: new Date(),
             updatedAt: new Date()
         }
