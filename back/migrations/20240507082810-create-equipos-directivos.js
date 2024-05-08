@@ -13,16 +13,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      idUsuario: {
-        type: Sequelize.INTEGER,
+      nombre: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      email: {
+        type: Sequelize.STRING,
         allowNull: false,
-        references: {
-          model: {
-            tableName:process.env.TABLA_USUARIOS
-          },
-          key: 'id'
-        },
-        onDelete: 'CASCADE'
+        defaultValue: '13004067.cea@edu.jccm.es'
       },
       createdAt: {
         allowNull: false,

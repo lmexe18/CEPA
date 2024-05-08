@@ -5,22 +5,16 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class equipoDirectivo extends Model {
     static associate(models) {
-
-      // Relación de 1:1 entre equipoDirectivo y Usuario
-      this.belongsTo(models.usuario, {
-        foreignKey: 'idUsuario',
-        as: 'usuario'
-      });
-      
     }
   }
   equipoDirectivo.init({
     puesto: DataTypes.STRING,
-    idUsuario: DataTypes.INTEGER
+    nombre: DataTypes.STRING,
+    email: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'EquipoDirectivo',
-    tableName: 'equipo_directivo'
+    modelName: process.env.MODEL_EQUIPO_DIRECTIVO,
+    tableName: process.env.TABLA_EQUIPOS_DIRECTIVOS
   });
   return equipoDirectivo;
 };

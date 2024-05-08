@@ -5,32 +5,37 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(process.env.TABLA_EQUIPOS_DIRECTIVOS, [
       {
-        puesto: 'Director',
-        idUsuario: 1,
+        puesto: 'Directora',
+        nombre: 'Mª Luisa García Baeza',
+        email: '13304067.cea@edu.jccm.es',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         puesto: 'Secretario',
-        idUsuario: 2,
+        nombre: 'Javier Sánchez Prada',
+        email: '13304067.cea@edu.jccm.es',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         puesto: 'Jefe de Estudios',
-        idUsuario: 3,
+        nombre: 'Manuel Serrano Laso',
+        email: 'fefaturaestudios.agala@gmail.com',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        puesto: 'Jefe de Estudios Adjunto',
-        idUsuario: 4,
+        puesto: 'Jefa de Estudios Adjunta',
+        nombre: 'Elena Gónzalez Sanz',
+        email: 'jefaturadistancia@gmail.com',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         puesto: 'Administración Secretaría',
-        idUsuario: 5,
+        nombre: 'Mª Jesús Díaz-Santos Morales',
+        email: '133004067.cea@edu.jccm.es',
         createdAt: new Date(),
         updatedAt: new Date()
       }
