@@ -9,6 +9,7 @@ const eventoFactory = async (ctos = 1) => {
             nombre: `Evento ${i}`,
             descripcion: `Descripción del evento ${i}`,
             fechaHora: new Date(),
+            fotoCartel: 'CEPA.jpg',
             mg:0,
             visibilidad: Math.random() < 0.5 ? true : false,
             numAsistentes: Math.random() * 19+1,
