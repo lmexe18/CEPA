@@ -18,7 +18,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: {
-            tableName:process.env.TABLA_DEPARTAMENTOS
+            tableName:'departamentos'
           },
           key: 'id'
         },

@@ -43,7 +43,7 @@ module.exports = {
         allowNull: false,
         references:{
           model:{
-            tableName: process.env.TABLA_TIPOS_EVENTOS
+            tableName: 'tipos_eventos'
           },
           key: 'id'
         },

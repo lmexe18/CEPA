@@ -5,7 +5,7 @@ const aulaHorarioFactory = async (ctos = 4) => {
     for (let i = 0; i < ctos; i++) {
         let aulaHorario = {
             idAula: i,
-            idFranja: i,
+            idRangoHorario: i,
             reserva: Math.random() < 0.5 ? true : false,
             idUsuario: i, 
             activo: Math.random() < 0.5 ? true : false,

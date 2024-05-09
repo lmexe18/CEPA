@@ -1,10 +1,10 @@
 'use strict';
 
-const { Temario } = require('../models'); 
+const { Temario } = require('../models/temario'); 
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await Temario.bulkInsert(process.env.TABLA_TEMARIOS, [
+    await queryInterface.bulkInsert(process.env.TABLA_TEMARIOS, [
       {
         tema: 'Tema 1.1',
         link: 'https://drive.google.com/file/d/1T3Q5k7FwekVBOO_ysBrq_ss3SIJmi6ui/view',

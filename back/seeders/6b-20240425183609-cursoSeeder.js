@@ -6,7 +6,7 @@ module.exports = {
 
     // Turno: Mañana, Tarde, Mañana y Tarde, Noche
     //        1       2      3               4
-    await queryInterface.bulkInsert('grupos', [
+    await queryInterface.bulkInsert(process.env.TABLA_CURSOS, [
       { // 1º alfabetización
         numeroCurso: 1,
         idTurno: 2,
@@ -159,7 +159,7 @@ module.exports = {
       },
       { // 4º secundaria distancia
         numeroCurso: 4,
-        turno: 2,
+        idTurno: 2,
         horario: null,
         idTipoCurso: 6,
         idTutor: 4,

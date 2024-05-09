@@ -20,7 +20,7 @@ module.exports = {
       },
       nombre: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       descripcion: {
         type: Sequelize.TEXT,
@@ -31,7 +31,7 @@ module.exports = {
         allowNull: true,
         references: {
           model: {
-            tableName:process.env.TABLA_USUARIOS
+            tableName:'usuarios'
           },
           key: 'id'
         },

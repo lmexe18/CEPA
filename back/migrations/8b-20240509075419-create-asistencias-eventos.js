@@ -13,7 +13,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: process.env.TABLA_EVENTOS,
+          model:{
+            tableName: 'eventos'
+          },
           key: 'id'
         },
         onDelete: 'CASCADE'
@@ -23,7 +25,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: {
-            tableName: process.env.TABLA_USUARIOS
+            tableName:'usuarios'
           },
           key: 'id'
         },

@@ -15,7 +15,7 @@ module.exports = {
         allowNull: false,
         references: {
           model:{
-            tableName: process.env.TABLA_CURSOS
+            tableName: 'usuarios'
           },
           key: 'id'
         },
@@ -26,7 +26,7 @@ module.exports = {
         allowNull: false,
         references:{
           model:{
-            tableName: process.env.TABLA_USUARIOS
+            tableName: 'usuarios'
           },
           key: 'id'
         },

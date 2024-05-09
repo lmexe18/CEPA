@@ -1,6 +1,6 @@
 //Jaime
 
-const { RangoHorario } = require('../models')
+const { RangoHorario } = require('../models/rangoHorario')
 const faker = require('@faker-js/faker')
 
 const rangoHorarioFactory = async (ctos = 1) => {

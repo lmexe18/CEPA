@@ -1,20 +1,20 @@
-const rolUsuarioFactory = async (ctos=4) => {
-    
-    let factory = []
+'use strict';
 
-    for(let i = 1; i < ctos; i++) {
-        let usuarios = 
-            {
-            idUsuario:i,
-            idRol:i,
+const rolUsuarioFactory = async (ctos = 4) => {
+    let factory = [];
+
+    for (let i = 0; i <= ctos; i++) {
+        let usuario = {
+            idUsuario: i+1,
+            idRol: i+1,
             createdAt: new Date(),
             updatedAt: new Date()
-        }
-        factory.push(usuarios)
+        };
+        factory.push(usuario);
     }
-    return Promise.all(factory);
-}
+    return factory;
+};
 
 module.exports = {
     rolUsuarioFactory
-}
+};

@@ -10,14 +10,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nombre: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       idTipo: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: {
-            tableName:process.env.TABLA_TIPOS_AULAS
+            tableName:'tipos_aulas'
           },
           key: 'id'
         },

@@ -14,18 +14,18 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: process.env.TABLA_AULAS
+            tableName:'aulas'
           },
           key: 'id'
         },
         onDelete: 'CASCADE'
       },
-      idFranja: {
+      idRangoHorario: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: process.env.TABLA_RANGOS_HORARIOS
+            tableName:'rangos_horarios'
           },
           key: 'id'
         },
@@ -41,7 +41,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: process.env.TABLA_USUARIOS
+            tableName:'usuarios'
           },
           key: 'id'
         },

@@ -13,35 +13,48 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
+      idTurno:{
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references:{
+          model:{
+            tableName:'turnos'
+          },
+          key:'id'
+        },
+        onDelete: 'CASCADE'
+      },
       fechaInicio: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
       },
       fechaFinalizacion: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
       },
       horario: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       idTipoCurso: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName:process.env.TABLA_TIPOS_CURSOS
+            tableName:'tipos_cursos'
           },
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
       },
       idTutor: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName:process.env.TABLA_USUARIOS
+            tableName:'usuarios'
           },
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
       },
       activo: {
         type: Sequelize.BOOLEAN,
