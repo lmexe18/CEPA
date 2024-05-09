@@ -1,0 +1,95 @@
+#header {
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.logo {
+  width: 200px;
+  display: flex;
+  margin: auto;
+}
+
+#imagen {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#imagen:active {
+  transform: scale(0.97);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  position: relative;
+}
+
+nav img {
+  position: absolute;
+  right: 50px;
+  top: 0;
+  height: 80px;
+  width: auto;
+  border-radius: 50%
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+button {
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: rgba(17, 12, 46, 0.03) 0px 48px 100px 0px;
+  transition: box-shadow 0.3s ease;
+}
+
+button:active {
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
+/* button:first-child {
+ box-shadow: none;
+ box-shadow: rgba(17, 12, 46, 0.03) 0px 48px 100px 0px;
+} */
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (min-width: 1080px) {
+  button[mat-icon-button] {
+    display: none;
+  }
+}
+
+@media (max-width: 1080px) {
+  .large-header {
+    display: none;
+  }
+
+  .sidenav-container {
+    display: block;
+  }
+}
+
+@media (min-width: 1080px) {
+  .large-header {
+    display: block;
+  }
+
+  .sidenav-container {
+    display: none;
+  }
+}

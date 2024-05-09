@@ -1,0 +1,175 @@
+<header class="large-header">
+  <img class="logo" src="/assets/logo.png" alt="">
+  <nav>
+    <div id="header">
+    <button routerLink="/inicio" mat-button>Inicio</button>
+    <button mat-button routerLink="/inicio/contacto">Contacto</button>
+    <button mat-button [matMenuTriggerFor]="menu" >Departamentos</button>
+    <mat-menu #menu="matMenu" >
+      @for (departamento of departamentos; track departamento.id) {
+        <button mat-menu-item [routerLink]="['inicio/departamento', departamento.id]" >{{ departamento.nombre }}</button>
+      }
+    </mat-menu>
+    <!-- Menú principal de Grupos -->
+    <button mat-button [matMenuTriggerFor]="grupos" >Grupos</button>
+    <mat-menu #grupos="matMenu" >
+      <button mat-menu-item [matMenuTriggerFor]="gradosMedios">Grados medios</button>
+      <button mat-menu-item [matMenuTriggerFor]="noFormal">No formal</button>
+      <button mat-menu-item [matMenuTriggerFor]="secundaria">Secundaria</button>
+      <button mat-menu-item [matMenuTriggerFor]="ensenanzaBasica">Enseñanza básica</button>
+    </mat-menu>
+    <!-- Submenús -->
+    <mat-menu #gradosMedios="matMenu" >
+      @for (grupoGradoMedio of tiposGruposGrado; track grupoGradoMedio.id) {
+      <button mat-menu-item (click)="navegarGrupos(grupoGradoMedio.id)">{{ grupoGradoMedio.nombre }}</button>
+      }
+    </mat-menu>
+    <mat-menu #noFormal="matMenu">
+      @for (grupo of tiposGruposNoFormal; track grupo.id) {
+      <button mat-menu-item (click)="navegarGrupos(grupo.id)">{{ grupo.nombre }}</button>
+      }
+    </mat-menu>
+    <mat-menu #secundaria="matMenu">
+      @for (grupo of tiposGruposSecundaria; track grupo.id) {
+      <button mat-menu-item (click)="navegarGrupos(grupo.id)">{{ grupo.nombre }}</button>
+      }
+    </mat-menu>
+    <mat-menu #ensenanzaBasica="matMenu">
+      @for (grupo of tiposGruposBasica; track grupo.id) {
+      <button mat-menu-item (click)="navegarGrupos(grupo.id)">{{ grupo.nombre }}</button>
+      }
+    </mat-menu>
+    <button mat-button routerLink="/inicio/equipo" >Equipo Directivo</button>
+    <button mat-button routerLink="/inicio/documentos" >Documentos programaticos</button>
+    <button mat-button routerLink="/inicio/eventos">Eventos</button>
+
+    @if (puedeReservarAulas()) {
+    <button mat-button routerLink="/inicio/aulas/tipos">Reserva de aulas</button>
+
+    }
+    @if (tieneRolAdmin()) {
+      <button mat-button [matMenuTriggerFor]="adminMenu" >Panel de administrador</button>
+      <mat-menu #adminMenu="matMenu" >
+        <button mat-menu-item routerLink="/admin/noticias">Gestionar noticias</button>
+        <button mat-menu-item routerLink="/admin/usuarios">Gestionar usuarios</button>
+        <button mat-menu-item routerLink="/admin/eventos">Gestionar eventos</button>
+        <button mat-menu-item routerLink="/admin/asignaturas">Gestionar asignaturas</button>
+        <button mat-menu-item routerLink="/admin/grupos">Gestionar grupos</button>
+        <button mat-menu-item routerLink="/admin/departamentos">Gestionar departamentos</button>
+        <button mat-menu-item routerLink="/admin/aulas">Gestionar aulas</button>
+      </mat-menu>
+    }
+    @if (estaLoegado) {
+      <img src="{{baseURL}}" alt="" [matMenuTriggerFor]="usuarioMenu" id="imagen">
+      <mat-menu #usuarioMenu="matMenu">
+      <button routerLink="/perfil" mat-menu-item>Perfil</button>
+      <button (click)="botonCerrarSesion()" mat-menu-item>Cerrar sesion</button>
+    </mat-menu>
+    } @else {
+    <button mat-button [matMenuTriggerFor]="cuentaMenu">
+      Cuenta
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #cuentaMenu="matMenu">
+      <button routerLink="/login" mat-menu-item>Iniciar Sesión</button>
+      <button routerLink="/registro" mat-menu-item>Registrarse</button>
+    </mat-menu>
+    }
+  </div>
+  </nav>
+</header>
+
+<!-- @author Inés Mª Barrera -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" mode="over" opened="false">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>close</mat-icon>
+    </button>
+          <br><button routerLink="/inicio" mat-button>Inicio</button><br>
+          <button mat-button routerLink="/inicio/contacto">Contacto</button><br>
+          <button mat-button [matMenuTriggerFor]="menu" >Departamentos</button><br>
+          <mat-menu #menu="matMenu" >
+            @for (departamento of departamentos; track departamento.id) {
+              <button mat-menu-item [routerLink]="['inicio/departamento', departamento.id]" >{{ departamento.nombre }}</button>
+            }
+          </mat-menu>
+          <!-- Menú principal de Grupos -->
+          <button mat-button [matMenuTriggerFor]="grupos" >Grupos</button><br>
+          <mat-menu #grupos="matMenu" >
+            <button mat-menu-item [matMenuTriggerFor]="gradosMedios">Grados medios</button>
+            <button mat-menu-item [matMenuTriggerFor]="noFormal">No formal</button>
+            <button mat-menu-item [matMenuTriggerFor]="secundaria">Secundaria</button>
+            <button mat-menu-item [matMenuTriggerFor]="ensenanzaBasica">Enseñanza básica</button>
+          </mat-menu>
+          <!-- Submenús -->
+          <mat-menu #gradosMedios="matMenu" >
+            @for (grupoGradoMedio of tiposGruposGrado; track grupoGradoMedio.id) {
+            <button mat-menu-item (click)="navegarGrupos(grupoGradoMedio.id)">{{ grupoGradoMedio.nombre }}</button>
+            }
+          </mat-menu>
+          <mat-menu #noFormal="matMenu">
+            @for (grupo of tiposGruposNoFormal; track grupo.id) {
+            <button mat-menu-item (click)="navegarGrupos(grupo.id)">{{ grupo.nombre }}</button>
+            }
+          </mat-menu>
+          <mat-menu #secundaria="matMenu">
+            @for (grupo of tiposGruposSecundaria; track grupo.id) {
+            <button mat-menu-item (click)="navegarGrupos(grupo.id)">{{ grupo.nombre }}</button>
+            }
+          </mat-menu>
+          <mat-menu #ensenanzaBasica="matMenu">
+            @for (grupo of tiposGruposBasica; track grupo.id) {
+            <button mat-menu-item (click)="navegarGrupos(grupo.id)">{{ grupo.nombre }}</button>
+            }
+          </mat-menu>
+          <button mat-button routerLink="/inicio/equipo" >Equipo Directivo</button><br>
+          <button mat-button routerLink="/inicio/documentos" >Documentos programaticos</button><br>
+          <button mat-button routerLink="/inicio/eventos">Eventos</button><br>
+
+        @if (puedeReservarAulas()) {
+          <button mat-button routerLink="/inicio/aulas/tipos">Reserva de aulas</button><br>
+        }
+        @if (tieneRolAdmin()) {
+          <button mat-button [matMenuTriggerFor]="adminMenu" >Panel de administrador</button><br>
+          <mat-menu #adminMenu="matMenu" >
+            <button mat-menu-item routerLink="/admin/noticias">Gestionar noticias</button>
+            <button mat-menu-item routerLink="/admin/usuarios">Gestionar usuarios</button>
+            <button mat-menu-item routerLink="/admin/eventos">Gestionar eventos</button>
+            <button mat-menu-item routerLink="/admin/asignaturas">Gestionar asignaturas</button>
+            <button mat-menu-item routerLink="/admin/grupos">Gestionar grupos</button>
+            <button mat-menu-item routerLink="/admin/departamentos">Gestionar departamentos</button>
+            <button mat-menu-item routerLink="/admin/aulas">Gestionar aulas</button>
+          </mat-menu>
+        }
+        @if (estaLoegado) {
+          <img src="{{baseURL}}" alt="" [matMenuTriggerFor]="usuarioMenu" id="imagen">
+        <mat-menu #usuarioMenu="matMenu">
+          <button routerLink="/perfil" mat-menu-item>Perfil</button>
+          <button (click)="botonCerrarSesion()" mat-menu-item>Cerrar sesion</button>
+        </mat-menu>
+        } @else {
+        <button mat-button [matMenuTriggerFor]="cuentaMenu">
+          Cuenta
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #cuentaMenu="matMenu">
+          <button routerLink="/login" mat-menu-item>Iniciar Sesión</button>
+          <button routerLink="/registro" mat-menu-item>Registrarse</button>
+        </mat-menu>
+        }
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <header>
+      <h1>CEPA Antonio Gala</h1>
+      <nav>
+        <div>
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+
+      </div>
+      </nav>
+    </header>
+  </mat-sidenav-content>
+</mat-sidenav-container>
