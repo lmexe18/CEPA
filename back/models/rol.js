@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class rol extends Model {
+  class Rol extends Model {
     static associate(models) {
       this.hasMany(models.rolUsuario, {
         foreignKey: 'id',
@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  rol.init({
+  Rol.init({
     nombre: DataTypes.STRING
   }, {
     sequelize,
     modelName: process.env.MODEL_ROL,
     tableName: process.env.TABLA_ROLES
   });
-  return rol;
+  return Rol;
 };

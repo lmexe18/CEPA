@@ -3,37 +3,37 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class asignatura extends Model {
+  class Asignatura extends Model {
 
     static associate(models) {
       // Una asignatura pertenece a un departamento
-      asignatura.belongsTo(models.departamento, {
+      asignatura.belongsTo(models.Departamento, {
         foreignKey: process.env.ID_DEPARTAMENTO,
         as: 'asignaturaDepartamento'
       });
 
       // Una asignatura tiene muchos temarios
-      asignatura.hasMany(models.temario, {
+      asignatura.hasMany(models.Temario, {
         foreignKey: process.env.ID_ASIGNATURA,
         as: 'asignaturaTemario'
       });
 
       // Una asignatura tiene muchos grupos
-      asignatura.belongsToMany(models.grupo, {
-        through: models.asignaturaGrupo,
+      asignatura.belongsToMany(models.Curso, {
+        through: models.AsignaturaProfeCurso,
         foreignKey: process.env.ID_ASIGNATURA,
-        as: 'asignaturaGrupo'
+        as: 'asignaturaCurso'
       });
 
       // Una asignatura tiene muchos profesores
-      asignatura.belongsToMany(models.usuario, {
-        through: models.asignaturaGrupo,
-        foreignKey: process.env.ID_ASIGNATURA,
+      asignatura.belongsToMany(models.Usuario, {
+        through: models.AsignaturaProfeCurso,
+        foreignKey: process.env.ID_PROFESOR,
         as: 'asignaturaProfesor'
       });
     }
   }
-  asignatura.init({
+  Asignatura.init({
     nombre: DataTypes.STRING,
     idDepartamento: DataTypes.INTEGER,
     activo: DataTypes.BOOLEAN
@@ -42,5 +42,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: process.env.MODEL_ASIGNATURA,
     tableName: process.env.TABLA_ASIGNATURAS
   });
-  return asignatura;
+  return Asignatura;
 };

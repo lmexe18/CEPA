@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  usuario.init({
+  Usuario.init({
     nombre: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
@@ -21,5 +21,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: process.env.MODEL_USUARIO,
     tableName: process.env.TABLA_USUARIOS
   });
-  return usuario;
+  return Usuario;
 };

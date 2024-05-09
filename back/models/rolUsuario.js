@@ -3,20 +3,20 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class rolUsuario extends Model {
+  class RolUsuario extends Model {
     static associate(models) {
-      this.belongsTo(models.usuario, {
+      this.belongsTo(models.Usuario, {
         foreignKey: 'id',
         as: process.env.MODEL_USUARIO
       });
-      this.belongsTo(models.rol, {
+      this.belongsTo(models.Rol, {
         foreignKey: 'id',
         as: process.env.MODEL_ROL
       });
     }
   }
   
-  rolUsuario.init({
+  RolUsuario.init({
     idUsuario: {
       type: DataTypes.INTEGER,
         references: {
@@ -36,5 +36,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: process.env.MODEL_ROLES_USUARIO,
     tableName: process.env.TABLA_ROL_USUARIO
   });
-  return rolUsuario;
+  return RolUsuario;
 };

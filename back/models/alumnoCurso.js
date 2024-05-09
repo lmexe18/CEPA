@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
     }
   }
-  alumnoCurso.init({
+  AlumnoCurso.init({
     idUsuario: DataTypes.NUMBER, 
     idCurso: DataTypes.NUMBER
   }, {
@@ -16,5 +16,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: process.env.MODEL_ALUMNO_CURSO,
     tableName: process.env.TABLA_ALUMNOS_CURSOS
   });
-  return alumnoCurso;
+  return AlumnoCurso;
 };

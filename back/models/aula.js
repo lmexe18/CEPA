@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class aula extends Model {
+  class Aula extends Model {
 
     static associate(models) {
       this.hasMany(models.reservaAula, {
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  aula.init({
+  Aula.init({
     nombre: DataTypes.STRING,
     idTipo: DataTypes.INTEGER,
     activo: DataTypes.BOOLEAN
@@ -26,5 +26,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: process.env.MODEL_AULA,
     tableName: process.env.TABLA_AULAS
   });
-  return aula;
+  return Aula;
 };

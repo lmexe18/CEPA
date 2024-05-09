@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class curso extends Model {
+  class Curso extends Model {
     static associate(models) {  
 
       // Un curso pertenece a un tipo de curso
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
 
     }
   }
-  curso.init({
+  Curso.init({
     numeroCurso: DataTypes.INTEGER,
     idTurno: DataTypes.INTEGER,
     horario: DataTypes.STRING, // Es un link de drive que contiene el horario, el tutor y la clase
@@ -48,5 +48,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: process.env.MODEL_CURSO,
     tableName: process.env.TABLA_CURSOS
   });
-  return curso;
+  return Curso;
 };

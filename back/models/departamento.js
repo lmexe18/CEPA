@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class departamento extends Model {
+  class Departamento extends Model {
 
     static associate(models) {
       departamento.belongsToMany(models.usuarios, {
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
 
     }
   }
-  departamento.init({
+  Departamento.init({
     nombre: DataTypes.STRING,
     nombreFoto: DataTypes.STRING,
     extensionFoto:DataTypes.STRING,
@@ -32,5 +32,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: process.env.MODEL_DEPARTAMENTO,
     tableName: process.env.TABLA_DEPARTAMENTO
   });
-  return departamento;
+  return Departamento;
 };
