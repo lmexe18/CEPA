@@ -1,4 +1,4 @@
-const noticiasFactory = async (ctos,categorias) => {
+const noticiaFactory = async (ctos,categorias) => {
     let factory = []
     let ejemplo={
         titulo: 'noticia',
@@ -26,5 +26,5 @@ const noticiasFactory = async (ctos,categorias) => {
 }
 
 module.exports = {
-    noticiasFactory
+    noticiaFactory
 }

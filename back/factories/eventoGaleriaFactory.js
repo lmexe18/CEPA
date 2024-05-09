@@ -1,4 +1,4 @@
-const { EventoGaleria } = require('../models');
+const { EventoGaleria } = require('../models/eventoGaleria');
 
 const eventoGaleriaFactory = async (ctos = 1) => {
     let factory = [];

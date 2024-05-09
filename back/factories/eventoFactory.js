@@ -1,4 +1,4 @@
-const { Evento } = require('../models');
+const { Evento } = require('../models/evento');
 const faker = require('@faker-js/faker');
 /*Laura María Pedraza Gómez* */
 const eventoFactory = async (ctos = 1) => {
