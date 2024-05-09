@@ -1,7 +1,6 @@
 /** Las horas a las que se pueden utilizar las clases
  * Ya sea mediante reservas o que la clase esté en el horario de un curso
  */
-
 'use strict';
 const {
   Model
@@ -9,25 +8,16 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class RangoHorario extends Model {
     static associate(models) {
-      this.hasMany(models.AulaHorario, {
-        foreignKey: 'idFranja',
-        as: 'horarios'
-      });
     }
   }
-  AulaFranja.init({
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true
-    },
+  RangoHorario.init({
     turno: DataTypes.STRING,
     horaInicio: DataTypes.TIME(4),
     horaFin: DataTypes.TIME(4),
-    orden:DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'AulaFranja',
-    tableName: 'aulaFranjas'
+    modelName: process.env.MODEL_RANGO_HORARIO,
+    tableName: process.env.TABLA_RANGOS_HORARIOS
   });
-  return AulaFranja;
+  return RangoHorario;
 };
