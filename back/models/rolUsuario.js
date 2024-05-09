@@ -6,12 +6,12 @@ module.exports = (sequelize, DataTypes) => {
   class RolUsuario extends Model {
     static associate(models) {
       this.belongsTo(models.Usuario, {
-        foreignKey: 'id',
-        as: process.env.MODEL_USUARIO
+        foreignKey: 'idUsuario',
+        as: 'usuario'
       });
       this.belongsTo(models.Rol, {
-        foreignKey: 'id',
-        as: process.env.MODEL_ROL
+        foreignKey: 'idRol',
+        as: 'rol'
       });
     }
   }
@@ -19,10 +19,10 @@ module.exports = (sequelize, DataTypes) => {
   RolUsuario.init({
     idUsuario: {
       type: DataTypes.INTEGER,
-        references: {
-          model: process.env.MODEL_USUARIO,
-          key: 'id'
-        }
+      references: {
+        model: process.env.MODEL_USUARIO,
+        key: 'id'
+      }
     },
     idRol: {      
       type: DataTypes.INTEGER,
@@ -33,8 +33,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: process.env.MODEL_ROLES_USUARIO,
-    tableName: process.env.TABLA_ROL_USUARIO
+    modelName: process.env.MODEL_ROL_USUARIO,
+    tableName: process.env.TABLA_ROLES_USUARIOS
   });
   return RolUsuario;
 };

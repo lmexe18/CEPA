@@ -1,36 +1,29 @@
-//Jaime
-///Óscar (cambiado nombre de tablas)
-
 'use strict';
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable(process.env.TABLA_RANGOS_HORARIOS, {
+  async up (queryInterface, Sequelize) {
+    await queryInterface.createTable(process.env.TABLA_NOTICIAS_GALERIAS, {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idTurno: {
-        allowNull: false,
+      idNoticia: {
         type: Sequelize.INTEGER,
-        references:{
-          model:{
-            tableName: process.env.TURNOS
+        references: {
+          model: {
+            tableName: process.env.TABLA_NOTICIAS
           },
           key: 'id'
         },
-        onDelete: 'CASCADE',
-        allowNull: true
+        onDelete: 'CASCADE'
       },
-      horaInicio: {
+      foto: {
+        type: Sequelize.STRING,
         allowNull: false,
-        type: Sequelize.TIME(4)
-      },
-      horaFin: {
-        allowNull: false,
-        type: Sequelize.TIME(4)
+        defaultValue: 'CEPA.jpg'
       },
       createdAt: {
         allowNull: false,
@@ -44,7 +37,7 @@ module.exports = {
       }
     });
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable(process.env.TABLA_RANGOS_HORARIOS);
+  async down (queryInterface, Sequelize) {
+    await queryInterface.dropTable(process.env.TABLA_NOTICIAS_GALERIAS);
   }
 };

@@ -10,16 +10,20 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       numeroCurso: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       fechaInicio: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false
       },
       fechaFinalizacion: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false
       },
       horario: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       idTipoCurso: {
         type: Sequelize.INTEGER,
@@ -34,14 +38,15 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName:TABLA_USUARIOS
+            tableName:process.env.TABLA_USUARIOS
           },
           key: 'id'
         }
       },
       activo: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

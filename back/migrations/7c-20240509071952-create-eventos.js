@@ -38,13 +38,14 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      idTipoCurso:{
+      idTipoEvento:{
         type: Sequelize.INTEGER,
         allowNull: false,
         references:{
           model:{
-            tableName: process.env.TABLA_TIPO_EVENTOS
-          }
+            tableName: process.env.TABLA_TIPOS_EVENTOS
+          },
+          key: 'id'
         },
         onDelete: 'CASCADE'
       },
