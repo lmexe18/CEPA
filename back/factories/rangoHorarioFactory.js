@@ -12,7 +12,7 @@ const rangoHorarioFactory = async (ctos = 1) => {
         horaFin.setHours(horaInicio.getHours() + 1)
 
         let aulaFranja = {
-            turno: 'Diurno',
+            idTurno: 1,
             horaInicio: horaInicio,
             horaFin: horaFin,
             createdAt: new Date(),

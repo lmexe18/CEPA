@@ -19,13 +19,13 @@ module.exports = (sequelize, DataTypes) => {
       });
       this.belongsTo(models.RangoHorario, {
         foreignKey: 'idRangoHorario',
-        as: 'franja'
+        as: 'rangoHorario'
       });
     }
   }
   AulaHorario.init({
     idAula:DataTypes.INTEGER,
-    idFranja: DataTypes.INTEGER,
+    idRangoHorario: DataTypes.INTEGER,
     reserva: DataTypes.BOOLEAN, // Para saber si ha sido una reserva (true) o si pertenece a un horario (false)
     idUsuario: DataTypes.INTEGER, // Para saber quien ha realizado la reserva
     activo: DataTypes.BOOLEAN // Se puede cancelar la reserva pero se quedaría almacenada (soft delete)

@@ -4,8 +4,8 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
 
-    // Turno: M = Mañana, T = Tarde, MT = Mañana y Tarde
-    //       1            2          3
+    // Turno: Mañana, Tarde, Mañana y Tarde, Noche
+    //        1       2      3               4
     await queryInterface.bulkInsert('grupos', [
       { // 1º alfabetización
         numeroCurso: 1,
@@ -19,7 +19,7 @@ module.exports = {
       },
       { // 1º neolectores
         numeroCurso: 1,
-        idTurno: 2,
+        idTurno: "Tarde",
         horario: 'https://docs.google.com/document/d/17ktpR3J4p_BpH_U4PbhFVO5ZJ2txArry/edit',
         idTipoCurso: 2,
         idTutor: 2,
@@ -159,7 +159,7 @@ module.exports = {
       },
       { // 4º secundaria distancia
         numeroCurso: 4,
-        idTurno: 'T',
+        turno: 2,
         horario: null,
         idTipoCurso: 6,
         idTutor: 4,
@@ -174,11 +174,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete(process.env.TABLA_CURSOS, null, {});
   }
 };

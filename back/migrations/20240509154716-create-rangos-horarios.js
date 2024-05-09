@@ -12,9 +12,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      turno: {
+      idTurno: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references:{
+          model:{
+            tableName: process.env.TURNOS
+          },
+          key: 'id'
+        },
+        onDelete: 'CASCADE',
+        allowNull: true
       },
       horaInicio: {
         allowNull: false,

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   RangoHorario.init({
-    turno: DataTypes.STRING,
+    idTurno: DataTypes.INTEGER,
     horaInicio: DataTypes.TIME(4),
     horaFin: DataTypes.TIME(4),
   }, {

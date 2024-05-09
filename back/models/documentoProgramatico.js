@@ -1,4 +1,4 @@
-/** Links a documentos de drive donde están subidos los horarios de los cursos */
+/** Links de documentos referentes al centro */
 'use strict';
 const {
   Model
