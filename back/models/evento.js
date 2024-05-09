@@ -1,9 +1,9 @@
-'use strict';/*Laura María Pedraza Gómez* */
+'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Evento extends Model {
     static associate(models) {
-      this.hasMany(models.Asistencia, {
+      this.hasMany(models.AsistenciaEvento, {
         foreignKey:'id',
         as:'asistencias'
       });
