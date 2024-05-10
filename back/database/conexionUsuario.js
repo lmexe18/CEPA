@@ -1,3 +1,5 @@
+//Raúl
+
 require('dotenv').config()
 const bcrypt = require('bcrypt');
 const {
@@ -8,7 +10,7 @@ const {
 } = require('sequelize');
 const models = require('../models/index.js');
 
-class ConexionUsuario{
+class ConexionUser{
     constructor() {
         this.db = new Sequelize(process.env.DB_DEV, process.env.DB_USER, process.env.DB_PASSWORD, {
             host: process.env.DB_HOST,
@@ -164,4 +166,4 @@ class ConexionUsuario{
     }
 }
 
-module.exports = ConexionUsuario;
+module.exports = ConexionUser;

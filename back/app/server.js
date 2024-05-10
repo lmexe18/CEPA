@@ -17,7 +17,6 @@ class Server {
                 credentials: true
             }
         });
-        /*
         this.apiUsuarios = '/api/usuario';
         this.apiRoles = '/api/roles'
         this.apiRolesAsignados = '/api/rolesAsignados'
@@ -29,17 +28,14 @@ class Server {
         this.horariosPath = '/api/horarios'
         this.franjasPath = '/api/franjas'
         this.reservasPath = '/api/reservas'
-        this.chatPath = '/api/chat';
         this.eventoPath = '/api/eventos';
-        this.mensajeChatPath = '/api/mensajeChat';
         this.asistenciaPath = '/api/asistencia';
         this.galeriaPath = '/api/galeria';
-        this.uploadsNoticiasPath = '/api/uploads/noticias';
-        this.uploadsSeccionesPath = '/api/uploads/secciones';
+    //    this.uploadsNoticiasPath = '/api/uploads/noticias';
+    //    this.uploadsSeccionesPath = '/api/uploads/secciones';
         this.authPath = '/api/auth';
-        this.uploadsFotoEventosPath = '/api/uploads/eventos';
-        this.uploadsGaleriasPath = '/api/uploads/galerias'
-        */
+    //    this.uploadsFotoEventosPath = '/api/uploads/eventos';
+    //    this.uploadsGaleriasPath = '/api/uploads/galerias'
         this.middlewares();
         this.routes();
         // this.sockets();
@@ -54,9 +50,7 @@ class Server {
         }));
     }
     routes() {
-       /* this.app.use(this.chatPath, require('../routes/chatRoutes'));
         this.app.use(this.eventoPath, require('../routes/eventoRoutes'));
-        this.app.use(this.mensajeChatPath, require('../routes/mensajeChatRoutes'));
         this.app.use(this.asistenciaPath, require('../routes/asistenciaRoutes'));
         this.app.use(this.apiUsuarios, require('../routes/usuarioRutas'))
         this.app.use(this.apiRoles, require('../routes/rolesRutas'))
@@ -69,12 +63,12 @@ class Server {
         this.app.use(this.horariosPath, require('../routes/aulaHorarioRoutes'))
         this.app.use(this.franjasPath, require('../routes/aulaFranjaRoutes'))
         this.app.use(this.reservasPath, require('../routes/aulaReservaRoutes'))
-        this.app.use(this.galeriaPath, require('../routes/galeriaRoutes'))
-        this.app.use(this.uploadsNoticiasPath, require('../routes/uploadsNoticiasRoutes'));
-        this.app.use(this.uploadsSeccionesPath, require('../routes/updloadsSeccionesRoutes'));
+        this.app.use(this.galeriaEventoPath, require('../routes/galeriaEventoRoutes'))
+      //  this.app.use(this.uploadsNoticiasPath, require('../routes/uploadsNoticiasRoutes'));
+       // this.app.use(this.uploadsSeccionesPath, require('../routes/updloadsSeccionesRoutes'));
         this.app.use(this.authPath, require('../routes/authRoutes'));
-        this.app.use(this.uploadsFotoEventosPath, require('../routes/uploadsFotoEventos'))
-        this.app.use(this.uploadsGaleriasPath, require('../routes/uploadsGaleriaRoutes'))*/
+       // this.app.use(this.uploadsFotoEventosPath, require('../routes/uploadsFotoEventos'))
+      //  this.app.use(this.uploadsGaleriasPath, require('../routes/uploadsGaleriaRoutes'))
     }
     /*
     sockets() {
