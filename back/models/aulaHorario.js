@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     idAula:DataTypes.INTEGER,
     idRangoHorario: DataTypes.INTEGER,
     reserva: DataTypes.BOOLEAN, // Para saber si ha sido una reserva (true) o si pertenece a un horario (false)
-    idUsuario: DataTypes.INTEGER, // Para saber quien ha realizado la reserva
+    idUsuario: DataTypes.INTEGER, // Para saber quien ha realizado la reserva o ha creado el horario
     activo: DataTypes.BOOLEAN // Se puede cancelar la reserva pero se quedaría almacenada (soft delete)
   }, {
     sequelize,

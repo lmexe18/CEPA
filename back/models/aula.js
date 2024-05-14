@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Aula extends Model {
 
     static associate(models) {
-      this.hasMany(models.reservaAula, {
+      /*this.hasMany(models.ReservaAula, {
         foreignKey: 'idAula',
         as: 'reservasAula'
       });
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.tipoAula, {
         foreignKey: 'idTipo',
         as: 'tipoAula'
-      });
+      });*/
     }
   }
   Aula.init({
