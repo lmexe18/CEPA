@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
   }, {
     sequelize,
-    modelName: process.env.MODEL_CONTACTO,
-    tableName: process.env.TABLA_CONTACTOS
+    modelName: 'Contacto',
+    tableName: 'contactos'
   });
   return Contacto;
 };

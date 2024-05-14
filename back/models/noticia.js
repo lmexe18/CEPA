@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     visibilidad: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: process.env.MODEL_ONTICIA,
-    tableName: process.env.TABLA_NOTICIAS
+    modelName: 'Noticia',
+    tableName: 'noticias'
   });
   return Noticia;
 };

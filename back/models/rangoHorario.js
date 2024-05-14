@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     horaFin: DataTypes.TIME(4),
   }, {
     sequelize,
-    modelName: process.env.MODEL_RANGO_HORARIO,
-    tableName: process.env.TABLA_RANGOS_HORARIOS
+    modelName: 'RangoHorario',
+    tableName: 'rangos_horarios'
   });
   return RangoHorario;
 };

@@ -17,24 +17,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   
   RolUsuario.init({
-    idUsuario: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: process.env.MODEL_USUARIO,
-        key: 'id'
-      }
-    },
-    idRol: {      
-      type: DataTypes.INTEGER,
-      references: {
-        model: process.env.MODEL_ROL,
-        key: 'id'
-      }
-    }
+    idUsuario: DataTypes.INTEGER,
+    idRol: DataTypes.INTEGER,
   }, {
     sequelize,
-    modelName: process.env.MODEL_ROL_USUARIO,
-    tableName: process.env.TABLA_ROLES_USUARIOS
+    modelName: 'RolUsuario',
+    tableName: 'roles_usuarios'
   });
   return RolUsuario;
 };

@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // Un temario pertenece a una asignatura
       Temario.belongsTo(models.Asignatura, {
-        foreignKey: 'asignaturaId',
-        as: 'temarioAsignatura'
+        foreignKey: 'idAsignatura',
+        as: 'asignatura'
       });
     }
   }
@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     activo: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: process.env.MODEL_TEMARIO,
-    tableName: process.env.TABLA_TEMARIOS
+    modelName: 'Temario',
+    tableName: 'temarios'
   });
   return Temario;
 };

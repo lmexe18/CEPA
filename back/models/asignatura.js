@@ -8,25 +8,29 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // Una asignatura pertenece a un departamento
       Asignatura.belongsTo(models.Departamento, {
-        foreignKey: process.env.ID_DEPARTAMENTO,
+        foreignKey: 'idDepartamento',
         as: 'asignaturaDepartamento'
       });
 
       // Una asignatura tiene muchos temarios
       Asignatura.hasMany(models.Temario, {
-        foreignKey: process.env.ID_ASIGNATURA,
+        foreignKey: 'idTemario',
         as: 'asignaturaTemario'
       });
 
       // Una asignatura tiene muchos grupos
       Asignatura.belongsToMany(models.Curso, {
         through: models.AsignaturaProfeCurso,
-        foreignKey: process.env.ID_ASIGNATURA,
+        foreignKey: 'idCurso',
         as: 'asignaturaCurso'
       });
 
       // Una asignatura tiene muchos profesores
-      
+      Asignatura.hasMany(models.Usuario, {
+        through: models.AsignaturaProfeCurso,
+        foreignKey: 'idUsuario',
+        as: 'profeCurso'
+      })
     }
   }
   Asignatura.init({
@@ -35,8 +39,8 @@ module.exports = (sequelize, DataTypes) => {
     activo: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: process.env.MODEL_ASIGNATURA,
-    tableName: process.env.TABLA_ASIGNATURAS
+    modelName: 'Asignatura',
+    tableName: 'asignaturas'
   });
   return Asignatura;
 };

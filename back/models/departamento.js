@@ -6,16 +6,17 @@ module.exports = (sequelize, DataTypes) => {
   class Departamento extends Model {
 
     static associate(models) {
-      departamento.belongsToMany(models.usuarios, {
+
+      Departamento.belongsToMany(models.Usuarios, {
         through: models.UsuariosDepartamento,
-        as: process.env.TABLA_USUARIOS,
+        as: 'usuarioDepartamento',
         foreignKey: 'id',
       });
 
       // Un departamento tiene muchas asignaturas
-      departamento.hasMany(models.asignaturas, {
-        foreignKey: 'id',
-        as: 'asignaturasPorDepartamento'
+      Departamento.hasMany(models.Asignaturas, {
+        foreignKey: 'idAsignatura',
+        as: 'asignatura'
       });
 
     }
@@ -25,12 +26,12 @@ module.exports = (sequelize, DataTypes) => {
     nombreFoto: DataTypes.STRING,
     extensionFoto:DataTypes.STRING,
     descripcion: DataTypes.STRING,
-    jefeDepartamentoId: DataTypes.INTEGER,
+    idJefeDepartamento: DataTypes.INTEGER,
     activo: DataTypes.INTEGER,
   }, {
     sequelize,
-    modelName: process.env.MODEL_DEPARTAMENTO,
-    tableName: process.env.TABLA_DEPARTAMENTO
+    modelName: 'Departamento',
+    tableName: 'departamentos'
   });
   return Departamento;
 };

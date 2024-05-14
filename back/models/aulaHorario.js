@@ -31,8 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     activo: DataTypes.BOOLEAN // Se puede cancelar la reserva pero se quedaría almacenada (soft delete)
   }, {
     sequelize,
-    modelName: process.env.MODEL_AULA_HORARIO,
-    tableName: process.env.TABLA_AULAS_HORARIOS
+    modelName: 'AulaHorario',
+    tableName: 'aulas_horarios'
   });
   return AulaHorario;
 };

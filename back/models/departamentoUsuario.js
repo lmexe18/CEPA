@@ -8,12 +8,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   DepartamentoUsuario.init({
-    usuarioId: DataTypes.INTEGER,
-    departamentoId: DataTypes.INTEGER
+    idUsuario: DataTypes.INTEGER,
+    idDepartamento: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: process.env.MODEL_USER_DEPA,
-    tableName: process.env.TABLA_USERS_DEPA
+    modelName: 'DepartamentoUsuario',
+    tableName: 'departamentos_usuarios'
   });
   return DepartamentoUsuario;
 };

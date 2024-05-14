@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     nombre: DataTypes.STRING
   }, {
     sequelize,
-    modelName: process.env.MODEL_TIPO_EVENTO,
-    tableName: process.env.TABLA_TIPOS_EVENTOS
+    modelName: 'TipoEvento',
+    tableName: 'tipos_eventos'
   });
   return TipoEvento
 };
