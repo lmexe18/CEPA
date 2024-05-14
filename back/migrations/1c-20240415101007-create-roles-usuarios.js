@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable(process.env.TABLA_ROLES_USUARIO, {
+    await queryInterface.createTable('roles_usuarios', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: {
-            tableName: process.env.TABLA_USUARIOS
+            tableName: 'usuarios'
           },
           key: 'id'
         },
@@ -44,6 +44,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable(process.env.TABLA_ROLES_USUARIO);
+    await queryInterface.dropTable('roles_usuarios');
   }
 };

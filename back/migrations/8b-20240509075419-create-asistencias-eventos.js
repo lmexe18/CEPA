@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable(process.env.TABLA_ASISTENCIAS_EVENTOS, {
+    await queryInterface.createTable('asistencias_eventos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -44,6 +44,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable(process.env.TABLA_ASISTENCIAS_EVENTOS);
+    await queryInterface.dropTable('asistencias_eventos');
   }
 };

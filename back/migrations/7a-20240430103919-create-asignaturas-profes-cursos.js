@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable(process.env.TABLA_ASIGNATURAS_PROFES_CURSOS, {
+    await queryInterface.createTable('asignaturas_profes_cursos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -57,6 +57,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable(process.env.TABLA_ASIGNATURAS_PROFES_CURSOS);
+    await queryInterface.dropTable('asignaturas_profes_cursos');
   }
 };

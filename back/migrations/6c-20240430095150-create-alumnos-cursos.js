@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable(process.env.TABLA_ALUMNOS_CURSOS, {
+    await queryInterface.createTable('alumnos_cursos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -15,7 +15,7 @@ module.exports = {
         allowNull: false,
         references: {
           model:{
-            tableName: 'usuarios'
+            tableName: 'cursos'
           },
           key: 'id'
         },
@@ -46,6 +46,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable(process.env.TABLA_ALUMNOS_CURSOS);
+    await queryInterface.dropTable('alumnos_cursos');
   }
 };
