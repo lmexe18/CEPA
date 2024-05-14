@@ -1,5 +1,3 @@
-const { Temario } = require('../models');
-
 const temarioFactory = async (ctos = 4) => {
     let factory = [];
     for (let i = 1; i <= ctos; i++) {
@@ -14,7 +12,7 @@ const temarioFactory = async (ctos = 4) => {
         };
         factory.push(temario);
     }
-    return Temario.bulkCreate(factory);
+    return Promise.all(factory);
 };
 
 module.exports = {

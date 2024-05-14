@@ -1,6 +1,3 @@
-const { Evento } = require('../models/evento');
-const faker = require('@faker-js/faker');
-/*Laura María Pedraza Gómez* */
 const eventoFactory = async (ctos = 1) => {
     let factory = [];
 
@@ -20,8 +17,7 @@ const eventoFactory = async (ctos = 1) => {
         factory.push(evento);
     }
 
-
-    return factory;
+    return Promise.all(factory);
 };
 
 module.exports = {

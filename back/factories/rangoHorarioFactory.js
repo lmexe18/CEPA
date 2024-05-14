@@ -1,6 +1,3 @@
-//Jaime
-
-const { RangoHorario } = require('../models/rangoHorario')
 const faker = require('@faker-js/faker')
 
 const rangoHorarioFactory = async (ctos = 1) => {
@@ -20,7 +17,7 @@ const rangoHorarioFactory = async (ctos = 1) => {
         }
         factory.push(aulaFranja)
     }
-    return factory
+    return Promise.all(factory)
 }
 
 module.exports = {

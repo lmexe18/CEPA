@@ -1,5 +1,3 @@
-const { EventoGaleria } = require('../models/eventoGaleria');
-
 const eventoGaleriaFactory = async (ctos = 1) => {
     let factory = [];
 
@@ -13,7 +11,7 @@ const eventoGaleriaFactory = async (ctos = 1) => {
         factory.push(galeria);
     }
     
-    return factory;
+    return Promise.all(factory);
 };
 
 module.exports = {

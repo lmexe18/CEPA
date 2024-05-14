@@ -1,5 +1,3 @@
-'use strict';
-
 const rolUsuarioFactory = async (ctos = 4) => {
     let factory = [];
 
@@ -12,7 +10,7 @@ const rolUsuarioFactory = async (ctos = 4) => {
         };
         factory.push(usuario);
     }
-    return factory;
+    return Promise.all(factory)
 };
 
 module.exports = {

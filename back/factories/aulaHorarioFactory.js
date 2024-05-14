@@ -1,5 +1,3 @@
-const { AulaHorario } = require('../models');
-
 const aulaHorarioFactory = async (ctos = 4) => {
     let factory = [];
     for (let i = 0; i < ctos; i++) {
@@ -14,7 +12,7 @@ const aulaHorarioFactory = async (ctos = 4) => {
         };
         factory.push(aulaHorario);
     }
-    return AulaHorario.bulkCreate(factory);
+    return Promise.all(factory);
 };
 
 module.exports = {
