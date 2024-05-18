@@ -18,6 +18,7 @@ class Server {
             }
         });
         this.alumnosCursosPath = '/api/alumnoscursos'
+        this.asignaturasPath = '/api/asignaturas'
         /*this.apiUsuarios = '/api/usuario';
         this.apiRoles = '/api/roles'
         this.apiRolesAsignados = '/api/rolesAsignados'
@@ -52,6 +53,7 @@ class Server {
     }
     routes() {
         this.app.use(this.alumnosCursosPath, require('../routes/alumnoCursoRoutes'))
+        this.app.use(this.asignaturasPath, require('../routes/asignaturaRoutes'))
         /*this.app.use(this.eventoPath, require('../routes/eventoRoutes'));
         this.app.use(this.asistenciaPath, require('../routes/asistenciaRoutes'));
         this.app.use(this.apiUsuarios, require('../routes/usuarioRutas'))
