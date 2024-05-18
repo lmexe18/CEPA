@@ -9,14 +9,14 @@ const accessMid = require('../middlewares/validarRoles');
 router.get('/', controller.obtenerAsignaturas);
 router.get('/:id', controller.obtenerAsignaturaPorId);
 router.post('/', [
-    check('nombre').isString().isEmpty().withMessage('El nombre es obligatorio'),
+    check('nombre').isString().withMessage('El nombre debe de ser un texto'),
     check('idDepartamento').isInt().withMessage('El idDepartamento debe ser un número entero'),
-    check('activo').isBoolean().withMessage('Activo true o false es obligatorio'),
+    check('activo').isBoolean().withMessage('Activo debe de ser true o false'),
     validateValues
 ], /*authMid.validarJWT,*/ controller.subirAsignatura);
 router.put('/:id', [
-    check('nombre').optional().not().isEmpty().withMessage('El nombre es obligatorio'),
-    check('idDepartamento').optional().isInt().withMessage('El idDepartamento debe ser un número entero'),
+    check('nombre').isString().withMessage('El nombre debe de ser un texto'),
+    check('idDepartamento').optional().isInt().withMessage('El idDepartamento debe ser un número entero mayor a 0.'),
     validateValues
 ], /*authMid.validarJWT,*/ controller.actualizarAsignatura);
 router.delete('/:id', authMid.validarJWT, controller.borrarAsignatura);

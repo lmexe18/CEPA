@@ -11,8 +11,8 @@ router.get('/:id', controller.obtenerAlumnoCursoPorId);
 router.get('/alumnoscusos/:cursoId',/*authMid.validarJWT,*/ controller.obtenerAlumnosDeCurso);
 router.get('/cursosalumnos/:usuarioId', controller.obtenerCursosDeAlumno);
 router.post('/',[
-    check('idCurso').isInt().withMessage('El id numérico del curso es obligatorio'),
-    check('idUsuario').isInt().withMessage('El id numérico del usuario es obligatorio'),
+    check('idCurso').isInt().withMessage('El id del curso debe de ser un número entero mayor a 0.'),
+    check('idUsuario').isInt().withMessage('El id de usuario debe de ser un número entero mayor a 0.'),
     validateValues
 ],/*authMid.validarJWT,*/ controller.subirAlumnoCurso);
 router.delete('/:id',authMid.validarJWT, controller.borrarAlumnoCurso);
