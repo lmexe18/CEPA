@@ -1,5 +1,6 @@
 'use strict';
 const { Sequelize } = require('sequelize');
+const alumnoCurso = require('../models/alumnoCurso');
 const models = require('../models/index');
 
 class ConexionAsistencia {
@@ -20,9 +21,9 @@ class ConexionAsistencia {
 
     conectar() {
         this.db.authenticate().then(() => {
-         
+
         }).catch((error) => {
-          
+
         });
     }
 
@@ -33,30 +34,29 @@ class ConexionAsistencia {
                     process.exit(0);
                 })
                 .catch((error) => {
-            
+
                     process.exit(1);
                 });
         });
     }
 
-    async getAsistencias() {
+    async getAlumnosCursos() {
         this.conectar();
         let resultado = [];
         try {
-            resultado = await models.Asistencia.findAll();
+            resultado = await models.AlumnoCurso.findAll();
         } catch (error) {
-      
         } finally {
             this.desconectar();
         }
         return resultado;
     }
 
-    async getAsistenciaPorId(id) {
+    async getAlumnoCursoPorId(id) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.Asistencia.findByPk(id);
+            resultado = await models.AlumnoCurso.findByPk(id);
         } catch (error) {
         } finally {
             this.desconectar();
@@ -64,84 +64,84 @@ class ConexionAsistencia {
         return resultado;
     }
 
-    async postAsistencia(body) {
-        this.conectar();
-        let resultado;
-        try {
-            resultado = await models.Asistencia.create(body);
-        } catch (error) {
-        } finally {
-            this.desconectar();
-        }
-        return resultado;
-    }
-
-    async getAsistenciasUsuario(userId){
+    async getAlumnosDeCurso(cursoId) {
         this.conectar();
         let usuarios = [];
         try {
-            usuarios = await models.Asistencia.findAll({
+            usuarios = await models.AlumnoCurso.findAll({
                 where: {
-                    idUsuario: userId
-                  },
-                  include: [{
-                      model:models.Evento,
-                      as:'evento'
-                  }]
+                    idCurso: cursoId
+                },
+                include: [{
+                    model: models.Curso,
+                    as: 'cursos'
+                }]
             });
-        } catch (error){
+        } catch (error) {
         } finally {
             this.desconectar();
         }
         return usuarios;
     }
 
-    async getUsuariosEvento(eventoId){
+    async getCursosDeAlumno(usuarioId) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.Asistencia.findAll({
+            resultado = await models.AlumnoCurso.findAll({
                 where: {
-                  idEvento: eventoId
+                    idUsuario: usuarioId
                 },
                 include: [{
-                    model:models.user,
-                    as:'usuario'
+                    model: models.Usuario,
+                    as: 'usuario'
                 }]
-              });
-        } catch (error){
+            });
+        } catch (error) {
         } finally {
             this.desconectar();
         }
         return resultado;
     }
 
-    async getAsistenciaEventoUsuario(eventoId, usuarioId){
+    async postAlumnoCurso(body) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.Asistencia.findAll({
-                where: {
-                    idEvento: eventoId,
-                    idUsuario: usuarioId
-                }
-            })
-        } catch (error){
+            resultado = await models.AlumnoCurso.create(body);
+        } catch (error) {
         } finally {
             this.desconectar();
         }
         return resultado;
     }
 
-    async deleteAsistencia(id) {
+    async updateAlumnoCurso(id, body) {
         this.conectar();
         let resultado;
         try {
-            const asistencia = await models.Asistencia.findByPk(id);
-            if (!asistencia) {
-                throw new Error(`Asistencia con ID ${id} no encontrado`);
+            alumnoCurso = await models.AlumnoCurso.findByPk(id)
+            if (!alumnoCurso){
+                throw new Error (`Alumno curso con ID ${id} no encontrado`)
+            } else {
+                resultado = await alumnoCurso.update(body);
             }
-            resultado = await asistencia.destroy();
+        } catch (error){
+        } finally {
+            this.desconectar()
+        }
+        return resultado
+    }
+
+    async deleteAlumnoCurso(id) {
+        this.conectar();
+        let resultado;
+        try {
+            const alumnoCurso = await models.AlumnoCurso.findByPk(id);
+            if (!alumnoCurso) {
+                throw new Error(`El alumno curso con ID ${id} no ha sido encontrado`);
+            }
+            resultado = await AlumnoCurso.destroy();
         } catch (error) {
         } finally {
             this.desconectar();
