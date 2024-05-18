@@ -1,13 +1,13 @@
 'use strict';
-const {galeriaFactory}=require('../factories/eventoGaleriaFactory')
+const {eventoGaleriaFactory}=require('../factories/eventoGaleriaFactory')
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    const galeria = await galeriaFactory(5);
-    await queryInterface.bulkInsert(process.env.TABLA_EVENTOS_GALERIAS, galeria, {});
+    const galeria = await eventoGaleriaFactory(5);
+    await queryInterface.bulkInsert('eventos_galerias', galeria, {});
   },
 
   async down (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete(process.env.TABLA_EVENTOS_GALERIAS, null, {});
+    return queryInterface.bulkDelete('eventos_galerias', null, {});
   }
 };

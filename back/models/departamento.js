@@ -23,8 +23,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Departamento.init({
     nombre: DataTypes.STRING,
-    nombreFoto: DataTypes.STRING,
-    extensionFoto:DataTypes.STRING,
+    descripcion: DataTypes.STRING,
+    foto: DataTypes.STRING,
     descripcion: DataTypes.STRING,
     idJefeDepartamento: DataTypes.INTEGER,
     activo: DataTypes.INTEGER,

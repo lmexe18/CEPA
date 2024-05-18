@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     tema: DataTypes.STRING,
     link: DataTypes.STRING,
     idAsignatura: DataTypes.INTEGER,
-    visibilidad: DataTypes.BOOLEAN,
+    visibilidad: DataTypes.BOOLEAN, // Durante el curso, los profesores podrán ir poniendo visible el temario según lo vayan dando
     activo: DataTypes.BOOLEAN
   }, {
     sequelize,

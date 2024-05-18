@@ -5,10 +5,10 @@ const { asistenciaEventoFactory } = require('../factories/asistenciaEventoFactor
 module.exports = {
   async up(queryInterface, Sequelize) {
     const asistencias = await asistenciaEventoFactory(3);
-    await queryInterface.bulkInsert(process.env.TABLA_ASISTENCIAS_EVENTOS, asistencias, {});
+    await queryInterface.bulkInsert('asistencias_eventos', asistencias, {});
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete(process.env.TABLA_ASISTENCIAS_EVENTOS, null, {});
+    await queryInterface.bulkDelete('asistencias_eventos', null, {});
   }
 };

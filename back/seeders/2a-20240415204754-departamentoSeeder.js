@@ -3,32 +3,36 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(process.env.TABLA_DEPARTAMENTOS, [{
+    await queryInterface.bulkInsert('departamentos', [{
       nombre: 'Ámbito Científico-Tecnológico',
       descripcion: 'Incluye los aspectos básicos del currículo de la Educación Secundaria Obligatoria (ESO) de las materias de Biología y Geología, Física y Química, Matemáticas, Matemáticas orientadas a las enseñanzas académicas y Matemáticas orientadas a las enseñanzas aplicadas, Tecnología, Ciencias Aplicadas a la Actividad Profesional y aquellos relacionados con la salud y el medio natural recogidos de la materia de Educación Física.',
-      nombreFoto: "tecnologico",
-      extensionFoto:".webp",
+      foto: "tecnologico.webp",
+      idJefeDepartamento: null,
+      activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
   }, {
       nombre: 'Ámbito Comunicación',
       descripcion: 'Incluye los aspectos básicos del currículo de la Educación Secundaria Obligatoria (ESO) correspondientes a las materias de Lengua castellana y literatura y primera Lengua extranjera.',
-      nombreFoto: "comunicacion",
-      extensionFoto:".webp",
+      foto: "comunicacion.webp",
+      idJefeDepartamento: null,
+      activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
   }, {
       nombre: 'Ámbito Social',
       descripcion: 'Incluye los aspectos básicos del currículo de la Educación Secundaria Obligatoria (ESO) de las materias de Geografía e Historia, Iniciación a la Actividad Emprendedora y Empresarial, Economía, Cultura Clásica y los aspectos de percepción recogidos en el currículo de Educación Plástica, Visual y Audiovisual y Música.',
-      nombreFoto: "social",
-      extensionFoto:".webp",
+      foto: "social.webp",
+      idJefeDepartamento:null,
+      activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
   }, {
       nombre: 'Orientación Educativa',
       descripcion: 'La orientación educativa y profesional forma parte de la función docente e integra todas las acciones realizadas desde la tutoría y el asesoramiento especializado. Se prestará una atención especial a la orientación educativa y laboral con el fin de facilitar a las personas adultas que las cursen, además de su desarrollo integral y equilibrado como ciudadanos y ciudadanas de pleno derecho, la continuación de sus estudios y su inserción y promoción profesional. La orientación educativa que se desarrollará a lo largo de toda la etapa de Educación Secundaria para personas adultas, adquirirá especial importancia al comienzo de las enseñanzas, con el proceso de Valoración Inicial del Alumnado y al término de estas enseñanzas, el profesorado responsable de la tutoría, con el asesoramiento del Departamento de Orientación, emitirá un consejo orientador a fin de informar al alumnado sobre las opciones y posibilidades existentes para su futuro académico y profesional. Este informe tendrá carácter confidencial.',
-      nombreFoto: "educativa",
-      extensionFoto:".webp",
+      foto: "educativa.webp",
+      idJefeDepartamento: null,
+      activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
   }, {
@@ -54,8 +58,9 @@ module.exports = {
           'd) desarrollen su capacidad de participación en la vida social, cultural, política y económica para hacer efectivo su derecho a la ciudadanía democrática;\n' +
           '\n' +
           'e) adquieran las competencias y los conocimientos correspondientes a la educación básica y obtengan el título de Graduado en Educación Secundaria Obligatoria.',
-      nombreFoto: "basica",
-      extensionFoto:".webp",
+      foto: "basica.webp",
+      idJefeDepartamento: null,
+      activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
   }, {
@@ -75,8 +80,9 @@ module.exports = {
           'Programas para la iniciación en el tratamiento de la información y la competencia digital. Estos programas suponen un medio para facilitar el acceso a la sociedad de la información y la comunicación, la eliminación o disminución de la brecha digital, así como el fomento de la motivación para seguir aprendiendo. \n' +
           '\n' +
           'Programas destinados a la iniciación en el aprendizaje de los idiomas.',
-      nombreFoto: "cursos",
-      extensionFoto:".webp",
+      foto: "cursos.webp",
+      idJefeDepartamento: null,
+      activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
   },
@@ -99,8 +105,9 @@ module.exports = {
               '-\tCuarto, que la línea temática de nuestras actividades formativas será la utilización adecuada y rentable de las Tecnologías de la Innovación y la Comunicación, en todos sus ámbitos. Nos centraremos este curso en la formación de todo nuestro profesorado en el manejo de las plataformas que la Consejería ha puesto a disposición del profesorado, aprovecharemos la formación que tienen o han recibido determinado compañeros y compañeras del centro, para realizar una formación a través de formadores. Intentaremos encuadrar estas líneas programáticas de formación en la participación en la convocatoria de Grupos de Trabajo y/o Seminarios que cada curso académico realiza la Consejería a través del CRFP.\n' +
               '\n' +
               '-\tY en quinto lugar, y no menos importante, queremos seguir potenciando el Trabajo por Proyectos como modalidad formativa de nuestro alumnado. Para ello, es necesario implicar, en mayor número, al profesorado de nuestro centro, ya que actualmente son seis, de un total de veinticinco profesores y profesoras, los que participan de esta modalidad formativa y de desarrollo del conocimiento.',
-          nombreFoto: "formacion",
-          extensionFoto:".webp",
+          foto: "formacion.webp",
+          idJefeDepartamento: null,
+          activo: true,
           createdAt: new Date(),
           updatedAt: new Date()
       },
@@ -125,8 +132,9 @@ module.exports = {
               '-Problemas psicológicos causados por el trato hostil recibido por parte de los alumnos, como el mobbing.\n' +
               '\n' +
               'Por estos y otros muchos factores, destacamos la importancia, y a la vez obligación, de contar en el centro con un Plan de Prevención de Riesgos Laborales, el cual ha de ser integrado en el sistema de gestión del centro educativo.',
-          nombreFoto: "riesgos",
-          extensionFoto:".webp",
+          foto: "riesgos.webp",
+          idJefeDepartamento: null,
+          activo:true,
           createdAt: new Date(),
           updatedAt: new Date()
       }, {
@@ -146,8 +154,9 @@ module.exports = {
               '• La formación de ciudadanos y el cultivo de los valores democráticos y de respeto que propugna nuestra sociedad y nuestro ordenamiento constitucional.\n' +
               '\n' +
               '• La igualdad de oportunidades y la compensación de las desigualdades de base.',
-          nombreFoto: "biblioteca",
-          extensionFoto:".webp",
+          foto: "biblioteca.webp",
+          idJefeDepartamento: null,
+          activo: true,
           createdAt: new Date(),
           updatedAt: new Date()
       }
@@ -155,6 +164,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete(process.env.TABLA_DEPARTAMENTOS, null, {});
+    await queryInterface.bulkDelete('departamentos', null, {});
   }
 };

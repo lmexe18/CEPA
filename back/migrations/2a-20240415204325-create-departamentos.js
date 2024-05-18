@@ -10,14 +10,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nombreFoto:{
-        type: Sequelize.STRING,
-        allowNull: true
-      },
-      extensionFoto:{
-        type: Sequelize.STRING,
-        allowNull: true
-      },
       nombre: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -25,6 +17,10 @@ module.exports = {
       descripcion: {
         type: Sequelize.TEXT,
         allowNull: false
+      },
+      foto:{
+        type: Sequelize.STRING,
+        allowNull: true
       },
       idJefeDepartamento: {
         type: Sequelize.INTEGER,

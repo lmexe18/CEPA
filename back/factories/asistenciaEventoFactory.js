@@ -1,6 +1,6 @@
 const asistenciaEventoFactory = async (ctos=4) => {
     let factory = []
-    for (let i=0 ; i<ctos ; i++){
+    for (let i=1 ; i<ctos ; i++){
         let asistencia = {
             idEvento: i,
             idUsuario: i,

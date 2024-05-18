@@ -1,11 +1,12 @@
-const aulaHorarioFactory = async (ctos = 4) => {
+
+const aulaHorarioFactory = async (ctos = 1) => {
     let factory = [];
-    for (let i = 0; i < ctos; i++) {
+    for (let i = 1; i <= ctos; i++) {
         let aulaHorario = {
             idAula: i,
             idRangoHorario: i,
             reserva: Math.random() < 0.5 ? true : false,
-            idUsuario: i, 
+            idUsuario: 3, 
             activo: Math.random() < 0.5 ? true : false,
             createdAt: new Date(),
             updatedAt: new Date()

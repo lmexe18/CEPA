@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.bulkInsert(process.env.TABLA_TIPOS_AULAS, [{
+        await queryInterface.bulkInsert('tipos_aulas', [{
             nombre: 'Especial',
             activo:true,
             createdAt: new Date(),
@@ -18,6 +18,6 @@ module.exports = {
     },
 
     async down(queryInterface, Sequelize) {
-        await queryInterface.bulkDelete(process.env.TABLA_TIPOS_AULAS, null, {});
+        await queryInterface.bulkDelete('tipos_aulas', null, {});
     }
 };

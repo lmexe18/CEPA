@@ -1,8 +1,9 @@
-const departamentoUsuarioFactory = async (ctos=4) => {
+const departamentoUsuarioFactory = async (ctos=2) => {
     let factory = []
-    for (let i=2 ; i<ctos ; i++){
+    for (let i=1 ; i<=ctos ; i++){
+        var idUsuario = i+2
         let departamentoUsuario = {
-            idUsuario : i,
+            idUsuario : idUsuario,
             idDepartamento : i,
             createdAt: new Date(),
             updatedAt: new Date()

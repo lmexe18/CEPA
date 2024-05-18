@@ -6,6 +6,7 @@ const tipoEventoFactory = async (ctos=4) => {
         let tipo = 
             {
             nombre: "Tipo "+i,
+            activo: Math.random() < 0.5 ? true : false,
             createdAt: new Date(),
             updatedAt: new Date()
         }

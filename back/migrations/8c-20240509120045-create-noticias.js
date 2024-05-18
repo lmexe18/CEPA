@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      noticia: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
       enlace: {
         type: Sequelize.STRING,
         allowNull: true,
@@ -26,7 +30,7 @@ module.exports = {
         allowNull:false,
         defaultValue:false
       },
-      idCategoria: {
+      idTipoNoticia: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

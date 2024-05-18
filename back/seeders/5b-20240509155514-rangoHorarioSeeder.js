@@ -4,10 +4,10 @@ const {rangoHorarioFactory}=require('../factories/rangoHorarioFactory')
 module.exports = {
   async up (queryInterface, Sequelize) {
     const rangos = await rangoHorarioFactory(1);
-    await queryInterface.bulkInsert(process.env.TABLA_RANGOS_HORARIOS, rangos, {});
+    await queryInterface.bulkInsert('rangos_horarios', rangos, {});
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete(process.env.TABLA_RANGOS_HORARIOS, null, {});
+    await queryInterface.bulkDelete('rangos_horarios', null, {});
   }
 };

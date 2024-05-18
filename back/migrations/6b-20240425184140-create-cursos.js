@@ -32,7 +32,7 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: true
       },
-      fechaFinalizacion: {
+      fechaFin: {
         type: Sequelize.DATE,
         allowNull: true
       },
@@ -44,7 +44,8 @@ module.exports = {
           },
           key: 'id'
         },
-        onDelete: 'CASCADE'
+        onDelete: 'CASCADE',
+        allowNull: true,
       },
       idTutor: {
         type: Sequelize.INTEGER,
@@ -54,7 +55,8 @@ module.exports = {
           },
           key: 'id'
         },
-        onDelete: 'CASCADE'
+        onDelete: 'CASCADE',
+        allowNull: true
       },
       activo: {
         type: Sequelize.BOOLEAN,

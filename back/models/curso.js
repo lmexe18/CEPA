@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     idTurno: DataTypes.INTEGER,
     horario: DataTypes.STRING, // Es un link de drive que contiene el horario, el tutor y la clase
     fechaInicio: DataTypes.DATE,
-    fechaFinalizacion: DataTypes.DATE,
+    fechaFin: DataTypes.DATE,
     idTipoCurso: DataTypes.INTEGER,
     idTutor: DataTypes.INTEGER,
     activo: DataTypes.BOOLEAN,

@@ -5,11 +5,11 @@ const { rolUsuarioFactory } = require('../factories/rolUsuarioFactory');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        const roles = await rolUsuarioFactory(5);
-        await queryInterface.bulkInsert(process.env.TABLA_ROLES_USUARIO, roles, {});
+        const roles = await rolUsuarioFactory(4);
+        await queryInterface.bulkInsert('roles_usuarios', roles, {});
     },
 
     async down(queryInterface, Sequelize) {
-        return queryInterface.bulkDelete(process.env.TABLA_ROLES_USUARIO, null, {});
+        return queryInterface.bulkDelete('roles_usuarios', null, {});
     }
 };

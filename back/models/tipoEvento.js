@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   TipoEvento.init({
-    nombre: DataTypes.STRING
+    nombre: DataTypes.STRING,
+    activo: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'TipoEvento',

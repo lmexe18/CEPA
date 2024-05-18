@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(process.env.TABLA_TURNOS, [
+    await queryInterface.bulkInsert('turnos', [
       {
         nombre: 'Mañana',
         createdAt: new Date(),
@@ -27,6 +27,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete(process.env.TABLA_TURNOS, null, {});
+    await queryInterface.bulkDelete('turnos', null, {});
   }
 };
