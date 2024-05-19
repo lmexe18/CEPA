@@ -2,7 +2,7 @@
 const { Sequelize } = require('sequelize');
 const models = require('../models/index');
 
-class ConexionAsistencia {
+class ConexionAsistenciaEvento {
 
     constructor() {
         this.db = new Sequelize(process.env.DB_DEV, process.env.DB_USER, process.env.DB_PASSWORD, {
@@ -20,9 +20,9 @@ class ConexionAsistencia {
 
     conectar() {
         this.db.authenticate().then(() => {
-         
+
         }).catch((error) => {
-          
+
         });
     }
 
@@ -33,30 +33,30 @@ class ConexionAsistencia {
                     process.exit(0);
                 })
                 .catch((error) => {
-            
+
                     process.exit(1);
                 });
         });
     }
 
-    async getAsistencias() {
+    async getAsistenciasEventos() {
         this.conectar();
         let resultado = [];
         try {
-            resultado = await models.Asistencia.findAll();
+            resultado = await models.AsistenciaEvento.findAll();
         } catch (error) {
-      
+
         } finally {
             this.desconectar();
         }
         return resultado;
     }
 
-    async getAsistenciaPorId(id) {
+    async getAsistenciaEventoPorId(id) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.Asistencia.findByPk(id);
+            resultado = await models.AsistenciaEvento.findByPk(id);
         } catch (error) {
         } finally {
             this.desconectar();
@@ -64,59 +64,47 @@ class ConexionAsistencia {
         return resultado;
     }
 
-    async postAsistencia(body) {
-        this.conectar();
-        let resultado;
-        try {
-            resultado = await models.Asistencia.create(body);
-        } catch (error) {
-        } finally {
-            this.desconectar();
-        }
-        return resultado;
-    }
-
-    async getAsistenciasUsuario(userId){
+    async getAsistenciasEventosDeUsuario(usuarioId) {
         this.conectar();
         let usuarios = [];
         try {
-            usuarios = await models.Asistencia.findAll({
+            usuarios = await models.AsistenciaEvento.findAll({
                 where: {
-                    idUsuario: userId
-                  },
-                  include: [{
-                      model:models.Evento,
-                      as:'evento'
-                  }]
+                    idUsuario: usuarioId
+                },
+                include: [{
+                    model: models.Evento,
+                    as: 'evento'
+                }]
             });
-        } catch (error){
+        } catch (error) {
         } finally {
             this.desconectar();
         }
         return usuarios;
     }
 
-    async getUsuariosEvento(eventoId){
+    async getUsuariosEvento(eventoId) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.Asistencia.findAll({
+            resultado = await models.AsistenciaEvento.findAll({
                 where: {
-                  idEvento: eventoId
+                    idEvento: eventoId
                 },
                 include: [{
-                    model:models.user,
-                    as:'usuario'
+                    model: models.Usuario,
+                    as: 'usuario'
                 }]
-              });
-        } catch (error){
+            });
+        } catch (error) {
         } finally {
             this.desconectar();
         }
         return resultado;
     }
 
-    async getAsistenciaEventoUsuario(eventoId, usuarioId){
+    async getAsistenciaEventoUsuario(eventoId, usuarioId) {
         this.conectar();
         let resultado;
         try {
@@ -126,28 +114,57 @@ class ConexionAsistencia {
                     idUsuario: usuarioId
                 }
             })
-        } catch (error){
-        } finally {
-            this.desconectar();
-        }
-        return resultado;
-    }
-
-    async deleteAsistencia(id) {
-        this.conectar();
-        let resultado;
-        try {
-            const asistencia = await models.Asistencia.findByPk(id);
-            if (!asistencia) {
-                throw new Error(`Asistencia con ID ${id} no encontrado`);
-            }
-            resultado = await asistencia.destroy();
         } catch (error) {
         } finally {
             this.desconectar();
         }
         return resultado;
     }
-}
 
-module.exports = ConexionAsistencia;
+    async postAsistenciaEvento(body) {
+        this.conectar();
+        let resultado;
+        try {
+            resultado = await models.AsistenciaEvento.create(body);
+        } catch (error) {
+        } finally {
+            this.desconectar();
+        }
+        return resultado;
+    }
+
+    async updateAsistenciaEvento(idEvento, body) {
+        this.conectar();
+        let resultado;
+        try {
+            resultado = await models.AsistenciaEvento.update(body, {
+                where: { 
+                    id: idEvento 
+                }
+            });
+        } catch (error) {
+        } finally {
+            this.desconectar();
+        }
+        return resultado;
+    }
+    
+
+    async deleteAsistencia(id) {
+            this.conectar();
+            let resultado;
+            try {
+                const asistencia = await models.Asistencia.findByPk(id);
+                if (!asistencia) {
+                    throw new Error(`Asistencia con ID ${id} no encontrado`);
+                }
+                resultado = await asistencia.destroy();
+            } catch (error) {
+            } finally {
+                this.desconectar();
+            }
+            return resultado;
+        }
+    }
+
+module.exports = ConexionAsistenciaEvento;

@@ -73,8 +73,8 @@ class ConexionAsistencia {
                     idCurso: cursoId
                 },
                 include: [{
-                    model: models.Curso,
-                    as: 'cursos'
+                    model: models.Usuario,
+                    as: 'usuario'
                 }]
             });
         } catch (error) {
@@ -93,8 +93,8 @@ class ConexionAsistencia {
                     idUsuario: usuarioId
                 },
                 include: [{
-                    model: models.Usuario,
-                    as: 'usuario'
+                    model: models.Curso,
+                    as: 'curso'
                 }]
             });
         } catch (error) {

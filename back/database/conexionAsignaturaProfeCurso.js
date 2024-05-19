@@ -84,7 +84,19 @@ class ConexionAsignaturaProfeCurso {
         this.conectar()
         let resultado
         try {
-            resultado = await models.AsignaturaProfeCurso.findAll({ where: { idUsuario: usuarioId } })
+            resultado = await models.AsignaturaProfeCurso.findAll({ 
+                where: { 
+                    idUsuario: usuarioId 
+                },
+                include: [{
+                    model: models.Asignatura,
+                    as: 'asignatura'
+                },
+                {
+                    model: models.Curso,
+                    as: 'curso'
+                }] 
+            })
         } catch (error) {
             console.error('Error al obtener los cursos de un profesor:', error)
         } finally {
@@ -97,7 +109,19 @@ class ConexionAsignaturaProfeCurso {
         this.conectar()
         let resultado
         try {
-            resultado = await models.AsignaturaProfeCurso.findAll({ where: { idAsignatura: asignaturaId } })
+            resultado = await models.AsignaturaProfeCurso.findAll({ 
+                where: { 
+                    idAsignatura: asignaturaId 
+                },
+                include:[{
+                    model: models.Asignatura,
+                    as: 'asignatura'
+                },
+                {
+                    model: models.Curso,
+                    as: 'curso'
+                }] 
+            })
         } catch (error) {
             console.error('Error al obtener los cursos de una asignatura:', error)
         } finally {

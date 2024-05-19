@@ -17,9 +17,10 @@ class Server {
                 credentials: true
             }
         });
-        this.alumnosCursosPath = '/api/alumnoscursos'
-        this.asignaturasPath = '/api/asignaturas'
-        this.asignaturasProfesCursosPath = '/api/asignaturasprofescursos'
+        this.alumnoCursoPath = '/api/alumnoCurso'
+        this.asignaturaPath = '/api/asignaturas'
+        this.asignaturaProfeCursoPath = '/api/asignaturaProfeCurso'
+        this.asistenciaEventoPath = '/api/asistenciaEvento'
         /*this.apiUsuarios = '/api/usuario';
         this.apiRoles = '/api/roles'
         this.apiRolesAsignados = '/api/rolesAsignados'
@@ -31,7 +32,6 @@ class Server {
         this.horariosPath = '/api/horarios'
         this.franjasPath = '/api/franjas'
         this.reservasPath = '/api/reservas'
-        this.eventoPath = '/api/eventos';
         this.asistenciaPath = '/api/asistencia';
         this.galeriaPath = '/api/galeria';
     //    this.uploadsNoticiasPath = '/api/uploads/noticias';
@@ -53,11 +53,11 @@ class Server {
         }));
     }
     routes() {
-        this.app.use(this.alumnosCursosPath, require('../routes/alumnoCursoRoutes'))
-        this.app.use(this.asignaturasPath, require('../routes/asignaturaRoutes'))
-        this.app.use(this.asignaturasProfesCursosPath, require('../routes/asignaturaProfeCursoRoutes'))
+        this.app.use(this.alumnoCursoPath, require('../routes/alumnoCursoRoutes'))
+        this.app.use(this.asignaturaPath, require('../routes/asignaturaRoutes'))
+        this.app.use(this.asignaturaProfeCurssPath, require('../routes/asignaturaProfeCursoRoutes'))
+        this.app.use(this.asistenciaEventoPath, require('../routes/asistenciaEventoRoutes'));
         /*this.app.use(this.eventoPath, require('../routes/eventoRoutes'));
-        this.app.use(this.asistenciaPath, require('../routes/asistenciaRoutes'));
         this.app.use(this.apiUsuarios, require('../routes/usuarioRutas'))
         this.app.use(this.apiRoles, require('../routes/rolesRutas'))
         this.app.use(this.apiRolesAsignados, require('../routes/rolesAsignadosRutas'))
