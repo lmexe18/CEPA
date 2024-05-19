@@ -12,17 +12,11 @@ router.get('/curso/:cursoId', controller.obtenerInfoDeCurso);
 router.get('/profesor/:usuarioId', controller.obtenerInfoDeProfesor);
 router.get('/asignatura/:asignaturaId', controller.obtenerInfoDeAsignatura);
 router.post('/', [
-    check('idAsignatura').isInt().withMessage('El id de asignatura debe de ser un número entero mayor a 0.'),
-    check('idUsuario').isInt('El id de usuario debe de ser un número entero mayor a 0.'),
-    check('idCurso').isInt('El id del curso debe de ser un número entero mayor a 0.'),
+    check('idAsignatura').isInt({ min: 1 }).notEmpty().withMessage('El id de asignatura debe de ser un número entero mayor a 0.'),
+    check('idUsuario').isInt({ min: 1}).notEmpty().withMessage('El id de usuario debe de ser un número entero mayor a 0.'),
+    check('idCurso').isInt({ min: 1}).notEmpty().withMessage('El id del curso debe de ser un número entero mayor a 0.'),
     validateValues
 ], /*authMid.validarJWT,*/ controller.subirAsignaturaProfeCurso);
-router.put('/:id', [
-    check('idAsignatura').isInt('El id de asignatura debe de ser un número entero mayor a 0.'),
-    check('idUsuario').isInt('El id de usuario debe de ser un número entero mayor a 0.'),
-    check('idCurso').isInt('El id de curso debe de ser un número entero mayor a 0.'),
-    validateValues
-], /*authMid.validarJWT,*/ controller.actualizarAsignaturaProfeCurso);
 router.delete('/:id', authMid.validarJWT, controller.borrarAsignaturaProfeCurso);
 
 module.exports = router;

@@ -10,11 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       puesto: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false
       },
       nombre: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false
       },
       email: {

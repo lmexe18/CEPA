@@ -20,9 +20,7 @@ class ConexionAsignaturaProfeCurso {
 
     conectar() {
         this.db.authenticate().then(() => {
-            console.log('Conexión establecida correctamente.');
         }).catch((error) => {
-            console.error('No se ha podido conectar a la base de datos:', error);
         });
     }
 
@@ -30,11 +28,9 @@ class ConexionAsignaturaProfeCurso {
         process.on('SIGINT', () => {
             this.db.close()
                 .then(() => {
-                    console.log('Conexión cerrada correctamente.');
                     process.exit(0);
                 })
                 .catch((error) => {
-                    console.error('Error al cerrar la conexión:', error);
                     process.exit(1);
                 });
         });
@@ -46,7 +42,6 @@ class ConexionAsignaturaProfeCurso {
         try {
             resultado = await models.AsignaturaProfeCurso.findAll();
         } catch (error) {
-            console.error('Error al obtener las asignaturas, profesores y cursos:', error);
         } finally {
             this.desconectar();
         }
@@ -59,7 +54,6 @@ class ConexionAsignaturaProfeCurso {
         try {
             resultado = await models.AsignaturaProfeCurso.findByPk(id);
         } catch (error) {
-            console.error('Error al obtener la asignatura, profesor y curso por ID:', error);
         } finally {
             this.desconectar();
         }
@@ -72,7 +66,6 @@ class ConexionAsignaturaProfeCurso {
         try {
             resultado = await models.AsignaturaProfeCurso.findAll({ where: { idCurso: cursoId } })
         } catch (error) {
-            console.error('Error al obtener las asignaturas de un curso:', error)
         } finally {
             this.desconectar()
         }
@@ -98,7 +91,6 @@ class ConexionAsignaturaProfeCurso {
                 }] 
             })
         } catch (error) {
-            console.error('Error al obtener los cursos de un profesor:', error)
         } finally {
             this.desconectar()
         }
@@ -123,7 +115,6 @@ class ConexionAsignaturaProfeCurso {
                 }] 
             })
         } catch (error) {
-            console.error('Error al obtener los cursos de una asignatura:', error)
         } finally {
             this.desconectar()
         }
@@ -137,7 +128,6 @@ class ConexionAsignaturaProfeCurso {
         try {
             resultado = await models.AsignaturaProfeCurso.create(body);
         } catch (error) {
-            console.error('Error al crear la asignatura, profesor y curso:', error);
         } finally {
             this.desconectar();
         }
@@ -155,7 +145,6 @@ class ConexionAsignaturaProfeCurso {
                 resultado = await asignaturaProfeCurso.update(body);
             }
         } catch (error) {
-            console.error('Error al actualizar la asignatura, profesor y curso:', error);
         } finally {
             this.desconectar();
         }
@@ -172,7 +161,6 @@ class ConexionAsignaturaProfeCurso {
             }
             resultado = await asignaturaProfeCurso.destroy();
         } catch (error) {
-            console.error('Error al eliminar la asignatura, profesor y curso:', error);
         } finally {
             this.desconectar();
         }

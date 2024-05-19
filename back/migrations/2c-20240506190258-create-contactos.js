@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nombreCentro: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false
       },
       direccion: {
@@ -17,7 +17,7 @@ module.exports = {
         allowNull: false
       },
       telefono: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(15),
         allowNull: false
       },
       email: {

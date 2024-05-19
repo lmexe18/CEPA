@@ -11,7 +11,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nombre: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false
       },
       descripcion: {
@@ -28,7 +28,10 @@ module.exports = {
       },
       mg: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          min: 0
+        }
       },
       visibilidad: {
         type: Sequelize.BOOLEAN,

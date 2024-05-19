@@ -20,9 +20,7 @@ class ConexionAsistenciaEvento {
 
     conectar() {
         this.db.authenticate().then(() => {
-
         }).catch((error) => {
-
         });
     }
 
@@ -33,7 +31,6 @@ class ConexionAsistenciaEvento {
                     process.exit(0);
                 })
                 .catch((error) => {
-
                     process.exit(1);
                 });
         });
@@ -45,7 +42,6 @@ class ConexionAsistenciaEvento {
         try {
             resultado = await models.AsistenciaEvento.findAll();
         } catch (error) {
-
         } finally {
             this.desconectar();
         }

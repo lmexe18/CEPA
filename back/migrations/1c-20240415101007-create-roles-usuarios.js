@@ -18,7 +18,7 @@ module.exports = {
           },
           key: 'id'
         },
-        onDelete: 'CASCADE'
+        onDelete: 'CASCADE',
       },
       idRol: {
         type: Sequelize.INTEGER,

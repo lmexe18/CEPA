@@ -1,89 +1,97 @@
-//Jaime
+'use strict';
 
-const {
-    response,
-    request
-} = require('express');
-const Conexion = require('../database/conexionAulaEspecial');
-const bcrypt = require('bcrypt');
+const { response, request } = require('express');
+const ConexionAula = require('../database/conexionAula');
 
-const listAllAulas = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.getAllAulas()
-        .then(data => {
-            res.status(200).json(data)
-        })
-        .catch(err => {
-   
-            res.status(404).json()
-        })
-}
+const obtenerAulas = async (req, res = response) => {
+    const conexion = new ConexionAula();
 
-const listAula = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.getAulaById(req.params.id)
-        .then(data => {
-            res.status(200).json(data)
-        })
-        .catch(err => {
-
-            res.status(404).json('No exite un aula especial con ese id')
-        })
-}
-//Óscar
-const listAulaWithData = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.getAulaByIdWithData(req.params.id)
-        .then(data => {
-            res.status(200).json(data)
-        })
-        .catch(err => {
-       
-            res.status(404).json('No exite un aula especial con ese id')
-        })
-}
-const createAula = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.insertAula(req.body)
-        .then(data => {
-            res.status(201).json({id:data})
-        })
-        .catch(err => {
-       
-            res.status(400).json('Error en el registro')
-        })
-}
-
-const editAula = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.updateAula(req.params.id, req.body)
-        .then(data => {
-            res.status(202).json('Actualizado correctamente')
-        })
-        .catch(err => {
-
-            res.status(203).json('Error al actualizar')
+    try {
+        const aulas = await conexion.getAulas();
+        res.status(200).json(aulas);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'No se han encontrado registros',
+            'error': err
         });
-
+    }
 }
 
-const removeAula = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.deleteAula(req.params.id)
-        .then(msg => {
-            res.status(202).json('Exito en la eliminacion')
-        })
-        .catch(err => {
+const obtenerAulaPorId = async (req, res = response) => {
+    const conexion = new ConexionAula();
 
-            res.status(500).json('Error en la eliminacion')
-        })
+    try {
+        const aula = await conexion.getAulaPorId(req.params.id);
+        res.status(200).json(aula);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'No se ha encontrado el registro',
+            'error': err
+        });
+    }
+}
+
+const obtenerAulaPorNombre = async (req, res = response) => {
+    const conexion = new ConexionAula();
+
+    try {
+        const aula = await conexion.getAulaPorNombre(req.params.nombre);
+        res.status(200).json(aula);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'No se ha encontrado el aula con el nombre especificado',
+            'error': err
+        });
+    }
+}
+
+const crearAula = async (req, res = response) => {
+    const conexion = new ConexionAula();
+
+    try {
+        const aula = await conexion.postAula(req.body);
+        res.status(201).json(aula);
+    } catch (err) {
+        res.status(400).json({
+            'msg': 'Error en el registro',
+            'error': err
+        });
+    }
+}
+
+const actualizarAula = async (req, res = response) => {
+    const conexion = new ConexionAula();
+
+    try {
+        const aula = await conexion.updateAula(req.params.id, req.body);
+        res.status(200).json(aula);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'Error al actualizar el aula',
+            'error': err
+        });
+    }
+}
+
+const borrarAula = async (req, res = response) => {
+    const conexion = new ConexionAula();
+
+    try {
+        const aula = await conexion.deleteAula(req.params.id);
+        res.status(200).json(aula);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'Error al eliminar el aula',
+            'error': err
+        });
+    }
 }
 
 module.exports = {
-    listAllAulas,
-    listAula,
-    createAula,
-    editAula,
-    removeAula,
-    listAulaWithData
-}
+    obtenerAulas,
+    obtenerAulaPorId,
+    obtenerAulaPorNombre,
+    crearAula,
+    actualizarAula,
+    borrarAula
+};
