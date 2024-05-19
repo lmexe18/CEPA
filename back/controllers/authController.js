@@ -2,8 +2,8 @@ const {response,request} = require('express');
 const Conexion = require('../database/conexionUsuario');
 const bcrypt = require('bcrypt');
 const {generarJWT} = require('../helpers/generate_jwt')
-const ConexionRol=require('../database/conexionRolesAsignados')
-//Óscar
+const ConexionRol=require('../database/conexionRolUsuario')
+
 const login =  (req, res = response) => {
     const {email, password} = req.body;
     try{
@@ -41,7 +41,7 @@ const login =  (req, res = response) => {
     }
     
 }
-//Óscar
+
 const register =  (req, res = response) => {
     try{
         const conx = new Conexion();
