@@ -1,5 +1,3 @@
-//Raúl 
-
 require('dotenv').config()
 const bcrypt = require('bcrypt');
 const {
@@ -10,7 +8,7 @@ const {
 } = require('sequelize');
 const models = require('../models/index.js');
 
-class ConexionRolesAsignados{
+class ConexionRolUsuario {
     constructor() {
         this.db = new Sequelize(process.env.DB_DEV, process.env.DB_USER, process.env.DB_PASSWORD, {
             host: process.env.DB_HOST,
@@ -26,7 +24,6 @@ class ConexionRolesAsignados{
 
     conectar = () => {
         this.db.authenticate().then(() => {
-          
         }).catch((error) => {
         });
     }
@@ -34,80 +31,76 @@ class ConexionRolesAsignados{
         process.on('SIGINT', () => conn.close())
     }
 
-    rolesAsignadosGet = async () => {
-        try{
-            let resultado = [];
+    getRolesUsuarios = async () => {
+        let resultado = [];
+        try {
             this.conectar();
             resultado = await models.rolAsignados.findAll();
-            return resultado;
-        }catch(error){
-          throw error
-        }finally{
-            this.desconectar();
-        }
-    }
-
-    rolesAsignadosGetId = async (idUser) => {
-        try{
-            let resultado = [];
-            this.conectar();
-            resultado = await models.rolAsignado.findAll({
-                where: {
-                    idUser : idUser
-                }
-            });
-            if (!resultado) {
-                throw new Error('error');
-            }
-            return resultado;
-        }catch(error){
-            throw error
-        }
-        finally{
-            this.desconectar()
-        }
-    }
-
-    rolesAsignadosPost = async (body) => {
-        let resultado;
-        this.conectar();
-        try {
-            const rolAsig = new models.rolAsignado(body);
-            await rolAsig.save();
         } catch (error) {
-            throw error;
         } finally {
             this.desconectar();
         }
         return resultado;
     }
 
-    rolesAsignadosDelete = async (id) => {
-        try{
+    getRolUsuarioPorId = async (id) => {
+        let resultado
+        try {
             this.conectar();
-            let resultado = await models.rolAsignados.findByPk(id);
-            await resultado.destroy();
-        }catch(error){
-            throw error
-        }finally{
+            resultado = await models.rolAsignados.findByPk(id)
+        } catch (error) {
+        } finally {
+            this.desconectar();
+        }
+        return resultado;
+    }
+
+    getRolesDeUsuario = async (usuarioId) => {
+        let resultado = [];
+        try {
+            this.conectar();
+            resultado = await models.Rol.findAll({
+                where: {
+                    idUsuario: usuarioId
+                }
+            });
+            if (!resultado) {
+                throw new Error('error');
+            }
+
+        } catch (error) {
+        }
+        finally {
             this.desconectar()
         }
         return resultado;
     }
-    rolesAsignadosPut = async (id,body) => {
-        try{
-            let resultado = 0
+
+
+    postRolUsuario = async (body) => {
+        let resultado;
+        this.conectar();
+        try {
+            const rolAsig = new models.Rol(body);
+            await rolAsig.save();
+        } catch (error) {
+        } finally {
+            this.desconectar();
+        }
+        return resultado;
+    }
+
+    deleteRolUsuario = async (id) => {
+        let resultado;
+        try {
             this.conectar();
-            let task = await models.rolAsignados.findByPk(id);
-            await task.update(body)
-            return resultado
-        }catch(error){
-            throw error
-        }finally{
+            resultado = await models.Rol.findByPk(id);
+            await resultado.destroy();
+        } catch (error) {
+        } finally {
             this.desconectar()
         }
     }
-   
 }
 
-module.exports = ConexionRolesAsignados;
+module.exports = ConexionRolUsuario;

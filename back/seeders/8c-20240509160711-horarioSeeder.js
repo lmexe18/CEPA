@@ -5,7 +5,7 @@ const {horarioFactory}=require('../factories/horarioFactory')
 module.exports = {
   async up (queryInterface, Sequelize) {
     const horario = await horarioFactory(1);
-    await queryInterface.bulkInsert('horarios', horarios, {});
+    await queryInterface.bulkInsert('horarios', horario, {});
   },
 
   async down (queryInterface, Sequelize) {

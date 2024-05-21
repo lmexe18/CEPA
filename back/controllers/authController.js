@@ -53,7 +53,7 @@ const register =  (req, res = response) => {
                 idRol: 4
             }
                 const conxRol=new ConexionRol()
-                a=conxRol.rolesAsignadosPost(data)
+                a=conxRol.postRolUsuario(data)
                 .then(a=>{
 
                     const token = generarJWT(usu,['Usuario'],req.body.nombre)
@@ -64,12 +64,10 @@ const register =  (req, res = response) => {
                 })
             })
             .catch( err => {
-
                 res.status(500).json({'msg':err});
             });
     }
-    catch(error){
-       
+    catch(error){ 
         res.status(500).json({'msg':'Error en el servidor.'});
     }
     

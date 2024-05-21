@@ -1,78 +1,94 @@
-//Raúl
+const { response, request } = require('express');
+const ConexionRolUsuario = require('../database/conexionRolUsuario');
 
-const {response,request} = require('express');
-const Conexion = require('../database/conexionRolesAsignados');
-
-const rolesAsignadosGet =  (req, res = response) => {
-    const conx = new Conexion();
-    conx.rolesAsignadosGet()    
-        .then( msg => {
-  
-            res.status(200).json(msg);
+const obtenerRolesUsuarios = (req, res = response) => {
+    const conx = new ConexionRolUsuario();
+    conx.getRolesUsuarios()
+        .then((roles) => {
+            res.status(200).json(roles);
         })
-        .catch( err => {
-           
-            res.status(200).json({'msg':'No se han encontrado registros'});
+        .catch((err) => {
+            res.status(500).json({
+                'msg': 'Error al obtener los roles de usuario',
+                'error': err.message
+            });
         });
 }
 
-const rolesAsignadosGetIdUsu =  (req, res = response) => {
-    const conx = new Conexion();
-    conx.rolesAsignadosGetId(req.params.idUser)    
-        .then( msg => {
-     
-            res.status(200).json(msg);
+const obtenerRolUsuarioPorId = (req, res = response) => {
+    const conx = new ConexionRolUsuario();
+    conx.getRolUsuarioPorId(req.params.idUser)
+        .then((rol) => {
+            if (rol) {
+                res.status(200).json(rol);
+            } else {
+                res.status(404).json({
+                    'msg': 'No se encontró el rol de usuario con el ID proporcionado'
+                });
+            }
         })
-        .catch( err => {
-
-            res.status(200).json({'msg':'No se han encontrado registros'});
+        .catch((err) => {
+            res.status(500).json({
+                'msg': 'Error al obtener el rol de usuario',
+                'error': err.message
+            });
         });
 }
 
-const rolesAsignadosPost =  (req = request, res = response) => {
-    const conx = new Conexion();
-    conx.rolesAsignadosPost(req.body)    
-        .then( msg => {
-  
-            res.status(201).json(msg);
+const obtenerRolesDeUsuario = (req = request, res = response) => {
+    const conx = new ConexionRolUsuario();
+    conx.getRolesDeUsuario(req.params.idUser)
+        .then((roles) => {
+            if (roles) {
+                res.status(200).json(roles);
+            } else {
+                res.status(404).json({
+                    'msg': 'No se encontraron roles de usuario para el ID proporcionado'
+                });
+            }
         })
-        .catch( err => {
-      
-            res.status(203).json(err);
+        .catch((err) => {
+            res.status(500).json({
+                'msg': 'Error al obtener los roles de usuario',
+                'error': err.message
+            });
+        });
+
+}
+
+
+const crearRolUsuario = (req = request, res = response) => {
+    const conx = new ConexionRolUsuario();
+    conx.postRolUsuario(req.body)
+        .then((rol) => {
+            res.status(201).json(rol);
+        })
+        .catch((err) => {
+            res.status(500).json({
+                'msg': 'Error al crear el rol de usuario',
+                'error': err.message
+            });
         });
 }
 
-const rolesAsignadosDelete =  (req, res) => {
-    const conx = new Conexion();
-    conx.rolesAsignadosDelete(req.params.id)    
-        .then( msg => {
- 
-            res.status(202).json(msg);
+const eliminarRolUsuario = (req, res) => {
+    const conx = new ConexionRolUsuario();
+    conx.deleteRolUsuario(req.params.id)
+        .then((rol) => {
+            res.status(200).json(rol);
         })
-        .catch( err => {
-        
-            res.status(203).json(err);
+        .catch((err) => {
+            res.status(500).json({
+                'msg': 'Error al eliminar el rol de usuario',
+                'error': err.message
+            });
         });
 }
-
-const rolesAsignadosPut =  (req, res = response) => {
-    const conx = new Conexion();
-    conx.rolesAsignadosPut(req.params.id, req.body.nombre)    
-        .then( msg => {
-  
-            res.status(202).json(msg);
-        })
-        .catch( err => {
-
-            res.status(203).json(err);
-        });
-}
-
 
 module.exports = {
-    rolesAsignadosGet,
-    rolesAsignadosGetIdUsu,
-    rolesAsignadosDelete,
-    rolesAsignadosPost,
-    rolesAsignadosPut
+    obtenerRolesUsuarios,
+    obtenerRolUsuarioPorId,
+    obtenerRolesDeUsuario,
+    crearRolUsuario,
+    eliminarRolUsuario
 }
