@@ -128,7 +128,6 @@ class ConexionAula {
         } finally {
             this.desconectar()
         }
-        return resultado
     }
 
 }

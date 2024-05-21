@@ -1,12 +1,24 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('aulas_horarios', {
+    await queryInterface.createTable('horarios', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+      },
+      horaInicio: {
+        allowNull: false,
+        type: Sequelize.TIME
+      },
+      horaFin: {
+        allowNull: false,
+        type: Sequelize.TIME
+      },
+      dia:{
+        allowNull: false,
+        type: Sequelize.STRING(9)
       },
       idAula: {
         allowNull: false,
@@ -19,23 +31,30 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
-      idRangoHorario: {
+      idAsignatura:{
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'rangos_horarios'
-          },
-          key: 'id'
-        },
-        onDelete: 'CASCADE'
+            tableName: 'asignaturas'
+            },
+            key: 'id'
+            },
+            onDelete: 'CASCADE'
+          
       },
-      reserva: {
+      idCurso:{
         allowNull: false,
-        type: Sequelize.BOOLEAN,
-        defaultValue: true
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'cursos'
+            },
+            key: 'id'
+            },
+            onDelete: 'CASCADE'
       },
-      idUsuario: {
+      idProfesor: {
         allowNull: true,
         type: Sequelize.INTEGER,
         references: {
@@ -45,11 +64,6 @@ module.exports = {
           key: 'id'
         },
         onDelete: 'CASCADE'
-      },
-      activo: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN,
-        defaultValue: true
       },
       createdAt: {
         allowNull: false,
@@ -64,6 +78,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('aulas_horarios');
+    await queryInterface.dropTable('horarios');
   }
 };

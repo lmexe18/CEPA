@@ -2,7 +2,7 @@ const {
     response,
     request
 } = require('express');
-const Conexion = require('../database/conexionAulaHorario');
+const Conexion = require('../database/conexionHorarioReserva');
 const bcrypt = require('bcrypt');
 
 const listAllHorarios = (req, res = response) => {
