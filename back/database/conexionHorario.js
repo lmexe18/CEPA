@@ -3,7 +3,7 @@
 const { Sequelize } = require('sequelize');
 const models = require('../models/index.js');
 
-class ConexionAulaHorario {
+class ConexionHorario {
     constructor() {
         this.db = new Sequelize(process.env.DB_DEV, process.env.DB_USER, process.env.DB_PASSWORD, {
             host: process.env.DB_HOST,
@@ -29,70 +29,75 @@ class ConexionAulaHorario {
         process.on('SIGINT', () => this.db.close());
     }
 
-    async getAllHorarios() {
+    async getHorarios() {
+        this.conectar();
+        let resultado
         try {
-            this.conectar();
-            const resultado = await models.AulaHorario.findAll({
-                include: [
-                    { model: models.AulaFranja, as: 'franja' },
-                    { model: models.AulaEspecial, as: 'aula' }
+            resultado = await models.Horario.findAll({
+                include: [,
+                    { model: models.Aula, as: 'aula' },
+                    { model: models.Asignatura, as: 'asignatura'},
+                    { model: models.Curso, as: 'curso'},
+                    { model: models.Usuario, as:'profesor'}
                 ]
-            });
-            return resultado;
+            });     
         } catch (error) {
-            throw error;
         } finally {
             this.desconectar();
         }
+        return resultado;
     }
 
-    async getAllHorariosOfAula(id) {
+    async getHorariosDeAula(id) {
+        this.conectar();
+        let resultado
         try {
-            this.conectar();
-            const resultado = await models.AulaHorario.findAll({
+            resultado = await models.Horario.findAll({
                 where: { idAula: id },
-                include: [
-                    { model: models.AulaFranja, as: 'franja' },
-                    { model: models.AulaEspecial, as: 'aula' }
+                include: [,
+                    { model: models.Aula, as: 'aula' },
+                    { model: models.Asignatura, as: 'asignatura'},
+                    { model: models.Curso, as: 'curso'},
+                    { model: models.Usuario, as:'profesor'}
                 ],
-                order: [[{ model: models.AulaFranja, as: 'franja' }, 'orden', 'ASC']]
             });
-            return resultado;
         } catch (error) {
-            throw error;
         } finally {
             this.desconectar();
         }
+        return resultado;
     }
 
-    async getHorarioById(id) {
+    async getHorarioPorId(id) {
+        this.conectar()
+        let resultado
         try {
-            this.conectar();
-            const resultado = await models.AulaHorario.findByPk(id);
+            let horario = await models.Horario.findByPk(id);
             if (!resultado) {
                 throw new Error('No se encontró el horario');
+            } else {
+                resultado = horario
             }
-            return resultado;
         } catch (error) {
-            throw error;
         } finally {
             this.desconectar();
         }
+        return resultado;
     }
 
-    async insertHorario(body) {
+    async postHorario(body) {
+        this.conectar();
+        let resultado
         try {
-            this.conectar();
-            const task = await models.AulaHorario.create(body);
-            return task.id;
+            resultado = await models.Horario.create(body);
         } catch (error) {
-            throw error;
         } finally {
             this.desconectar();
         }
+        return resultado
     }
 
-    async getReservaByIdAulaOfDay(id, day, month, year) {
+    /*async getReservaPorIdAulaOfDay(id, day, month, year) {
         try {
             this.conectar();
             const fecha = new Date(year, month - 1, day);
@@ -114,6 +119,33 @@ class ConexionAulaHorario {
         } finally {
             this.desconectar();
         }
+    }*/
+
+    async getHorarioDeCurso (id){
+        this.conectar();
+        let resultado
+        try {
+            let horario = await models.Horario.findAll({
+                where:{
+                    idCurso:id
+                },
+                include: [,
+                    { model: models.Aula, as: 'aula' },
+                    { model: models.Asignatura, as: 'asignatura'},
+                    { model: models.Curso, as: 'curso'},
+                    { model: models.Usuario, as:'profesor'}
+                ]
+            })
+            if (!horario){
+                throw new Error('No se encontraron horarios para el aula')
+            } else {
+                resultado = horario
+            }
+        } catch(err){
+        } finally{
+            this.desconectar();
+        }
+        return resultado
     }
 
     async updateHorario(id, body) {
@@ -146,4 +178,4 @@ class ConexionAulaHorario {
     }
 }
 
-module.exports = ConexionAulaHorario;
+module.exports = ConexionHorario;

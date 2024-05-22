@@ -12,6 +12,18 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'idAula',
         as: 'aula'
       });
+      this.belongsTo(models.Asignatura,{
+        foreignKey: 'idAsignatura',
+        as: 'asignatura'
+      })
+      this.belongsTo(models.Curso,{
+        foreignKey: 'idCurso',
+        as: 'curso'
+      })
+      this.belongsTo(models.Usuario,{
+        foreignKey: 'idProfesor',
+        as: 'profesor'
+      })
     }
   }
   Horario.init({

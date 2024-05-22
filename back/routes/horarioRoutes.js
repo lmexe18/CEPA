@@ -1,32 +1,35 @@
-//Jaime
+const express = require('express');
+const { check } = require('express-validator');
+const router = express.Router();
+const controller = require('../controllers/aulaHorarioController');
+const { validateValues } = require('../helpers/validar-campos');
+const authMid = require('../middlewares/validarJWT');
+const accessMid = require('../middlewares/validarRoles');
 
-const express = require('express')
-const router = express.Router()
-const controller = require('../controllers/aulaHorarioController')
-const { check } = require('express-validator')
-const { validateValues } = require('../helpers/validar-campos')
-const authMid = require('../middlewares/validarJWT')
-const accessMid = require('../middlewares/validarRoles')
-const aulaEspecialValidator = require('../helpers/aulaEspecial-validators')
-const aulaFranjaValidator = require('../helpers/aulaFranja-validators')
-
-router.get('/', controller.listAllHorarios)
-router.get('/:id', controller.listHorario)
-router.get('/aula/:id', controller.listAllHorariosOfAula)
-router.get('/aula/:id/reservas/:day/:month/:year', controller.listReservaOfAulaOnDay)
-
+router.get('/', controller.obtenerHorarios);
+router.get('/:id', controller.obtenerHorarioPorId);
+router.get('/aula/:id', controller.obtenerHorariosDeAula);
+router.get('/curso/:id', controller.obtenerHorarioDeCurso);
 router.post('/', [
-    check('idAula').custom(aulaEspecialValidator.aulaEspecialExiste),
-    check('idFranja').custom(aulaFranjaValidator.aulaFranjaExiste),
+    check('horaInicio').notEmpty().withMessage('La hora debe de tener un formato miliar correcto'),
+    check('horaFin').notEmpty.withMessage('La hora debe de tener un formato militar correcto'),
+    check('dia').isString().length({ min:5, max:9 }).notEmpty().withMessage('El dia debe de ser un dia de la semana'),
+    check('idAula').isInt({ min: 1 }).notEmpty().withMessage('El id del aula debe de ser un número entero mayor a 0.'),
+    check('idAsignatura').isInt({ min: 1 }).notEmpty().withMessage('El id de la asignatura debe de ser un número entero mayor a 0.'),
+    check('idCurso').isInt({ min: 1 }).notEmpty().withMessage('El id del curso debe de ser un número entero mayor a 0.'),
+    check('idProfesor').isInt({ min: 1 }).notEmpty().withMessage('El id del profesor debe de ser un número entero mayor a 0.'),
     validateValues
-], authMid.validarJWT, accessMid.esJefeDeEstudios, controller.createHorario)
-
+], controller.crearHorario);
 router.put('/:id', [
-    check('idAula').custom(aulaEspecialValidator.aulaEspecialExiste),
-    check('idFranja').custom(aulaFranjaValidator.aulaFranjaExiste),
+    check('horaInicio').withMessage('La hora debe de tener un formato miliar correcto'),
+    check('horaFin').withMessage('La hora debe de tener un formato militar correcto'),
+    check('dia').isString().length({ min:5, max:9 }).notEmpty().withMessage('El dia debe de ser un dia de la semana'),
+    check('idAula').isInt({ min: 1 }).withMessage('El id del aula debe de ser un número entero mayor a 0.'),
+    check('idAsignatura').isInt({ min: 1 }).withMessage('El id de la asignatura debe de ser un número entero mayor a 0.'),
+    check('idCurso').isInt({ min: 1 }).withMessage('El id del curso debe de ser un número entero mayor a 0.'),
+    check('idProfesor').isInt({ min: 1 }).withMessage('El id del profesor debe de ser un número entero mayor a 0.'),
     validateValues
-], authMid.validarJWT, accessMid.esJefeDeEstudios, controller.editHorario)
+], controller.actualizarHorario);
+router.delete('/:id', controller.borrarHorario);
 
-router.delete('/:id', authMid.validarJWT, accessMid.esJefeDeEstudios, controller.removeHorario)
-
-module.exports = router
+module.exports = router;

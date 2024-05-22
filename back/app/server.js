@@ -31,14 +31,10 @@ class Server {
         this.equipoDirectivoPath = '/api/equipoDirectivo'
         this.eventoPath = '/api/evento'
         this.eventoGaleriaPath = '/api/eventoGaleria'
+        this.horarioPath = '/api/horario'
         /*this.apiUsuarios = '/api/usuario';
         this.apiRoles = '/api/roles'
-        this.categoriasPath = '/api/categorias';
-        this.enlacesPath = '/api/enlaces'
         this.noticiasPath = '/api/noticias'
-        this.seccionesPath = '/api/secciones'
-        this.horariosPath = '/api/horarios'
-        this.franjasPath = '/api/franjas'
         this.reservasPath = '/api/reservas'
         this.galeriaPath = '/api/galeria';
     //    this.uploadsNoticiasPath = '/api/uploads/noticias';
@@ -74,15 +70,12 @@ class Server {
         this.app.use(this.equipoDirectivoPath, require('../routes/equipoDirectivoRoutes'))
         this.app.use(this.eventoPath, require('../routes/eventoRoutes'));
         this.app.use(this.eventoGaleriaPath, require('../routes/eventoGaleriaRoutes'))
+        this.app.use(this.horarioPath, require('../routes/horarioRoutes'))
         /*
         this.app.use(this.apiUsuarios, require('../routes/usuarioRutas'))
         this.app.use(this.apiRoles, require('../routes/rolesRutas'))
-        this.app.use(this.categoriasPath, require('../routes/categoriasRoutes'))
         this.app.use(this.enlacesPath, require('../routes/enlacesRoutes'))
         this.app.use(this.noticiasPath, require('../routes/noticiasRoutes'))
-        this.app.use(this.seccionesPath, require('../routes/seccionesRoutes'))
-        this.app.use(this.horariosPath, require('../routes/aulaHorarioRoutes'))
-        this.app.use(this.franjasPath, require('../routes/aulaFranjaRoutes'))
         this.app.use(this.reservasPath, require('../routes/aulaReservaRoutes'))
       //  this.app.use(this.uploadsNoticiasPath, require('../routes/uploadsNoticiasRoutes'));
        // this.app.use(this.uploadsSeccionesPath, require('../routes/updloadsSeccionesRoutes'));

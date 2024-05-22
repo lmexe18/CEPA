@@ -1,105 +1,116 @@
-const {
-    response,
-    request
-} = require('express');
-const Conexion = require('../database/conexionHorario');
-const bcrypt = require('bcrypt');
+'use strict';
 
-const listAllHorarios = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.getAllHorarios()
-        .then(data => {
-            res.status(200).json(data)
-        })
-        .catch(err => {
-        
-            res.status(404).json()
-        })
-}
+const { response } = require('express');
+const ConexionHorario = require('../database/conexionHorario');
 
-const listHorario = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.getHorarioById(req.params.id)
-        .then(data => {
-            res.status(200).json(data)
-        })
-        .catch(err => {
+const obtenerHorarios = async (req, res = response) => {
+    const conexion = new ConexionAulaHorario();
 
-            res.status(404).json('No exite un horario con ese id')
-        })
-}
-
-const listAllHorariosOfAula = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.getAllHorariosOfAula(req.params.id)
-        .then(data => {
-            res.status(200).json(data)
-        })
-        .catch(err => {
-        
-            res.status(404).json()
-        })
-}
-
-const createHorario = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.insertHorario(req.body)
-        .then(data => {
-  
-            res.status(201).json({id:data})
-        })
-        .catch(err => {
-  
-            res.status(203).json('Error en el registro')
-        })
-}
-
-const editHorario = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.updateHorario(req.params.id, req.body)
-        .then(data => {
-            res.status(202).json('Actualizado correctamente')
-        })
-        .catch(err => {
-
-            res.status(203).json('Error al actualizar')
+    try {
+        const horarios = await conexion.getHorarios();
+        res.status(200).json(horarios);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'No se han encontrado registros',
+            'error': err.message
         });
-
+    }
 }
 
-const removeHorario = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.deleteHorario(req.params.id)
-        .then(msg => {
-            res.status(202).json('Exito en la eliminacion')
-        })
-        .catch(err => {
-          
-            res.status(203).json('Error en la eliminacion')
-        })
+const obtenerHorariosDeAula = async (req, res = response) => {
+    const conexion = new ConexionHorario();
+
+    try {
+        const horarios = await conexion.getHorariosDeAula(req.params.id);
+        res.status(200).json(horarios);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'No se han encontrado registros',
+            'error': err.message
+        });
+    }
 }
 
-const listReservaOfAulaOnDay = (req, res = response) => {
-    const conexion = new Conexion()
-    let day=req.params.day
-    let month=req.params.month
-    let year=req.params.year
-    let id = req.params.id
-    conexion.getReservaByIdAulaOfDay(id,day,month,year)
-        .then(data => {
-            res.status(200).json(data)
-        })
-        .catch(err => {
+const obtenerHorarioPorId = async (req, res = response) => {
+    const conexion = new ConexionHorario();
 
-            res.status(404).json('No exite una reserva con ese id')
-        })
+    try {
+        const horario = await conexion.getHorarioPorId(req.params.id);
+        res.status(200).json(horario);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'No se ha encontrado el registro',
+            'error': err.message
+        });
+    }
 }
+
+const obtenerHorarioDeCurso = async (req, res = response) => {
+    const conexion = new ConexionHorario();
+
+    try {
+        const horarios = await conexion.getHorarioDeCurso(req.params.id);
+        res.status(200).json(horarios);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'No se han encontrado registros',
+            'error': err.message
+        });
+    }
+}
+
+const crearHorario = async (req, res = response) => {
+    const conexion = new ConexionHorario();
+
+    try {
+        const horario = await conexion.postHorario(req.body);
+        res.status(201).json(horario);
+    } catch (err) {
+        res.status(400).json({
+            'msg': 'Error en el registro',
+            'error': err.message
+        });
+    }
+}
+
+const actualizarHorario = async (req, res = response) => {
+    const conexion = new ConexionHorario();
+
+    try {
+        await conexion.updateHorario(req.params.id, req.body);
+        res.status(200).json({
+            'msg': 'Horario actualizado correctamente'
+        });
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'Error al actualizar el horario',
+            'error': err.message
+        });
+    }
+}
+
+const borrarHorario = async (req, res = response) => {
+    const conexion = new ConexionHorario();
+
+    try {
+        await conexion.deleteHorario(req.params.id);
+        res.status(200).json({
+            'msg': 'Horario eliminado correctamente'
+        });
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'Error al eliminar el horario',
+            'error': err.message
+        });
+    }
+}
+
 module.exports = {
-    listAllHorarios,
-    listHorario,
-    createHorario,
-    editHorario,
-    removeHorario,
-    listAllHorariosOfAula,
-    listReservaOfAulaOnDay
-}
+    obtenerHorarios,
+    obtenerHorariosDeAula,
+    obtenerHorarioPorId,
+    obtenerHorarioDeCurso,
+    crearHorario,
+    actualizarHorario,
+    borrarHorario
+};
