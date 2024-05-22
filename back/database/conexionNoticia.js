@@ -8,7 +8,7 @@ const {
 } = require('sequelize');
 const models = require('../models/index.js');
 
-class ConexionNoticias {
+class ConexionNoticia {
     constructor() {
         this.db = new Sequelize(process.env.DB_DEV, process.env.DB_USER, process.env.DB_PASSWORD, {
             host: process.env.DB_HOST,
@@ -25,191 +25,91 @@ class ConexionNoticias {
     conectar = () => {
         this.db.authenticate().then(() => {
         }).catch((error) => {
-            
         });
     }
     desconectar = () => {
         process.on('SIGINT', () => this.close())
     }
 
-    getAllNoticias = async () => {
+    getNoticias = async () => {
+        this.conectar();
+        let resultado = [];
         try {
-            let resultado = [];
-            this.conectar();
             resultado = await models.Noticia.findAll({order:[['createdAt','DESC']]});
-            return resultado;
         } catch (error) {
-            throw error
         } finally {
             this.desconectar();
         }
+        return resultado;
     }
-    getNoticiaById = async (id) => {
+
+    getNoticiaPorId = async (id) => {
+        this.conectar();
+        let resultado = [];
         try {
-            let resultado = [];
-            this.conectar();
             resultado = await models.Noticia.findByPk(id);
             if (!resultado) {
                 throw new Error('error');
-            }
-            return resultado;
+            }     
         } catch (error) {
-            throw error
         } finally {
             this.desconectar()
         }
+        return resultado;
     }
-    getAllNoticiasByCategoria = async (n) => {
-        try {
-            let resultado = [];
-            this.conectar();
-            resultado = await models.Noticia.findAll({
-                    where: {
-                        idCategoria: n,
-                        publicada:true
-                    },
-                    include: [{
-                        model: models.Seccion,
-                        as: 'secciones',
-                        include: [{
-                            model: models.Enlace,
-                            as: 'enlaces',
-                        }, ]
-                    }, ],
-                    order:[['updatedAt','DESC']]
-                }
 
+    getNoticiasPorTipo = async (n) => {
+        this.conectar();
+        let resultado = [];
+        try {
+            let resultados = await models.Noticia.findAll({
+                    where: {
+                        idTipoNoticia: n,
+                        publicada:true
+                    }, order:[['updatedAt','DESC']]
+                }
             );
             if (!resultado) {
-           
                 throw new Error('error');
-            }
-            return resultado;
+            } else {
+                resultado = resultados;
+            }  
         } catch (error) {
-            throw error
         } finally {
             this.desconectar()
         }
+        return resultado;
     }
     
-    insertNoticia = async (body) => {
+    postNoticia = async (body) => {
         this.conectar();
+        let resultado
         try {
             const noticia = new models.Noticia(body);
             await noticia.save();
-            return noticia.id;
+            resultado = noticia
         } catch (error) {
-  
-            throw error;
         } finally {
             this.desconectar();
         }
+        return resultado
        
     }
 
     deleteNoticia = async (id) => {
-        try {
-            this.conectar();
-            let resultado = await models.Noticia.findByPk(id);
-            if (!resultado) {
-                throw error;
-            }
-            await resultado.destroy();
-            return resultado;
-        } catch (error) {
-            throw error
-        } finally {
-            this.desconectar()
-        }
-    }
-    updateFullNoticia = async (id, body) => {
-        try {
-            let resultado = 0
-            this.conectar();
+        this.conectar();
+        try { 
             let noticia = await models.Noticia.findByPk(id);
-            await noticia.update(body)
-            return resultado
+            if (!noticia) {
+                throw error;
+            } else {
+                await noticia.destroy();
+            }
         } catch (error) {
-            throw error
         } finally {
             this.desconectar()
-        }
-    }
-    getNoticiaWithSecciones = async (id) => {
-        try {
-            let resultado = [];
-            this.conectar();
-            resultado = await models.Noticia.findByPk(id, {
-                include: [{
-                    model: models.Seccion,
-                    as: 'secciones',
-                    include: [{
-                        model: models.Enlace,
-                        as: 'enlaces',
-                    }, ]
-                }, ],
-            });
-            if (resultado == null) {
-                throw new Error()
-            }
-            return resultado;
-        } catch (error) {
-            throw error
-        } finally {
-            this.desconectar();
-        }
-    }
-    getAllNoticiasWithSecciones = async () => {
-        try {
-            let resultado = [];
-            this.conectar();
-            resultado = await models.Noticia.findAll({
-                include: [{
-                    model: models.Seccion,
-                    as: 'secciones',
-                    include: [{
-                        model: models.Enlace,
-                        as: 'enlaces',
-                    }, ],
-                }, ],
-            });
-            if (resultado == null) {
-                throw new Error()
-            }
-            return resultado;
-        } catch (error) {
-            throw error
-        } finally {
-            this.desconectar();
-        }
-    }
-
-    getUltimasNoticiasWithSecciones = async () => {
-        try {
-            let resultado = [];
-            this.conectar();
-            resultado = await models.Noticia.findAll({
-                include: [{
-                    model: models.Seccion,
-                    as: 'secciones',
-                    include: [{
-                        model: models.Enlace,
-                        as: 'enlaces',
-                    }, ],
-                }, ],
-                limit: 3 ,
-                order:[['updatedAt','DESC']]
-            });
-            if (resultado == null) {
-                throw new Error()
-            }
-            return resultado;
-        } catch (error) {
-            throw error
-        } finally {
-            this.desconectar();
         }
     }
 }
 
-module.exports = ConexionNoticias;
+module.exports = ConexionNoticia;

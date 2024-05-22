@@ -1,136 +1,97 @@
-const {
-    response,
-    request
-} = require('express');
-const Conexion = require('../database/conexionNoticias');
-const bcrypt = require('bcrypt');
-//Óscar
-const listAllNoticias= (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.getAllNoticias()
-        .then(data => {
-            res.status(200).json(data)
-        })
-        .catch(err => {
-          
-            res.status(404).json()
-        })
-}
+'use strict';
 
-const listNoticia = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.getNoticiaById(req.params.id)
-        .then(data => {
-            res.status(200).json( data)
-        })
-        .catch(err => {
-    
-            res.status(404).json('No exite un noticia con ese id')
-        })
-}
-const listNoticiasByCategorias= (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.getAllNoticiasByCategoria(req.params.id)
-        .then(data => {
-            res.status(200).json( data)
-        })
-        .catch(err => {
-    
-            res.status(404).json('No exite una categoria con ese id')
-        })
-}
+const { response } = require('express');
+const ConexionNoticia = require('../database/conexionNoticia');
 
+const obtenerNoticias = async (req, res = response) => {
+    const conexion = new ConexionNoticia();
 
-const editNoticia= (req, res = response)=>{
-
-    const url = new URL(req.url, `http://${req.headers.host}`);
-    const queryParams = url.searchParams;
-    const publish = queryParams.get('publish');
-    const conexion = new Conexion()
-    if(publish=='true'){
-        if(req.body.publicada==true){
-            req.body={publicada:false}
-        }else{
-            req.body={publicada:true}
-        }
-    }
-        conexion.updateFullNoticia(req.params.id,req.body)
-        .then(data => {
-            res.status(202).json('Actualizado correctamente')
-        })
-        .catch(err => {
-         
-            res.status(203).json('Error al actualizar')
+    try {
+        const noticias = await conexion.getNoticias();
+        res.status(200).json(noticias);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'No se han encontrado registros',
+            'error': err.message
         });
-        
-}
+    }
+};
 
-const createNoticia = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.insertNoticia(req.body)
-        .then(data => {
-            res.status(201).json({id:data})
-        })
-        .catch(err => {
+const obtenerNoticiaPorId = async (req, res = response) => {
+    const conexion = new ConexionNoticia();
 
-            res.status(203).json(err)
-        })
-}
+    try {
+        const noticia = await conexion.getNoticiaPorId(req.params.id);
+        res.status(200).json(noticia);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'No se ha encontrado el registro',
+            'error': err.message
+        });
+    }
+};
 
-const removeNoticia= (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.deleteNoticia(req.params.id)
-        .then(msg => {
+const obtenerNoticiasPorTipo = async (req, res = response) => {
+    const conexion = new ConexionNoticia();
 
-            res.status(202).json('Exito en la eliminacion')
-        })
-        .catch(err => {
+    try {
+        const noticias = await conexion.getNoticiasPorTipo(req.params.tipo);
+        res.status(200).json(noticias);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'No se han encontrado registros',
+            'error': err.message
+        });
+    }
+};
 
-            res.status(203).json('Error en la eliminacion')
-        })
-}
-const listAllNoticiasWithSecciones = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.getAllNoticiasWithSecciones()
-        .then(data => {
-            res.status(200).json(data)
-        })
-        .catch(err => {
+const crearNoticia = async (req, res = response) => {
+    const conexion = new ConexionNoticia();
 
-            res.status(404).json()
-        })
-}
-const listNoticiaWithSecciones = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.getNoticiaWithSecciones(req.params.id)
-        .then(data => {
-            res.status(200).json(data)
-        })
-        .catch(err => {
-         
-            res.status(404).json()
-        })
-}
+    try {
+        const noticia = await conexion.postNoticia(req.body);
+        res.status(201).json(noticia);
+    } catch (err) {
+        res.status(400).json({
+            'msg': 'Error en el registro',
+            'error': err.message
+        });
+    }
+};
 
-const listUltimasNoticiasWithSecciones = (req, res = response) => {
-    const conexion = new Conexion()
-    conexion.getUltimasNoticiasWithSecciones()
-        .then(data => {
-            res.status(200).json(data)
-        })
-        .catch(err => {
- 
-            res.status(404).json()
-        })
-}
-module.exports={
-    listAllNoticias,
-    listNoticia,
-    removeNoticia,
-    editNoticia,
-    createNoticia,
-    listNoticiasByCategorias,
-    listAllNoticiasWithSecciones,
-    listNoticiaWithSecciones,
-    listUltimasNoticiasWithSecciones
-}
+const actualizarNoticia = async (req, res = response) => {
+    const conexion = new ConexionNoticia();
+
+    try {
+        const noticia = await conexion.updateNoticia(req.params.id, req.body);
+        res.status(200).json(noticia);
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'Error al actualizar la noticia',
+            'error': err.message
+        });
+    }
+};
+
+const borrarNoticia = async (req, res = response) => {
+    const conexion = new ConexionNoticia();
+
+    try {
+        await conexion.deleteNoticia(req.params.id);
+        res.status(200).json({ msg: 'Noticia eliminada correctamente' });
+    } catch (err) {
+        res.status(404).json({
+            'msg': 'Error al eliminar la noticia',
+            'error': err.message
+        });
+    }
+};
+
+module.exports = {
+    obtenerNoticias,
+    obtenerNoticiaPorId,
+    obtenerNoticiasPorTipo,
+    crearNoticia,
+    actualizarNoticia,
+    borrarNoticia
+};
