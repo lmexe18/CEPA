@@ -1,81 +1,85 @@
-/*Laura María Pedraza Gómez* */
 const { response, request } = require('express');
-const GaleriaConexion = require('../database/conexionGaleria');
+const EventoGaleriaConexion = require('../database/conexionEventoGaleria');
 
-const obtenerGalerias = (req, res = response) => {
-    const conx = new GaleriaConexion();
+const obtenerEventoGalerias = (req, res = response) => {
+    const conx = new EventoGaleriaConexion();
 
-    conx.getGalerias()
+    conx.getEventoGalerias()
         .then((galerias) => {
-   
             res.status(200).json(galerias);
         })
         .catch((err) => {
-          
-            res.status(404).json({ 'msg': 'No se han encontrado registros' });
+            res.status(404).json({ 
+                'msg': 'No se han encontrado registros',
+                'error':err.message
+             });
         });
 }
 
-const obtenerGaleriaPorId = (req, res = response) => {
-    const conx = new GaleriaConexion();
+const obtenerEventoGaleriaPorId = (req, res = response) => {
+    const conx = new EventoGaleriaConexion();
 
-    conx.getGaleriaPorId(req.params.id)
+    conx.getEventoGaleriaPorId(req.params.id)
         .then((galeria) => {
-            
             res.status(200).json(galeria);
         })
         .catch((err) => {
-      
-            res.status(404).json({ 'msg': 'No se ha encontrado el registro' });
+            res.status(404).json({ 
+                'msg': 'No se ha encontrado el registro',
+                'error':err.message
+             });
         });
 }
 
-const subirGaleria = (req = request, res = response) => {
-    const conx = new GaleriaConexion();
+const subirEventoGaleria = (req = request, res = response) => {
+    const conx = new EventoGaleriaConexion();
 
-    conx.postGaleria(req.body)
+    conx.postEventoGaleria(req.body)
         .then((galeria) => {
-          
             res.status(200).json(galeria);
         })
         .catch((err) => {
-           
-            res.status(404).json(err);
+            res.status(404).json({
+                'msg': 'No se ha podido subir el registro',
+                'error': err.message
+            });
         });
 }
 
-const borrarGaleria = (req, res = response) => {
-    const conx = new GaleriaConexion();
+const borrarEventoGaleria = (req, res = response) => {
+    const conx = new EventoGaleriaConexion();
 
-    conx.deleteGaleria(req.params.id)
+    conx.deleteEventoGaleria(req.params.id)
         .then((galeria) => {
-            
             res.status(200).json(galeria);
         })
         .catch((err) => {
-          
-            res.status(404).json(err);
+            res.status(404).json({
+                'msg': 'No se ha podido borrar el registro',
+                'error': err.message
+            });
         });
 }
 
-const obtenerGaleriaEvento = (req, res) => {
-    const conx = new GaleriaConexion()
+const obtenerGaleriaDeEvento = (req, res) => {
+    const conx = new EventoGaleriaConexion()
     
-    conx.getGaleriaEvento(req.params.id)
+    conx.getGaleriaDeEvento(req.params.id)
     .then((galeria) => {
-   
         res.status(200).json(galeria);
     })
     .catch((err) => {
-
-        res.status(404).json(err);
+        res.status(404).json({
+            'msg': 'No se ha podido obtener la galeria del evento',
+            'error': err.message
+        });
     });
 }
 
 module.exports = {
-    obtenerGalerias,
-    obtenerGaleriaPorId,
-    subirGaleria,
-    borrarGaleria,
-    obtenerGaleriaEvento
+    obtenerEventoGalerias,
+    obtenerEventoGaleriaPorId,
+    subirEventoGaleria,
+    borrarEventoGaleria,
+    obtenerGaleriaDeEvento
 }

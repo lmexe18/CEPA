@@ -1,9 +1,8 @@
 'use strict';
-/*Laura María Pedraza Gómez* */
 const { Sequelize, where } = require('sequelize');
 const models = require('../models/index');
 
-class ConexionGaleria {
+class ConexionEventoGaleria {
 
     constructor() {
         this.db = new Sequelize(process.env.DB_DEV, process.env.DB_USER, process.env.DB_PASSWORD, {
@@ -41,11 +40,11 @@ class ConexionGaleria {
         });
     }
 
-    async getGalerias() {
+    async getEventoGalerias() {
         this.conectar();
         let resultado = [];
         try {
-            resultado = await models.Galeria.findAll();
+            resultado = await models.EventoGaleria.findAll();
         } catch (error) {
             
         } finally {
@@ -54,11 +53,11 @@ class ConexionGaleria {
         return resultado;
     }
 
-    async getGaleriaPorId(id) {
+    async getEventoGaleriaPorId(id) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.Galeria.findByPk(id);
+            resultado = await models.EventoGaleria.findByPk(id);
         } catch (error) {
             
         } finally {
@@ -67,11 +66,11 @@ class ConexionGaleria {
         return resultado;
     }
 
-    async postGaleria(body) {
+    async postEventoGaleria(body) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.Galeria.create(body);
+            resultado = await models.EventoGaleria.create(body);
         } catch (error) {
           
         } finally {
@@ -80,11 +79,11 @@ class ConexionGaleria {
         return resultado;
     }
 
-    async deleteGaleria(id) {
+    async deleteEventoGaleria(id) {
         this.conectar();
         let resultado;
         try {
-            const galeria = await models.Galeria.findByPk(id);
+            const galeria = await models.EventoGaleria.findByPk(id);
             if (!galeria) {
                 throw new Error(`Galeria con ID ${id} no encontrado`);
             }
@@ -97,11 +96,11 @@ class ConexionGaleria {
         return resultado;
     }
 
-    async getGaleriaEvento(id){
+    async getGaleriaDeEvento(id){
         this.conectar()
         let galeria = []
         try {
-            galeria = await models.Galeria.findAll({
+            galeria = await models.EventoGaleria.findAll({
                 where: {
                     idEvento: id
                 }
