@@ -127,13 +127,13 @@ class ConexionCurso {
         return resultado;
     }
 
-    async updateCurso(id, body) {
+    async updateCurso(idCurso, body) {
         this.conectar();
         let resultado;
         try {
             resultado = await models.Curso.update(body, {
                 where: {
-                    id
+                    id: idCurso
                 }
             });
         } catch (error) {

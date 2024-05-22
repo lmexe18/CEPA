@@ -76,13 +76,13 @@ class ConexionContacto {
         return resultado;
     }
 
-    async updateContacto(id, body) {
+    async updateContacto(idContacto, body) {
         this.conectar();
         let resultado;
         try {
             resultado = await models.Contacto.update(body, {
                 where: {
-                    id
+                    id: idContacto
                 }
             });
         } catch (error) {

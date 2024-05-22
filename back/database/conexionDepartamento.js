@@ -76,13 +76,13 @@ class ConexionDepartamento {
         return resultado;
     }
 
-    async updateDepartamento(id, body) {
+    async updateDepartamento(idDepart, body) {
         this.conectar();
         let resultado;
         try {
             resultado = await models.Departamento.update(body, {
                 where: {
-                    id
+                    id: idDepart
                 }
             });
         } catch (error) {
