@@ -23,6 +23,7 @@ class Server {
         this.asistenciaEventoPath = '/api/asistenciaEvento'
         this.aulaPath = '/api/aula'
         this.rolUsuarioPath = '/api/rolUsuario'
+        this.contactoPath = '/api/contacto'
         /*this.apiUsuarios = '/api/usuario';
         this.apiRoles = '/api/roles'
         
@@ -60,6 +61,7 @@ class Server {
         this.app.use(this.asistenciaEventoPath, require('../routes/asistenciaEventoRoutes'));
         this.app.use(this.aulaPath, require('../routes/aulaRoutes'))
         this.app.use(this.rolUsuarioPath, require('../routes/rolUsuarioRoutes'))
+        this.app.use(this.contactoPath, require('../routes/contactoRoutes'))
         /*this.app.use(this.eventoPath, require('../routes/eventoRoutes'));
         this.app.use(this.apiUsuarios, require('../routes/usuarioRutas'))
         this.app.use(this.apiRoles, require('../routes/rolesRutas'))
