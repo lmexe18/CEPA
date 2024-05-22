@@ -1,5 +1,5 @@
 'use strict';
-/*Laura María Pedraza Gómez* */
+
 const { Sequelize } = require('sequelize');
 const models = require('../models/index');
 
@@ -30,7 +30,7 @@ class ConexionEvento {
         process.on('SIGINT', () => this.db.close());
     }
 
-    getEventos = async () => {
+    async getEventos(){
         this.conectar();
         let resultado = [];
         try {
@@ -43,7 +43,7 @@ class ConexionEvento {
         return resultado;
     }
 
-    getEventosActivos = async () => {
+    async getEventosVisibles(){
         this.conectar();
         let resultado = [];
         try {
@@ -61,7 +61,7 @@ class ConexionEvento {
     }
     
 
-    getEventoPorId = async (id) => {
+    async getEventoPorId(id) {
         this.conectar();
         let resultado;
         try {
@@ -74,7 +74,7 @@ class ConexionEvento {
         return resultado;
     }
 
-    postEvento = async (body) => {
+    async postEvento(body) {
         this.conectar();
         let resultado;
         try {
@@ -89,7 +89,7 @@ class ConexionEvento {
         }
     }
 
-    updateEvento = async (id, body) => {
+    async updateEvento (id, body){
         this.conectar();
         let resultado;
         try {
@@ -106,7 +106,7 @@ class ConexionEvento {
         return resultado;
     }
 
-    deleteEvento = async (id) => {
+    async deleteEvento(id){
         this.conectar();
         let resultado;
         try {
@@ -123,7 +123,7 @@ class ConexionEvento {
         return resultado;
     }
 
-    plusMgEvento = async (id) => {
+    async plusMgEvento(id){
         this.conectar();
         let resultado;
         try {
@@ -142,7 +142,7 @@ class ConexionEvento {
         return resultado;
     }
     
-    getNumAsistentesEvento = async  (id) => {
+    async getNumAsistentesEvento(id){
         this.conectar();
         let resultado;
         try {
@@ -156,7 +156,7 @@ class ConexionEvento {
         return resultado;
     }
 
-    deleteAsistenteEvento = async (id) => {
+    async deleteAsistenteEvento(id){
         this.conectar()
         let resultado
         try {
@@ -171,7 +171,7 @@ class ConexionEvento {
         return resultado;
     }
 
-    putAsistenteEvento = async (id) => {
+    async putAsistenteEvento(id){
         this.conectar()
         let resultado
         try {
@@ -182,6 +182,25 @@ class ConexionEvento {
       
         } finally {
             this.desconectar();
+        }
+        return resultado;
+    }
+
+    async getEventoPorTipo(idTipo){
+        this.conectar()
+        let resultado
+        try {
+            const evento = await models.Evento.findAll(
+                {
+                    where: {
+                        tipo: idTipo
+                    }
+                }
+            )
+            resultado = evento
+        } catch (error) { 
+        } finally{
+            this.desconectar()
         }
         return resultado;
     }

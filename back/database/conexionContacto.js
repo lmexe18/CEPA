@@ -76,15 +76,16 @@ class ConexionContacto {
         return resultado;
     }
 
-    async updateContacto(idContacto, body) {
+    async updateContacto(id, body) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.Contacto.update(body, {
-                where: {
-                    id: idContacto
-                }
-            });
+            let contacto = await models.Contacto.findByPk(id);
+            if (!contacto) {
+                throw new Error(`Conctacto con ID ${id} no encontrado`);
+            } else {
+                resultado = await contato.update(body);
+            }
         } catch (error) {
             console.error('Error al actualizar contacto:', error);
         } finally {

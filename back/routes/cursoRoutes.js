@@ -24,7 +24,7 @@ router.post('/', [
     validateValues
 ], /*authMid.validarJWT, accessMid.validarRoles('admin'),*/ controller.crearCurso);
 
-router.put('/:idCurso', [
+router.put('/:id', [
     check('numeroCurso').isInt({ min: 1 }).optional().withMessage('El número del curso debe de ser un número entero mayor a 0.'),
     check('idTurno').isInt({ min: 1 }).optional().withMessage('El id del turno debe de ser un número entero mayor a 0.'),
     check('horario').isString().optional().withMessage('El horario no puede estar vacío.'),

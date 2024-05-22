@@ -18,7 +18,7 @@ router.post('/',
     authMid.validarJWT,
     controller.crearContacto
 );
-router.put('/:idContacto',
+router.put('/:id',
     [
         check('nombreCentro').isString().length({ min:1, max: 50 }).withMessage('El nombre del centro es obligatorio.'),
         check('direccion').isString().length({ min:1 }).withMessage('La dirección es obligatoria.'),

@@ -26,9 +26,7 @@ class ConexionDocumentoProgramatico {
 
     desconectar = () => {
         this.db.close().then(() => {
-            console.log('Conexión cerrada correctamente.');
         }).catch((error) => {
-            console.error('Error al cerrar la conexión:', error);
         });
     }
 
@@ -38,7 +36,6 @@ class ConexionDocumentoProgramatico {
         try {
             resultado = await models.DocumentoProgramatico.findAll();
         } catch (error) {
-            console.error('Error al obtener documentos programáticos:', error);
         } finally {
             this.desconectar();
         }
@@ -56,7 +53,6 @@ class ConexionDocumentoProgramatico {
                 resultado = documentoProgramatico;
             }
         } catch (error) {
-            console.error('Error al obtener documento programático por id:', error);
         } finally {
             this.desconectar();
         }
@@ -69,24 +65,23 @@ class ConexionDocumentoProgramatico {
         try {
             resultado = await models.DocumentoProgramatico.create(body);
         } catch (error) {
-            console.error('Error al crear documento programático:', error);
         } finally {
             this.desconectar();
         }
         return resultado;
     }
 
-    async updateDocumentoProgramatico(idDoc, body) {
+    async updateDocumentoProgramatico(id, body) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.DocumentoProgramatico.update(body, {
-                where: {
-                    id: idDoc
-                }
-            });
+            let documento = await models.DocumentoProgramatico.findByPk(id);
+            if (!documento) {
+                throw new Error(`Documento programatico con ID ${id} no encontrado`);
+            } else {
+                resultado = await documento.update(body);
+            }
         } catch (error) {
-            console.error('Error al actualizar departamento:', error);
         } finally {
             this.desconectar();
         }
@@ -104,7 +99,6 @@ class ConexionDocumentoProgramatico {
                 resultado = await documentoProgramatico.destroy();
             }
         } catch (error) {
-            console.error('Error al eliminar documento programático:', error);
         } finally {
             this.desconectar();
         }

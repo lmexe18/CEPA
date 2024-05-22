@@ -97,15 +97,16 @@ class ConexionAula {
         return resultado
     }
 
-    async updateAula (idAula, body){
+    async updateAula (id, body){
         this.conectar();
         let resultado;
         try {
-            resultado = await models.Aula.update(body,{
-                where:{
-                    id:idAula
-                }
-            })
+            let aula= await models.Aula.findByPk(id);
+            if (!aula) {
+                throw new Error(`Aula con ID ${id} no encontrado`);
+            } else {
+                resultado = await aula.update(body);
+            }
         } catch (error) {
         } finally {
             this.desconectar()

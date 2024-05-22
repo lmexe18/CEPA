@@ -28,10 +28,10 @@ class Server {
         this.departamentoPath = '/api/departamento'
         this.departamentoUsuarioPath = '/api/departamentoUsuario'
         this.documentoProgramaticoPath = '/api/documentoProgramatico'
-        this.equipoDirectivoPath = 'api/equipoDirectivo'
+        this.equipoDirectivoPath = '/api/equipoDirectivo'
+        this.eventoPath = '/api/evento'
         /*this.apiUsuarios = '/api/usuario';
         this.apiRoles = '/api/roles'
-        
         this.categoriasPath = '/api/categorias';
         this.enlacesPath = '/api/enlaces'
         this.noticiasPath = '/api/noticias'
@@ -39,7 +39,6 @@ class Server {
         this.horariosPath = '/api/horarios'
         this.franjasPath = '/api/franjas'
         this.reservasPath = '/api/reservas'
-        this.asistenciaPath = '/api/asistencia';
         this.galeriaPath = '/api/galeria';
     //    this.uploadsNoticiasPath = '/api/uploads/noticias';
     //    this.uploadsSeccionesPath = '/api/uploads/secciones';
@@ -72,7 +71,8 @@ class Server {
         this.app.use(this.departamentoUsuarioPath, require('../routes/departamentoUsuarioRoutes'))
         this.app.use(this.documentoProgramaticoPath, require('../routes/documentoProgramaticoRoutes'))
         this.app.use(this.equipoDirectivoPath, require('../routes/equipoDirectivoRoutes'))
-        /*this.app.use(this.eventoPath, require('../routes/eventoRoutes'));
+        this.app.use(this.eventoPath, require('../routes/eventoRoutes'));
+        /*
         this.app.use(this.apiUsuarios, require('../routes/usuarioRutas'))
         this.app.use(this.apiRoles, require('../routes/rolesRutas'))
         this.app.use(this.categoriasPath, require('../routes/categoriasRoutes'))

@@ -16,7 +16,7 @@ router.post('/', [
     validateValues
 ], controller.crearEquipoDirectivo);
 
-router.put('/:idEquipo', [
+router.put('/:id', [
     check('puesto').isString().length({ min:1 }).notEmpty().withMessage('El puesto no puede estar vacío si se proporciona.'),
     check('nombre').optional().notEmpty().withMessage('El nombre no puede estar vacío si se proporciona.'),
     check('email').optional().isEmail().withMessage('El email debe ser una dirección de correo válida si se proporciona.'),

@@ -127,15 +127,16 @@ class ConexionCurso {
         return resultado;
     }
 
-    async updateCurso(idCurso, body) {
+    async updateCurso(id, body) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.Curso.update(body, {
-                where: {
-                    id: idCurso
-                }
-            });
+            let curso = await models.AsignaturaProfeCurso.findByPk(id);
+            if (!asignaturaProfeCurso) {
+                throw new Error(`Curso con ID ${id} no encontrado`);
+            } else {
+                resultado = await curso.update(body);
+            }
         } catch (error) {
             console.error('Error al actualizar curso:', error);
         } finally {

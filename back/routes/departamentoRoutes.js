@@ -19,7 +19,7 @@ router.post('/', [
     validateValues
 ], /*authMid.validarJWT, accessMid.validarRoles('admin'),*/ controller.crearDepartamento);
 
-router.put('/:idDepart', [
+router.put('/:id', [
     check('nombre').isString().withMessage('El nombre debe ser un texto.'),
     check('descripcion').isString().withMessage('La descripción debe ser un texto.'),
     check('foto').isString().withMessage('La foto debe ser una URL.'),

@@ -18,17 +18,13 @@ class ConexionEquipoDirectivo {
 
     conectar = () => {
         this.db.authenticate().then(() => {
-            console.log('Conexión establecida correctamente.');
         }).catch((error) => {
-            console.error('No se pudo conectar a la base de datos:', error);
         });
     }
 
     desconectar = () => {
         this.db.close().then(() => {
-            console.log('Conexión cerrada correctamente.');
         }).catch((error) => {
-            console.error('Error al cerrar la conexión:', error);
         });
     }
 
@@ -38,7 +34,6 @@ class ConexionEquipoDirectivo {
         try {
             resultado = await models.EquipoDirectivo.findAll();
         } catch (error) {
-            console.error('Error al obtener equipos directivos:', error);
         } finally {
             this.desconectar();
         }
@@ -56,7 +51,6 @@ class ConexionEquipoDirectivo {
                 resultado = equipoDirectivo;
             }
         } catch (error) {
-            console.error('Error al obtener equipo directivo por id:', error);
         } finally {
             this.desconectar();
         }
@@ -69,22 +63,22 @@ class ConexionEquipoDirectivo {
         try {
             resultado = await models.EquipoDirectivo.create(body);
         } catch (error) {
-            console.error('Error al crear equipo directivo:', error);
         } finally {
             this.desconectar();
         }
         return resultado;
     }
 
-    async updateEquipoDirectivo(idEquipo, body) {
+    async updateEquipoDirectivo(id, body) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.EquipoDirectivo.update(body, {
-                where: {
-                    id: idEquipo
-                }
-            });
+            let equipo = await models.EquipoDirectivo.findByPk(id);
+            if (!equipo) {
+                throw new Error(`Equipo con ID ${id} no encontrado`);
+            } else {
+                resultado = await equipo.update(body);
+            }
         } catch (error) {
             console.error('Error al actualizar equipo directivo:', error);
         } finally {

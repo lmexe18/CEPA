@@ -129,15 +129,16 @@ class ConexionAsistenciaEvento {
         return resultado;
     }
 
-    async updateAsistenciaEvento(idEvento, body) {
+    async updateAsistenciaEvento(id, body) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.AsistenciaEvento.update(body, {
-                where: { 
-                    id: idEvento 
-                }
-            });
+            let asistencia = await models.AsistenciaEvento.findByPk(id);
+            if (!asistencia) {
+                throw new Error(`Asistencia con ID ${id} no encontrado`);
+            } else {
+                resultado = await asistencia.update(body);
+            }
         } catch (error) {
         } finally {
             this.desconectar();

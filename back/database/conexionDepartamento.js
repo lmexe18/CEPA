@@ -76,15 +76,16 @@ class ConexionDepartamento {
         return resultado;
     }
 
-    async updateDepartamento(idDepart, body) {
+    async updateDepartamento(id, body) {
         this.conectar();
         let resultado;
         try {
-            resultado = await models.Departamento.update(body, {
-                where: {
-                    id: idDepart
-                }
-            });
+            let departamento = await models.Departamento.findByPk(id);
+            if (!asignaturaProfeCurso) {
+                throw new Error(`Departamento con ID ${id} no encontrado`);
+            } else {
+                resultado = await departamento.update(body);
+            }
         } catch (error) {
             console.error('Error al actualizar departamento:', error);
         } finally {
