@@ -13,9 +13,9 @@ router.get('/turno/:idTurno', controller.obtenerCursosPorTurno);
 router.get('/tipocurso/:idTipoCurso', controller.obtenerCursosPorTipoCurso);
 
 router.post('/', [
-    check('numeroCurso').notEmpty().isInt({ min: 1 }).notEmpty().withMessage('El número del curso debe de ser un número entero mayor a 0.'),
+    check('numeroCurso').isInt({ min: 1 }).notEmpty().withMessage('El número del curso debe de ser un número entero mayor a 0.'),
     check('idTurno').isInt({ min: 1 }).notEmpty().withMessage('El id del turno debe de ser un número entero mayor a 0.'),
-    check('horario').isString().notEmpty().withMessage('El horario no puede estar vacío.'),
+    check('horario').isString().withMessage('El horario no puede estar vacío.'),
     check('fechaInicio').withMessage('La fecha de inicio debe ser una fecha válida.'),
     check('fechaFin').withMessage('La fecha de fin debe ser una fecha válida.'),
     check('idTipoCurso').isInt({ min: 1 }).notEmpty().withMessage('El id del tipo de curso debe de ser un número entero mayor a 0.'),

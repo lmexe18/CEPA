@@ -11,12 +11,12 @@ router.get('/', controller.obtenerAulas);
 router.get('/:id', controller.obtenerAulaPorId);
 router.get('/:nombre', controller.obtenerAulaPorNombre);
 router.post('/', [
-    check('nombre').isString().notEmpty().isLength({ min: 1, max: 50 }).withMessage('El nombre debe de ser una cadena de texto'),
+    check('nombre').isString().isLength({ min: 1, max: 50 }).notEmpty().withMessage('El nombre debe de ser una cadena de texto'),
     validateValues
 ], authMid.validarJWT, accessMid.esJefeDeEstudios, aulaEspecialMid.nombreEnUsoAula, controller.crearAula);
 
 router.put('/:id', [
-    check('nombre').isString().notEmpty().isLength({ min: 1, max: 50 }).withMessage('El nombre debe de ser una cadena de texto'),
+    check('nombre').isString().isLength({ min: 1, max: 50 }).notEmpty().withMessage('El nombre debe de ser una cadena de texto'),
     validateValues
 ], authMid.validarJWT, accessMid.esJefeDeEstudios, aulaEspecialMid.nombreEnUsoAula, controller.actualizarAula);
 
