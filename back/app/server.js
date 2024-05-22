@@ -28,6 +28,7 @@ class Server {
         this.departamentoPath = '/api/departamento'
         this.departamentoUsuarioPath = '/api/departamentoUsuario'
         this.documentoProgramaticoPath = '/api/documentoProgramatico'
+        this.equipoDirectivoPath = 'api/equipoDirectivo'
         /*this.apiUsuarios = '/api/usuario';
         this.apiRoles = '/api/roles'
         
@@ -70,6 +71,7 @@ class Server {
         this.app.use(this.departamentoPath, require('../routes/departamentoRoutes'))
         this.app.use(this.departamentoUsuarioPath, require('../routes/departamentoUsuarioRoutes'))
         this.app.use(this.documentoProgramaticoPath, require('../routes/documentoProgramaticoRoutes'))
+        this.app.use(this.equipoDirectivoPath, require('../routes/equipoDirectivoRoutes'))
         /*this.app.use(this.eventoPath, require('../routes/eventoRoutes'));
         this.app.use(this.apiUsuarios, require('../routes/usuarioRutas'))
         this.app.use(this.apiRoles, require('../routes/rolesRutas'))
