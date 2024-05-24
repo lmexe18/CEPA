@@ -8,7 +8,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Turno.init({
-    nombre: DataTypes.STRING
+    nombre: DataTypes.STRING,
+    horaInicio: DataTypes.STRING,
+    horaFin: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Turno',

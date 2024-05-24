@@ -18,7 +18,6 @@ const horarioFactory = async (ctos = 1) => {
             idAula: i,
             idAsignatura: i,
             idCurso: i,
-            idProfesor: 3, 
             createdAt: new Date(),
             updatedAt: new Date()
         };

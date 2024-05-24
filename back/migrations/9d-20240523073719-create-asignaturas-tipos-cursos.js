@@ -1,36 +1,35 @@
-//Jaime
-///Óscar (cambiado nombre de tablas)
-
 'use strict';
-/** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('rangos_horarios', {
+    await queryInterface.createTable('asignaturas_tipos_cursos', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idTurno: {
-        allowNull: false,
+      idTipoCurso: {
         type: Sequelize.INTEGER,
-        references:{
-          model:{
-            tableName: 'turnos'
+        allowNull: false,
+        references: {
+          model: {
+            tableName: 'tipos_cursos'
           },
           key: 'id'
         },
-        onDelete: 'CASCADE',
-        allowNull: true
+        onDelete: 'CASCADE'
       },
-      horaInicio: {
+      idAsignatura: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        type: Sequelize.TIME(4)
-      },
-      horaFin: {
-        allowNull: false,
-        type: Sequelize.TIME(4)
+        references: {
+          model: {
+            tableName: 'asignaturas'
+          },
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
@@ -44,7 +43,8 @@ module.exports = {
       }
     });
   },
+
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('rangos_horarios');
+    await queryInterface.dropTable('asignaturas_tipos_cursos');
   }
 };

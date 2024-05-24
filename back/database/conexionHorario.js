@@ -38,7 +38,6 @@ class ConexionHorario {
                     { model: models.Aula, as: 'aula' },
                     { model: models.Asignatura, as: 'asignatura'},
                     { model: models.Curso, as: 'curso'},
-                    { model: models.Usuario, as:'profesor'}
                 ]
             });     
         } catch (error) {
@@ -58,7 +57,6 @@ class ConexionHorario {
                     { model: models.Aula, as: 'aula' },
                     { model: models.Asignatura, as: 'asignatura'},
                     { model: models.Curso, as: 'curso'},
-                    { model: models.Usuario, as:'profesor'}
                 ],
             });
         } catch (error) {
@@ -133,7 +131,6 @@ class ConexionHorario {
                     { model: models.Aula, as: 'aula' },
                     { model: models.Asignatura, as: 'asignatura'},
                     { model: models.Curso, as: 'curso'},
-                    { model: models.Usuario, as:'profesor'}
                 ]
             })
             if (!horario){

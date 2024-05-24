@@ -3,8 +3,8 @@ const asignaturaFactory = async (ctos=4) => {
     for (let i=0 ; i<ctos ; i++){
         let asignatura = {
             nombre : i,
-            departamentoId: i,
-            activo: Math.random() < 0.5 ? true : false,
+            idDepartamento: i,
+            idTipoCurso: i,
             createdAt: new Date(),
             updatedAt: new Date()
         }

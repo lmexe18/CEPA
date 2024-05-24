@@ -11,11 +11,15 @@ module.exports = {
       },
       horaInicio: {
         allowNull: false,
-        type: Sequelize.TIME
+        type: Sequelize.STRING(5)
       },
       horaFin: {
         allowNull: false,
-        type: Sequelize.TIME
+        type: Sequelize.STRING(5)
+      },
+      fecha:{
+        allowNull: false,
+        type: Sequelize.DATE
       },
       idTurno: {
         allowNull: false,

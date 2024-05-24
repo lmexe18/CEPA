@@ -1,4 +1,4 @@
-//Óscar
+
 const noticiasSocketController = (socket) => {
     
     

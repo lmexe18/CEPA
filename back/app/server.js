@@ -11,7 +11,7 @@ class Server {
         this.serverWebSocket = require('http').createServer(this.app);
         this.io = require('socket.io')(this.serverWebSocket, {
             cors: {
-                origin:'*',
+                origin: '*',
                 methods: ["*"],
                 allowedHeaders: [""],
                 credentials: true
@@ -26,20 +26,16 @@ class Server {
         this.contactoPath = '/api/contacto'
         this.cursoPath = '/api/curso'
         this.departamentoPath = '/api/departamento'
-        this.departamentoUsuarioPath = '/api/departamentoUsuario'
         this.documentoProgramaticoPath = '/api/documentoProgramatico'
         this.equipoDirectivoPath = '/api/equipoDirectivo'
         this.eventoPath = '/api/evento'
         this.eventoGaleriaPath = '/api/eventoGaleria'
         this.horarioPath = '/api/horario'
         this.noticiaPath = '/api/noticia'
+        this.noticiaGaleriaPath = '/api/noticiaGaleria'
+        this.reservaPath = '/api/reservas'
         /*this.apiUsuarios = '/api/usuario';
         this.apiRoles = '/api/roles'
-        
-        this.reservasPath = '/api/reservas'
-        this.galeriaPath = '/api/galeria';
-    //    this.uploadsNoticiasPath = '/api/uploads/noticias';
-    //    this.uploadsSeccionesPath = '/api/uploads/secciones';
         this.authPath = '/api/auth';
     //    this.uploadsFotoEventosPath = '/api/uploads/eventos';
     //    this.uploadsGaleriasPath = '/api/uploads/galerias'
@@ -48,7 +44,7 @@ class Server {
         // this.sockets();*/
     }
     middlewares() {
-        this.app.use(cors({origin:'*'}));
+        this.app.use(cors({ origin: '*' }));
         this.app.use(express.json());
         this.app.use(fileUpload({
             useTempFiles: true,
@@ -66,29 +62,29 @@ class Server {
         this.app.use(this.contactoPath, require('../routes/contactoRoutes'))
         this.app.use(this.cursoPath, require('../routes/cursoRoutes'))
         this.app.use(this.departamentoPath, require('../routes/departamentoRoutes'))
-        this.app.use(this.departamentoUsuarioPath, require('../routes/departamentoUsuarioRoutes'))
         this.app.use(this.documentoProgramaticoPath, require('../routes/documentoProgramaticoRoutes'))
         this.app.use(this.equipoDirectivoPath, require('../routes/equipoDirectivoRoutes'))
         this.app.use(this.eventoPath, require('../routes/eventoRoutes'));
         this.app.use(this.eventoGaleriaPath, require('../routes/eventoGaleriaRoutes'))
         this.app.use(this.horarioPath, require('../routes/horarioRoutes'))
         this.app.use(this.noticiaPath, require('../routes/noticiaRoutes'))
+        this.app.use(this.noticiaGaleriaPath, require('../routes/noticiaGaleriaRoutes'))
+        this.app.use(this.reservaPath, require('../routes/aulaReservaRoutes'))
         /*
         this.app.use(this.apiUsuarios, require('../routes/usuarioRutas'))
         this.app.use(this.apiRoles, require('../routes/rolesRutas'))  
-        this.app.use(this.reservasPath, require('../routes/aulaReservaRoutes'))
       //  this.app.use(this.uploadsNoticiasPath, require('../routes/uploadsNoticiasRoutes'));
        // this.app.use(this.uploadsSeccionesPath, require('../routes/updloadsSeccionesRoutes'));
         this.app.use(this.authPath, require('../routes/authRoutes'));
        // this.app.use(this.uploadsFotoEventosPath, require('../routes/uploadsFotoEventos'))
       //  this.app.use(this.uploadsGaleriasPath, require('../routes/uploadsGaleriaRoutes'))
-    }
-    /*
-    sockets() {
-         this.io.on('connection', noticiasSocketController);
-         this.io.on('connection', eventosSocketController)
-    }
-    */
+    */}
+
+   /* sockets() {
+        this.io.on('connection', noticiasSocketController);
+        this.io.on('connection', eventosSocketController)
+    }*/
+
 
 
     listen() {

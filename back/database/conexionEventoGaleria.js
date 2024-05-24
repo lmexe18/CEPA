@@ -20,9 +20,7 @@ class ConexionEventoGaleria {
 
     conectar() {
         this.db.authenticate().then(() => {
-           
         }).catch((error) => {
-         
         });
     }
 
@@ -30,11 +28,9 @@ class ConexionEventoGaleria {
         process.on('SIGINT', () => {
             this.db.close()
                 .then(() => {
-               
                     process.exit(0);
                 })
-                .catch((error) => {
-                    
+                .catch((error) => { 
                     process.exit(1);
                 });
         });
@@ -46,7 +42,6 @@ class ConexionEventoGaleria {
         try {
             resultado = await models.EventoGaleria.findAll();
         } catch (error) {
-            
         } finally {
             this.desconectar();
         }
@@ -59,7 +54,6 @@ class ConexionEventoGaleria {
         try {
             resultado = await models.EventoGaleria.findByPk(id);
         } catch (error) {
-            
         } finally {
             this.desconectar();
         }
@@ -72,7 +66,6 @@ class ConexionEventoGaleria {
         try {
             resultado = await models.EventoGaleria.create(body);
         } catch (error) {
-          
         } finally {
             this.desconectar();
         }
@@ -89,7 +82,6 @@ class ConexionEventoGaleria {
             }
             resultado = await galeria.destroy();
         } catch (error) {
-      
         } finally {
             this.desconectar();
         }
@@ -106,7 +98,6 @@ class ConexionEventoGaleria {
                 }
             })
         } catch (error){
-         
         } finally {
             this.desconectar()
         }
@@ -114,4 +105,4 @@ class ConexionEventoGaleria {
     }
 }
 
-module.exports = ConexionGaleria;
+module.exports = ConexiontoEventoGaleria;

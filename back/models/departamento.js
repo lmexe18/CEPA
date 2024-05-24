@@ -7,12 +7,6 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
 
-      Departamento.belongsToMany(models.Usuarios, {
-        through: models.UsuariosDepartamento,
-        as: 'usuarioDepartamento',
-        foreignKey: 'id',
-      });
-
       // Un departamento tiene muchas asignaturas
       Departamento.hasMany(models.Asignaturas, {
         foreignKey: 'idAsignatura',
@@ -25,8 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     nombre: DataTypes.STRING,
     descripcion: DataTypes.STRING,
     foto: DataTypes.STRING,
-    descripcion: DataTypes.STRING,
-    idJefeDepartamento: DataTypes.INTEGER,
+    jefeDepartamento: DataTypes.STRING,
     activo: DataTypes.INTEGER,
   }, {
     sequelize,

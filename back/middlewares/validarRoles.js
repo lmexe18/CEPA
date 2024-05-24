@@ -1,5 +1,4 @@
 const { response, request } = require('express');
-//Óscar
 
 const esAdmin = (req, res, next) => {
     if (!req.uid) {
@@ -13,7 +12,6 @@ const esAdmin = (req, res, next) => {
     }
 }
 
-//Jaime
 const esJefeDeEstudios = (req, res, next) => {
     if (!req.uid) {
         return res.status(500).json({ 'msg': 'No es posible el acceso como jefe de estudios.' })
@@ -26,7 +24,19 @@ const esJefeDeEstudios = (req, res, next) => {
     }
 }
 
+const esProfesor = (req, res, next) => {
+    if (!req.uid) {
+        return res.status(500).json({ 'msg': 'No es posible el acceso como profesor.' })
+    }
+    if (req.abilities.includes('Profesor')) {
+        next()
+    } else {
+        return res.status(401).json('Acceso no autorizado')
+    }
+}
+
 module.exports = {
     esAdmin,
-    esJefeDeEstudios
+    esJefeDeEstudios,
+    esProfesor
 }

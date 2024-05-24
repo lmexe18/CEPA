@@ -7,7 +7,7 @@ module.exports = {
       nombre: 'Ámbito Científico-Tecnológico',
       descripcion: 'Incluye los aspectos básicos del currículo de la Educación Secundaria Obligatoria (ESO) de las materias de Biología y Geología, Física y Química, Matemáticas, Matemáticas orientadas a las enseñanzas académicas y Matemáticas orientadas a las enseñanzas aplicadas, Tecnología, Ciencias Aplicadas a la Actividad Profesional y aquellos relacionados con la salud y el medio natural recogidos de la materia de Educación Física.',
       foto: "tecnologico.webp",
-      idJefeDepartamento: null,
+      jefeDepartamento: null,
       activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -15,7 +15,7 @@ module.exports = {
       nombre: 'Ámbito Comunicación',
       descripcion: 'Incluye los aspectos básicos del currículo de la Educación Secundaria Obligatoria (ESO) correspondientes a las materias de Lengua castellana y literatura y primera Lengua extranjera.',
       foto: "comunicacion.webp",
-      idJefeDepartamento: null,
+      jefeDepartamento: null,
       activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -23,7 +23,7 @@ module.exports = {
       nombre: 'Ámbito Social',
       descripcion: 'Incluye los aspectos básicos del currículo de la Educación Secundaria Obligatoria (ESO) de las materias de Geografía e Historia, Iniciación a la Actividad Emprendedora y Empresarial, Economía, Cultura Clásica y los aspectos de percepción recogidos en el currículo de Educación Plástica, Visual y Audiovisual y Música.',
       foto: "social.webp",
-      idJefeDepartamento:null,
+      jefeDepartamento:null,
       activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -31,7 +31,7 @@ module.exports = {
       nombre: 'Orientación Educativa',
       descripcion: 'La orientación educativa y profesional forma parte de la función docente e integra todas las acciones realizadas desde la tutoría y el asesoramiento especializado. Se prestará una atención especial a la orientación educativa y laboral con el fin de facilitar a las personas adultas que las cursen, además de su desarrollo integral y equilibrado como ciudadanos y ciudadanas de pleno derecho, la continuación de sus estudios y su inserción y promoción profesional. La orientación educativa que se desarrollará a lo largo de toda la etapa de Educación Secundaria para personas adultas, adquirirá especial importancia al comienzo de las enseñanzas, con el proceso de Valoración Inicial del Alumnado y al término de estas enseñanzas, el profesorado responsable de la tutoría, con el asesoramiento del Departamento de Orientación, emitirá un consejo orientador a fin de informar al alumnado sobre las opciones y posibilidades existentes para su futuro académico y profesional. Este informe tendrá carácter confidencial.',
       foto: "educativa.webp",
-      idJefeDepartamento: null,
+      jefeDepartamento: null,
       activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -59,7 +59,7 @@ module.exports = {
           '\n' +
           'e) adquieran las competencias y los conocimientos correspondientes a la educación básica y obtengan el título de Graduado en Educación Secundaria Obligatoria.',
       foto: "basica.webp",
-      idJefeDepartamento: null,
+      jefeDepartamento: null,
       activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -81,7 +81,7 @@ module.exports = {
           '\n' +
           'Programas destinados a la iniciación en el aprendizaje de los idiomas.',
       foto: "cursos.webp",
-      idJefeDepartamento: null,
+      jefeDepartamento: null,
       activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -106,7 +106,7 @@ module.exports = {
               '\n' +
               '-\tY en quinto lugar, y no menos importante, queremos seguir potenciando el Trabajo por Proyectos como modalidad formativa de nuestro alumnado. Para ello, es necesario implicar, en mayor número, al profesorado de nuestro centro, ya que actualmente son seis, de un total de veinticinco profesores y profesoras, los que participan de esta modalidad formativa y de desarrollo del conocimiento.',
           foto: "formacion.webp",
-          idJefeDepartamento: null,
+          jefeDepartamento: null,
           activo: true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -133,7 +133,7 @@ module.exports = {
               '\n' +
               'Por estos y otros muchos factores, destacamos la importancia, y a la vez obligación, de contar en el centro con un Plan de Prevención de Riesgos Laborales, el cual ha de ser integrado en el sistema de gestión del centro educativo.',
           foto: "riesgos.webp",
-          idJefeDepartamento: null,
+          jefeDepartamento: null,
           activo:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -155,7 +155,7 @@ module.exports = {
               '\n' +
               '• La igualdad de oportunidades y la compensación de las desigualdades de base.',
           foto: "biblioteca.webp",
-          idJefeDepartamento: null,
+          jefeDepartamento: null,
           activo: true,
           createdAt: new Date(),
           updatedAt: new Date()

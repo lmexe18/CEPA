@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
   Asignatura.init({
     nombre: DataTypes.STRING,
     idDepartamento: DataTypes.INTEGER,
-    activo: DataTypes.BOOLEAN
+    activo: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Asignatura',

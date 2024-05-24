@@ -22,16 +22,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true
       },
-      idJefeDepartamento: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: {
-            tableName:'usuarios'
-          },
-          key: 'id'
-        },
-        onDelete: 'CASCADE'
+      jefeDepartamento:{
+        type: Sequelize.STRING,
+        allowNull:true
       },
       activo: {
         type: Sequelize.BOOLEAN,

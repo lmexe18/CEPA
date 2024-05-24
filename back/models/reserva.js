@@ -15,8 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Reserva.init({
-    horaInicio: DataTypes.TIME(4),
-    horaFin: DataTypes.TIME(4),
+    horaInicio: DataTypes.STRING,
+    horaFin: DataTypes.STRING,
+    fecha: DataTypes.DATE,
     idTurno: DataTypes.INTEGER,
     idAula:DataTypes.INTEGER,  
     idProfesor: DataTypes.INTEGER

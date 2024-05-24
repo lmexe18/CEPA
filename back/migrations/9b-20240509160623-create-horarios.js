@@ -10,11 +10,11 @@ module.exports = {
       },
       horaInicio: {
         allowNull: false,
-        type: Sequelize.TIME
+        type: Sequelize.STRING(5)
       },
       horaFin: {
         allowNull: false,
-        type: Sequelize.TIME
+        type: Sequelize.STRING(5)
       },
       dia:{
         allowNull: false,
@@ -53,17 +53,6 @@ module.exports = {
             key: 'id'
             },
             onDelete: 'CASCADE'
-      },
-      idProfesor: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'usuarios'
-          },
-          key: 'id'
-        },
-        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

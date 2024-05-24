@@ -13,6 +13,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(50),
       },
+      horaInicio:{
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      horaFin:{
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

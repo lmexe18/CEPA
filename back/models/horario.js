@@ -20,20 +20,15 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'idCurso',
         as: 'curso'
       })
-      this.belongsTo(models.Usuario,{
-        foreignKey: 'idProfesor',
-        as: 'profesor'
-      })
     }
   }
   Horario.init({
-    horaInicio: DataTypes.TIME(4),
-    horaFin: DataTypes.TIME(4),
+    horaInicio: DataTypes.STRING,
+    horaFin: DataTypes.STRING,
     dia: DataTypes.STRING,
     idAula:DataTypes.INTEGER, 
     idAsignatura: DataTypes.INTEGER,
     idCurso: DataTypes.INTEGER, 
-    idProfesor: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Horario',
