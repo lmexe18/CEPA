@@ -1,65 +1,75 @@
-//Raúl
+const { response, request } = require('express');
+const ConexionRol = require('../database/conexionRol');
 
-const {response,request} = require('express');
-const Conexion = require('../database/conexionRoles');
-
-const rolesGet =  (req, res = response) => {
-    
-    const conx = new Conexion();
-    conx.rolesGet()    
-        .then( msg => {
-     
-            res.status(200).json(msg);
-        })
-        .catch( err => {
-
-            res.status(200).json({'msg':'No se han encontrado registros'});
+const obtenerRoles = async (req, res = response) => {
+    const conx = new ConexionRol();
+    try {
+        const roles = await conx.getRoles();
+        res.status(200).json(roles);
+    } catch (err) {
+        res.status(404).json({
+            msg: 'No se han encontrado registros',
+            error: err.message
         });
-}
+    }
+};
 
-const rolesPost =  (req = request, res = response) => {
-    const conx = new Conexion();
-    conx.rolesPost(req.body)    
-        .then( msg => {
-          
-            res.status(201).json(msg);
-        })
-        .catch( err => {
-
-            res.status(203).json(err);
+const obtenerRolPorId = async (req, res = response) => {
+    const conx = new ConexionRol();
+    try {
+        const rol = await conx.getRolPorId(req.params.id);
+        res.status(200).json(rol);
+    } catch (err) {
+        res.status(404).json({
+            msg: 'No se ha encontrado el registro',
+            error: err.message
         });
-}
+    }
+};
 
-const rolesDelete =  (req, res) => {
-    const conx = new Conexion();
-    conx.rolesDelete(req.params.id)    
-        .then( msg => {
-      
-            res.status(202).json(msg);
-        })
-        .catch( err => {
-      
-            res.status(203).json(err);
+const crearRol = async (req = request, res = response) => {
+    const conx = new ConexionRol();
+    try {
+        const rol = await conx.postRol(req.body);
+        res.status(201).json(rol);
+    } catch (err) {
+        res.status(400).json({
+            msg: 'No se ha podido crear el rol',
+            error: err.message
         });
-}
+    }
+};
 
-const rolesPut =  (req, res = response) => {
-    const conx = new Conexion();
-    conx.rolesPut(req.params.id, req.body)    
-        .then( msg => {
-         
-            res.status(202).json(msg);
-        })
-        .catch( err => {
-         
-            res.status(203).json(err);
+const actualizarRol = async (req, res = response) => {
+    const conx = new ConexionRol();
+    try {
+        const rol = await conx.putRol(req.params.id, req.body);
+        res.status(202).json(rol);
+    } catch (err) {
+        res.status(400).json({
+            msg: 'No se ha podido actualizar el rol',
+            error: err.message
         });
-}
+    }
+};
 
+const eliminarRol = async (req, res = response) => {
+    const conx = new ConexionRol();
+    try {
+        await conx.deleteRol(req.params.id);
+        res.status(202).json({ msg: 'Rol eliminado' });
+    } catch (err) {
+        res.status(404).json({
+            msg: 'No se ha podido borrar el rol',
+            error: err.message
+        });
+    }
+};
 
 module.exports = {
-    rolesGet,
-    rolesDelete,
-    rolesPost,
-    rolesPut
-}
+    obtenerRoles,
+    obtenerRolPorId,
+    crearRol,
+    actualizarRol,
+    eliminarRol
+};

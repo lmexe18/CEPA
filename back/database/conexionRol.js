@@ -1,16 +1,9 @@
-//Raúl
-
 require('dotenv').config()
-const bcrypt = require('bcrypt');
-const {
-    Sequelize,
-    sequelize,
-    Op,
-    where
-} = require('sequelize');
-const models = require('../models/index.js');
+import bcrypt from 'bcrypt';
+import { Sequelize, sequelize, Op, where } from 'sequelize';
+import { Rol } from '../models/index.js';
 
-class ConexionRoles{
+class ConexionRol{
     constructor() {
         this.db = new Sequelize(process.env.DB_DEV, process.env.DB_USER, process.env.DB_PASSWORD, {
             host: process.env.DB_HOST,
@@ -26,67 +19,83 @@ class ConexionRoles{
 
     conectar = () => {
         this.db.authenticate().then(() => {
-         
         }).catch((error) => {
-            
         });
     }
     desconectar = () => {
         process.on('SIGINT', () => conn.close())
     }
 
-    rolesGet = async () => {
+    getRoles = async () => {
+        this.conectar()
+        let resultado = [];
         try{
-            let resultado = [];
-            this.conectar();
-            resultado = await models.rol.findAll();
-            return resultado;
+            resultado = await Rol.findAll();          
         }catch(error){
-          throw error
         }finally{
             this.desconectar();
         }
+        return resultado;
     }
 
-    rolesPost = async (body) => {
-        let resultado = 0;
+    getRolPorId = async (id) => {
+        this.conectar()
+        let resultado 
+        try{
+            resultado = await Rol.findByPk(id);
+        } catch(error){
+        } finally {
+            this.desconectar()
+        }
+        return resultado
+    }
+
+    postRol = async (body) => {
         this.conectar();
+        let resultado
         try {
-            const task = new models.rol(body);
+            const task = new Rol(body);
             await task.save();
-            resultado = 1;
+            if (task){
+                resultado = task
+            } else {
+                throw new Error ('Error al subir el rol')
+            }
         } catch (error) {
-            throw error;
         } finally {
             this.desconectar();
         }
         return resultado;
     }
 
-    rolesDelete = async (id) => {
+    putRol = async (id,body) => {
+        this.conectar()
+        let resultado
         try{
-            this.conectar();
-            let resultado = await models.rol.findByPk(id);
-            if (!resultado) {
-                throw error;
+            let task = await Rol.findByPk(id);
+            await task.update(body)
+            if (task){
+                resultado = task
+            } else {
+                throw new Error ('Error al actualizar el rol')
             }
-            await resultado.destroy();
-            return resultado;
         }catch(error){
-            throw error
         }finally{
             this.desconectar()
         }
+        return resultado
     }
-    rolesPut = async (id,body) => {
+
+    deleteRol = async (id) => {
+        this.conectar()
         try{
-            let resultado = 0
-            this.conectar();
-            let task = await models.rol.findByPk(id);
-            await task.update(body)
-            return resultado
+            let rol = await Rol.findByPk(id);
+            if (!rol) {
+                throw new Error('No se han encontrado registros')
+            } else {
+                await rol.destroy();
+            }
         }catch(error){
-            throw error
         }finally{
             this.desconectar()
         }
@@ -94,4 +103,4 @@ class ConexionRoles{
    
 }
 
-module.exports = ConexionRoles;
+export default ConexionRol;

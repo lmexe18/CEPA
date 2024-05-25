@@ -33,9 +33,9 @@ class Server {
         this.horarioPath = '/api/horario'
         this.noticiaPath = '/api/noticia'
         this.noticiaGaleriaPath = '/api/noticiaGaleria'
-        this.reservaPath = '/api/reservas'
+        this.reservaPath = '/api/reserva'
+        this.apiRol = '/api/rol'
         /*this.apiUsuarios = '/api/usuario';
-        this.apiRoles = '/api/roles'
         this.authPath = '/api/auth';
     //    this.uploadsFotoEventosPath = '/api/uploads/eventos';
     //    this.uploadsGaleriasPath = '/api/uploads/galerias'
@@ -70,9 +70,9 @@ class Server {
         this.app.use(this.noticiaPath, require('../routes/noticiaRoutes'))
         this.app.use(this.noticiaGaleriaPath, require('../routes/noticiaGaleriaRoutes'))
         this.app.use(this.reservaPath, require('../routes/aulaReservaRoutes'))
+        this.app.use(this.apiRol, require('../routes/rolRutas'))  
         /*
         this.app.use(this.apiUsuarios, require('../routes/usuarioRutas'))
-        this.app.use(this.apiRoles, require('../routes/rolesRutas'))  
       //  this.app.use(this.uploadsNoticiasPath, require('../routes/uploadsNoticiasRoutes'));
        // this.app.use(this.uploadsSeccionesPath, require('../routes/updloadsSeccionesRoutes'));
         this.app.use(this.authPath, require('../routes/authRoutes'));
