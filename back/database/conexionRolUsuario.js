@@ -67,7 +67,6 @@ class ConexionRolUsuario {
             if (!resultado) {
                 throw new Error('error');
             }
-
         } catch (error) {
         }
         finally {

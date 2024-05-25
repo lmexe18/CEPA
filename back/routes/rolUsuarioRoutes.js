@@ -10,7 +10,7 @@ router.post('/',[
     check('idUsuario').isInt({ min: 1}).notEmpty().withMessage('El idUsuario es requerido'),
     check('idRol').isInt({ min:1 }).notEmpty().withMessage('El idRol es requerido'),
     validateValues 
-], controlador.rolesAsignadosPost)
-router.delete('/:id', controlador.rolesAsignadosDelete)
+], controlador.crearRolUsuario)
+router.delete('/:id', controlador.eliminarRolUsuario)
 
 module.exports = router;

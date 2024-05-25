@@ -37,7 +37,7 @@ const obtenerRolUsuarioPorId = (req, res = response) => {
 
 const obtenerRolesDeUsuario = (req = request, res = response) => {
     const conx = new ConexionRolUsuario();
-    conx.getRolesDeUsuario(req.params.idUser)
+    conx.getRolesDeUsuario(req.params.idUsuario)
         .then((roles) => {
             if (roles) {
                 res.status(200).json(roles);
