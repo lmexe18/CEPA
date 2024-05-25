@@ -22,6 +22,7 @@ class Server {
         this.asignaturaProfeCursoPath = '/api/asignaturaProfeCurso'
         this.asistenciaEventoPath = '/api/asistenciaEvento'
         this.aulaPath = '/api/aula'
+        this.authPath = '/api/auth'
         this.rolUsuarioPath = '/api/rolUsuario'
         this.contactoPath = '/api/contacto'
         this.cursoPath = '/api/curso'
@@ -40,8 +41,8 @@ class Server {
         this.tipoAulaPath= '/api/tipoAula'
         this.tipoCursoPath = '/api/tipoCurso'
         this.tipoEventoPath = '/api/tipoEvento'
+        this.tipoNoticiaPath = '/api/tipoNoticia'
         /*this.apiUsuarios = '/api/usuario';
-        this.authPath = '/api/auth';
     //    this.uploadsFotoEventosPath = '/api/uploads/eventos';
     //    this.uploadsGaleriasPath = '/api/uploads/galerias'
         this.middlewares();
@@ -63,6 +64,7 @@ class Server {
         this.app.use(this.asignaturaProfeCurssPath, require('../routes/asignaturaProfeCursoRoutes'))
         this.app.use(this.asistenciaEventoPath, require('../routes/asistenciaEventoRoutes'));
         this.app.use(this.aulaPath, require('../routes/aulaRoutes'))
+        this.app.use(this.authPath, require('../routes/authRoutes'))
         this.app.use(this.rolUsuarioPath, require('../routes/rolUsuarioRoutes'))
         this.app.use(this.contactoPath, require('../routes/contactoRoutes'))
         this.app.use(this.cursoPath, require('../routes/cursoRoutes'))
@@ -81,6 +83,7 @@ class Server {
         this.app.use(this.tipoAulaPath, require('../routes/tipoAulaRoutes'))
         this.app.use(this.tipoCursoPath, require('../routes/tipoCursoRoutes'))
         this.app.use(this.tipoEventoPath, require('../routes/tipoEventoRoutes'))
+        this.app.use(this.tipoNoticiaPath, require('../routes/tipoNoticiaRoutes'))
         /*
         this.app.use(this.apiUsuarios, require('../routes/usuarioRutas'))
       //  this.app.use(this.uploadsNoticiasPath, require('../routes/uploadsNoticiasRoutes'));
