@@ -1,4 +1,3 @@
-// Laura María Pedraza Gómez 
 const path = require('path');
 const fs   = require('fs');
 const { v4: uuidv4 } = require('uuid');
@@ -34,7 +33,7 @@ const borrarImagen = async(req, res = response ) => {
     
     const  idborrado = req.params.id;
   
-    const pathImagen = path.join( __dirname, '../uploads', process.env.CARPETAFOTOSGALERIAS, idborrado );
+    const pathImagen = path.join( __dirname, '../assets/eventos/galeria', process.env.CARPETAFOTOSGALERIAS, idborrado );
     if (fs.existsSync(pathImagen)) {
         fs.unlinkSync(pathImagen);
         res.status(200).json({ msg: "Borrado" });
@@ -46,7 +45,7 @@ const borrarImagen = async(req, res = response ) => {
 
 const actualizarImagen = async(req, res = response ) => {
 
-        const pathImagen = path.join( __dirname, '../uploads', process.env.CARPETAFOTOSGALERIAS,req.params.id);
+        const pathImagen = path.join( __dirname, '../assets/eventos/galeria', process.env.CARPETAFOTOSGALERIAS,req.params.id);
         if ( fs.existsSync( pathImagen ) ) {
             fs.unlinkSync( pathImagen );
         }
@@ -60,13 +59,13 @@ const obtenerImagen = async(req, res = response ) => {
 
     const nombreArchivo = req.params.id ; 
     if (nombreArchivo) {
-        const pathImagen = path.join( __dirname, '../uploads', process.env.CARPETAFOTOSGALERIAS, nombreArchivo );
+        const pathImagen = path.join( __dirname, '../assets/eventos/galeria', process.env.CARPETAFOTOSEVENTOSGALERIA, nombreArchivo );
         if ( fs.existsSync( pathImagen ) ) {
             return res.sendFile( pathImagen )
         }
     }
 
-    const pathImagen = path.join( __dirname, '../assets/no-image.jpg');
+    const pathImagen = path.join( __dirname, '../assets/CEPA.jpg');
     res.sendFile( pathImagen );
 
 }
