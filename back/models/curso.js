@@ -5,9 +5,9 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Curso extends Model {
     static associate(models) {  
-
+      /*
       // Un curso pertenece a un tipo de curso
-      Curso.belongsTo(models.TipoCrupo, {
+      Curso.belongsTo(models.TipoCurso, {
         foreignKey: 'idTipoCurso',
         as: 'tipoCurso'
       });
@@ -20,24 +20,25 @@ module.exports = (sequelize, DataTypes) => {
 
       // Un curso tiene muchas asignaturas
       Curso.belongsToMany(models.Asignatura, {
-        through: models.AsignaturaProfeCurso,
-        foreignKey: 'idAsignaturaProfeCurso',
+        through: models.AsignaturaProfeCurso, // Modelo intermedio
+        foreignKey: 'cursoId',
+        otherKey: 'asignaturaId',
         as: 'cursoAsignatura'
       });
 
       // Un curso tiene muchos profesores
       Curso.belongsToMany(models.Usuario, {
-        through: models.AsignaturaProgeCurso,
-        foreignKey: 'idAsignaturaProfeCurso',
+        through: models.AsignaturaProfeCurso, // Modelo intermedio
+        foreignKey: 'cursoId',
+        otherKey: 'profesorId',
         as: 'cursoProfesor'
       });
 
       // Un curso tiene alumnos
-      Curso.belongsToMany(models.Usuario, {
-        through: models.AlumnoCurso,
-        foreignKey: 'idAlumnoCurso',
+      Curso.hasMany(models.Usuario, {
+        foreignKey: 'cursoId',
         as: 'alumnoCurso'
-      });
+      });*/
     }
   }
   Curso.init({

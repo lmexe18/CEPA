@@ -6,18 +6,15 @@ const {
 const Aula = require('./aula');
 
 module.exports = (sequelize, DataTypes) => {
-  class HorarioReserva extends Model {
+  class Horario extends Model {
     static associate(models) {
-      this.belongsTo(models.Aula, {
-        foreignKey: 'idAula',
-        as: 'aula'
-      });
+      
       this.belongsTo(models.Asignatura,{
-        foreignKey: 'idAsignatura',
+        foreignKey: 'id',
         as: 'asignatura'
       })
       this.belongsTo(models.Curso,{
-        foreignKey: 'idCurso',
+        foreignKey: 'id',
         as: 'curso'
       })
     }

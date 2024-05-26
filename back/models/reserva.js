@@ -8,10 +8,7 @@ const Aula = require('./aula');
 module.exports = (sequelize, DataTypes) => {
   class Reserva extends Model {
     static associate(models) {
-      this.belongsTo(models.Aula, {
-        foreignKey: 'idAula',
-        as: 'aula'
-      })
+      
     }
   }
   Reserva.init({

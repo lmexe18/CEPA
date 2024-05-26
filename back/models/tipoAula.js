@@ -6,10 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class TipoAula extends Model {
 
     static associate(models) {
-      this.hasMany(models.Aula, {
-        foreignKey: 'id',
-        as: 'aulas'
-      });
+      
     }
   }
   TipoAula.init({

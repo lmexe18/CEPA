@@ -8,10 +8,10 @@ const authMid=require('../middlewares/validarJWT')
 const accessMid=require('../middlewares/validarRoles')
 const eventosMid = require('../middlewares/eventosMid');
 
-router.get('/obtener', controller.obtenerEventos);
-router.get('/obtenerActivos', controller.obtenerEventosActivos);
-router.get('/obtener/:id', controller.obtenerEventoPorId);
-router.post('', [
+router.get('/', controller.obtenerEventos);
+router.get('/visibles', controller.obtenerEventosVisibles);
+router.get('/:id', controller.obtenerEventoPorId);
+router.post('/', [
     check('nombre').isString().notEmpty().isLength({ min: 1, max: 50 }).withMessage('El nombre tiene que ser un texto de máximo 50 caracteres'),
     check('descripcion').isString().notEmpty().withMessage('La descripción tiene que ser un texto'),
     check('fechaHora').isDate().notEmpty().withMessage('La fecha y hora debe de tener formato correcto'),

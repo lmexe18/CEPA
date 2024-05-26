@@ -105,4 +105,4 @@ class ConexionEventoGaleria {
     }
 }
 
-module.exports = ConexiontoEventoGaleria;
+module.exports = ConexionEventoGaleria;

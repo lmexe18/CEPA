@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { validarArchivoSubir } = require('../middlewares/validar-archivo');
-const { cargarArchivo, actualizarImagen, obtenerImagen, borrarImagen } = require('../controllers/uploadsGaleriaController');
+const { cargarArchivo, actualizarImagen, obtenerImagen, borrarImagen } = require('../controllers/uploadsEventoGaleriaController');
 const authMid=require('../middlewares/validarJWT')
 const accessMid=require('../middlewares/validarRoles')
 

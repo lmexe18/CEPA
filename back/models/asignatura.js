@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       // Una asignatura tiene muchos profesores
-      Asignatura.hasMany(models.Usuario, {
+      Asignatura.belongsToMany(models.Usuario, {
         through: models.AsignaturaProfeCurso,
         foreignKey: 'idUsuario',
         as: 'profeCurso'

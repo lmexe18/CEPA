@@ -8,12 +8,12 @@ const authMid = require('../middlewares/validarJWT');
 router.get('/', controller.obtenerTiposCursos);
 router.get('/:id', controller.obtenerTipoCursoPorId);
 router.post('/', [
-    check('nombre').isString().length({ min:1, max:50 }).notEmpty().withMessage('El nombre es obligatorio'),
+    check('nombre').isString().isLength({ min:1, max:50 }).notEmpty().withMessage('El nombre es obligatorio'),
     check('activo').isBoolean().withMessage('El campo activo debe ser un valor true o false'),
     validateValues
 ], authMid.validarJWT, controller.crearTipoCurso);
 router.put('/:id', [
-    check('nombre').isString().length({ min:1, max:50 }).withMessage('El nombre es obligatorio'),
+    check('nombre').isString().isLength({ min:1, max:50 }).withMessage('El nombre es obligatorio'),
     check('activo').isBoolean().withMessage('El campo activo debe ser un valor true o false'),
     validateValues
 ], authMid.validarJWT, controller.actualizarTipoCurso);

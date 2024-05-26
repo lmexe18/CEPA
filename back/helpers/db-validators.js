@@ -1,8 +1,6 @@
 const {response,request} = require('express');
 const Conexion = require('../database/conexionUsuario');
 
-
-    //Óscar
 const emailExist = (email = '') => {
     return new Promise((resolve, reject) => {
       const conx = new Conexion();

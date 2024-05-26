@@ -133,4 +133,4 @@ class ConexionAula {
 
 }
 
-module.exports = ConexionAulaEspecial
+module.exports = ConexionAula

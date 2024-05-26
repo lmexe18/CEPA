@@ -2,7 +2,6 @@ const {Router} = require('express');
 const router = Router();
 const { check } = require('express-validator');
 const {validateValues}=require('../helpers/validar-campos')
-const validator=require('../helpers/secciones-validators')
 
 const controller=require('../controllers/authController')
 const { emailExist} = require('../helpers/db-validators');

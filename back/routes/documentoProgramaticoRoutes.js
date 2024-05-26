@@ -10,9 +10,9 @@ router.get('/', controller.obtenerDocumentosProgramaticos);
 router.get('/:id', controller.obtenerDocumentoProgramaticoPorId);
 
 router.post('/', [
-    check('nombre')-isString().length({ min:1 }).notEmpty().withMessage('El nombre es obligatorio.'),
+    check('nombre').isString().isLength({ min:1 }).notEmpty().withMessage('El nombre es obligatorio.'),
     check('link').isURL().withMessage('El link debe ser una URL válida.'),
-    check('tipo').isString().length({ min: 1}).notEmpty().withMessage('El tipo es obligatorio.'),
+    check('tipo').isString().isLength({ min: 1}).notEmpty().withMessage('El tipo es obligatorio.'),
     validateValues
 ], /*authMid.validarJWT, accessMid.validarRoles('admin'),*/ controller.crearDocumentoProgramatico);
 

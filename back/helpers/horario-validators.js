@@ -1,12 +1,10 @@
-//Jaime
-
 const { response, request } = require('express')
-const ConexionHorarios = require('../database/conexionAulaHorario')
+const ConexionHorarios = require('../database/conexionHorario')
 
 const aulaHorarioExiste = (idHorario) => {
     return new Promise((resolve, reject) => {
         const conx = new ConexionHorarios()
-        conx.getHorarioById(idHorario)
+        conx.getHorarioPorId(idHorario)
         .then(msg => {
             resolve(true)
         })

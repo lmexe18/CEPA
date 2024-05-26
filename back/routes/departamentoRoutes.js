@@ -11,7 +11,7 @@ router.get('/:id', controller.obtenerDepartamentoPorId);
 router.get('/jefe/:idJefeDepartamento', controller.obtenerDepartamentosPorJefe);
 
 router.post('/', [
-    check('nombre').isString().length({ min:1, max:50 }).notEmpty().withMessage('El nombre no puede estar vacío.'),
+    check('nombre').isString().isLength({ min:1, max:50 }).notEmpty().withMessage('El nombre no puede estar vacío.'),
     check('descripcion').isString().withMessage('La descripción debe ser un texto.'),
     check('foto').isString().withMessage('La foto debe de ser el nombre de esta.'),
     check('idJefeDepartamento').isInt({ min: 1 }).optional().withMessage('El id del jefe de departamento debe de ser un número entero mayor a 0.'),

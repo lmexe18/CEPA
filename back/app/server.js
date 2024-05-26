@@ -1,8 +1,8 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
-// const { noticiasSocketController } = require('../controllers/noticiasSocketController');
-// const { eventosSocketController } = require('../controllers/eventoSocketController')
+const { noticiasSocketController } = require('../controllers/noticiasSocketController');
+const { eventosSocketController } = require('../controllers/eventosSocketController')
 
 class Server {
     constructor() {
@@ -42,13 +42,16 @@ class Server {
         this.tipoCursoPath = '/api/tipoCurso'
         this.tipoEventoPath = '/api/tipoEvento'
         this.tipoNoticiaPath = '/api/tipoNoticia'
-        /*this.apiUsuarios = '/api/usuario';
-    //    this.uploadsFotoEventosPath = '/api/uploads/eventos';
-    //    this.uploadsGaleriasPath = '/api/uploads/galerias'
+        this.usuarioPath = '/api/usuario';
+        this.uploadsFotoEventoPath = '/api/uploads/evento';
+        this.uploadsEventoGaleriaPath = '/api/uploads/eventoGaleria'
+        this.uploadsFotoNoticiaPath = '/api/uploads/noticia';
+        this.uploadsNoticiaGaleriaPath = '/api/uploads/noticiaGaleria'
         this.middlewares();
         this.routes();
-        // this.sockets();*/
+        this.sockets();
     }
+
     middlewares() {
         this.app.use(cors({ origin: '*' }));
         this.app.use(express.json());
@@ -58,10 +61,11 @@ class Server {
             createParentPath: true
         }));
     }
+
     routes() {
         this.app.use(this.alumnoCursoPath, require('../routes/alumnoCursoRoutes'))
         this.app.use(this.asignaturaPath, require('../routes/asignaturaRoutes'))
-        this.app.use(this.asignaturaProfeCurssPath, require('../routes/asignaturaProfeCursoRoutes'))
+        this.app.use(this.asignaturaProfeCursoPath, require('../routes/asignaturaProfeCursoRoutes'))
         this.app.use(this.asistenciaEventoPath, require('../routes/asistenciaEventoRoutes'));
         this.app.use(this.aulaPath, require('../routes/aulaRoutes'))
         this.app.use(this.authPath, require('../routes/authRoutes'))
@@ -76,29 +80,26 @@ class Server {
         this.app.use(this.horarioPath, require('../routes/horarioRoutes'))
         this.app.use(this.noticiaPath, require('../routes/noticiaRoutes'))
         this.app.use(this.noticiaGaleriaPath, require('../routes/noticiaGaleriaRoutes'))
-        this.app.use(this.reservaPath, require('../routes/aulaReservaRoutes'))
-        this.app.use(this.rolRpath, require('../routes/rolRutas'))  
+        this.app.use(this.reservaPath, require('../routes/reservaRoutes'))
+        this.app.use(this.rolPath, require('../routes/rolRoutes'))  
         this.app.use(this.rolUsuarioPath, require('../routes/rolUsuarioRoutes'))
         this.app.use(this.temarioPath, require('../routes/temarioRoutes'))
         this.app.use(this.tipoAulaPath, require('../routes/tipoAulaRoutes'))
         this.app.use(this.tipoCursoPath, require('../routes/tipoCursoRoutes'))
         this.app.use(this.tipoEventoPath, require('../routes/tipoEventoRoutes'))
         this.app.use(this.tipoNoticiaPath, require('../routes/tipoNoticiaRoutes'))
-        /*
-        this.app.use(this.apiUsuarios, require('../routes/usuarioRutas'))
-      //  this.app.use(this.uploadsNoticiasPath, require('../routes/uploadsNoticiasRoutes'));
-       // this.app.use(this.uploadsSeccionesPath, require('../routes/updloadsSeccionesRoutes'));
+        this.app.use(this.usuarioPath, require('../routes/usuarioRoutes'))
+        this.app.use(this.uploadsEventoGaleriaPath, require('../routes/uploadsEventoGaleriaRoutes'));
+        this.app.use(this.uploadsFotoEventoPath, require('../routes/uploadsFotoEvento'))
         this.app.use(this.authPath, require('../routes/authRoutes'));
-       // this.app.use(this.uploadsFotoEventosPath, require('../routes/uploadsFotoEventos'))
-      //  this.app.use(this.uploadsGaleriasPath, require('../routes/uploadsGaleriaRoutes'))
-    */}
+        this.app.use(this.uploadsNoticiaGaleriaPath, require('../routes/uploadsNoticiaGaleriaRoutes'))
+        this.app.use(this.uploadsFotoNoticiaPath, require('../routes/uploadsFotoNoticia'))
+    }
 
-   /* sockets() {
+   sockets() {
         this.io.on('connection', noticiasSocketController);
         this.io.on('connection', eventosSocketController)
-    }*/
-
-
+    }
 
     listen() {
         this.serverExpress.listen(process.env.PORT, () => {
