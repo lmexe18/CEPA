@@ -1,0 +1,12 @@
+.galeria{
+    display: grid;
+    gap: 16px;
+   grid-auto-flow:dense ;
+    grid-template-columns: 
+    repeat(
+        auto-fit,
+        minmax(300px, 1fr)
+    );
+
+}
+
