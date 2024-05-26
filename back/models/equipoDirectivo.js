@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING
   }, {
     sequelize,
-    modelName: process.env.MODEL_EQUIPO_DIRECTIVO,
-    tableName: process.env.TABLA_EQUIPOS_DIRECTIVOS
+    modelName: 'EquipoDirectivo',
+    tableName: 'equipos_directivos'
   });
   return EquipoDirectivo;
 };

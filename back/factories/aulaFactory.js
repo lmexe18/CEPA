@@ -1,6 +1,7 @@
-const aulaFactory = async (ctos=4) => {
+const {Aula} =require('../models/aula')
+const aulaFactory = async (ctos=2) => {
     let factory = []
-    for (let i=0 ; i<ctos ; i++){
+    for (let i=1 ; i<=ctos ; i++){
         let aula = {
             nombre:'Aula '+i,
             idTipo: i,

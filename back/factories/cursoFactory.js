@@ -3,10 +3,10 @@ const cursoFactory = async (ctos=4) => {
     for (let i=0 ; i<ctos ; i++){
         let curso = {
             numeroCurso : i,
+            horario: 'Horario '+i,
             fechaInicio: new Date(), 
-            fechaFinalizacion: new Date(),
-            idHorario: i,
-            idTipoGrupo: i,
+            fechaFin: new Date(),
+            idTipoCurso: i,
             idTutor: i,
             activo: Math.random() < 0.5 ? true : false,
             createdAt: new Date(),

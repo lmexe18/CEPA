@@ -1,18 +1,18 @@
-'use strict';
+const { RolUsuario } = require('../models/rolUsuario')
 
 const rolUsuarioFactory = async (ctos = 4) => {
     let factory = [];
 
-    for (let i = 0; i <= ctos; i++) {
+    for (let i = 1; i <= ctos; i++) {
         let usuario = {
-            idUsuario: i+1,
-            idRol: i+1,
+            idUsuario: i,
+            idRol: i,
             createdAt: new Date(),
             updatedAt: new Date()
         };
         factory.push(usuario);
     }
-    return factory;
+    return Promise.all(factory)
 };
 
 module.exports = {

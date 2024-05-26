@@ -2,14 +2,14 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable(process.env.TABLA_CONTACTOS, {
+    await queryInterface.createTable('contactos', {
       id: {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       nombreCentro: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false
       },
       direccion: {
@@ -17,7 +17,7 @@ module.exports = {
         allowNull: false
       },
       telefono: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(15),
         allowNull: false
       },
       email: {
@@ -37,6 +37,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable(process.env.TABLA_CONTACTOS);
+    await queryInterface.dropTable('contactos');
   }
 };

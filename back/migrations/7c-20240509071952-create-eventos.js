@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable(process.env.TABLA_EVENTOS, {
+    await queryInterface.createTable('eventos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,7 +11,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nombre: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false
       },
       descripcion: {
@@ -28,7 +28,10 @@ module.exports = {
       },
       mg: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          min: 0
+        }
       },
       visibilidad: {
         type: Sequelize.BOOLEAN,
@@ -63,6 +66,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable(process.env.TABLA_EVENTOS);
+    await queryInterface.dropTable('eventos');
   }
 };

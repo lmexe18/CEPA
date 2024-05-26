@@ -3,16 +3,16 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.bulkInsert(process.env.TABLA_ASIGNATURAS, [{
+        await queryInterface.bulkInsert('asignaturas', [{
             nombre: 'Lengua Castella y Literatura',
             idDepartamento: 2,
-            activo: false,
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
             nombre: 'Inglés',
             idDepartamento: 2,
-            activo: false,
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
@@ -24,61 +24,61 @@ module.exports = {
         }, {
             nombre: 'Iniciación a la Actividad Emprendedora y Empresarial',
             idDepartamento: 3,
-            activo: false,
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
             nombre: 'Educación Plástica y Visual',
             idDepartamento: 3,
-            activo: false,
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
             nombre: 'Educación Audiovisual y Música',
             idDepartamento: 3,
-            activo: false,
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
             nombre: 'Biología y Geología',
             idDepartamento: 1,
-            activo: false,
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
             nombre: 'Física y Química',
             idDepartamento: 1,
-            activo: false,
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
             nombre: 'Matemáticas',
             idDepartamento: 1,
-            activo: false,
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
             nombre: 'Matemáticas Académicas',
             idDepartamento: 1,
-            activo: false,
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
             nombre: 'Matemáticas Aplicadas',
             idDepartamento: 1,
-            activo: false,
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
             nombre: 'Ciencias Aplicadas a la Actividad Profesional',
             idDepartamento: 1,
-            activo: 0,
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
             nombre: 'Educación Física',
             idDepartamento: 1,
-            activo: false,
+            activo: true,
             createdAt: new Date(),
             updatedAt: new Date()
         }
@@ -87,7 +87,7 @@ module.exports = {
 
     async down(queryInterface, Sequelize) {
 
-        await queryInterface.bulkDelete(process.env.TABLA_ASIGNATURAS, null, {});
+        await queryInterface.bulkDelete('asignaturas', null, {});
 
     }
 };

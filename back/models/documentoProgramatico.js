@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     activo: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: process.env.MODEL_DOCUMENTO_PROGRAMATICO,
-    tableName: process.env.TABLA_DOCUMENTOS_PROGRAMATICOS
+    modelName: 'DocumentoProgramatico',
+    tableName: 'documentos_programaticos'
   });
   return DocumentoProgramatico;
 };

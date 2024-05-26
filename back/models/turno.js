@@ -8,11 +8,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Turno.init({
-    nombre: DataTypes.STRING
+    nombre: DataTypes.STRING,
+    horaInicio: DataTypes.STRING,
+    horaFin: DataTypes.STRING
   }, {
     sequelize,
-    modelName: process.env.MODEL_TURNO,
-    tableName: process.env.TABLA_TURNOS
+    modelName: 'Turno',
+    tableName: 'turnos'
   });
   return Turno;
 };

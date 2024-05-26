@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable(process.env.TABLA_NOTICIAS_GALERIAS, {
+    await queryInterface.createTable('noticias_galerias', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -38,6 +38,6 @@ module.exports = {
     });
   },
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable(process.env.TABLA_NOTICIAS_GALERIAS);
+    await queryInterface.dropTable('noticias_galerias');
   }
 };

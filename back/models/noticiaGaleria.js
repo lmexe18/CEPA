@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   class NoticiaGaleria extends Model {
     static associate(models) {
       this.hasMany(models.Noticia, { 
-        foreignKey: 'id', 
+        foreignKey: 'idNoticia', 
         as: 'noticia'
       });
     }
@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     foto: DataTypes.STRING
   }, {
     sequelize,
-    modelName: process.env.MODEL_NOTICIA_GALERIA,
-    tableName: process.env.TABLA_NOTICIAS_GALERIAS
+    modelName: 'NoticiaGaleria',
+    tableName: 'noticias_galerias'
   });
   return NoticiaGaleria;
 };

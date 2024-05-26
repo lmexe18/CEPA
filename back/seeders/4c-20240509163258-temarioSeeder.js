@@ -4,13 +4,13 @@ const { Temario } = require('../models/temario');
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(process.env.TABLA_TEMARIOS, [
+    await queryInterface.bulkInsert('temarios', [
       {
         tema: 'Tema 1.1',
         link: 'https://drive.google.com/file/d/1T3Q5k7FwekVBOO_ysBrq_ss3SIJmi6ui/view',
         idAsignatura: 1,
         visibilidad: false,
-        activo: false,
+        activo: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -19,7 +19,7 @@ module.exports = {
         link: 'https://drive.google.com/file/d/1SOcLHLhnfI4N-UXiBkBkxLcRNqloRIdp/view',
         idAsignatura: 1,
         visibilidad: false,
-        activo: false,
+        activo: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -28,7 +28,7 @@ module.exports = {
         link: 'https://drive.google.com/file/d/1xQ_hMfLJHGNJR2vbWAMFQsnfHXQGNb58/view',
         idAsignatura: 1,
         visibilidad: false,
-        activo: false,
+        activo: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -37,7 +37,7 @@ module.exports = {
         link: 'https://drive.google.com/file/d/1vbb5ablTC8SeSphXBohnZAmBSsy63xFA/view',
         idAsignatura: 1,
         visibilidad: false,
-        activo: false,
+        activo: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -46,7 +46,7 @@ module.exports = {
         link: 'https://drive.google.com/file/d/1N0LLBxHsarmR_DfVtW9gIsqOSabg5HAP/view',
         idAsignatura: 1,
         visibilidad: false,
-        activo: false,
+        activo: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -55,7 +55,7 @@ module.exports = {
         link: 'https://drive.google.com/file/d/1mwVHq1_8Gy7zR1PZ8j7bQnIPYSypM8UP/view',
         idAsignatura: 1,
         visibilidad: false,
-        activo: false,
+        activo: true,
         createdAt: new Date(),
         updatedAt: new Date()
       }
@@ -63,6 +63,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-     await queryInterface.bulkDelete(process.env.TABLA_TEMARIOS, null, {});
+     await queryInterface.bulkDelete('temarios', null, {});
   }
 };

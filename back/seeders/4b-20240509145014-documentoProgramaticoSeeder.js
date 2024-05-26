@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(process.env.TABLA_DOCUMENTOS_PROGRAMATICOS, [
+    await queryInterface.bulkInsert('documentos_programaticos', [
       {
         nombre: 'Proyecto Educativo',
         link: 'https://docs.google.com/document/d/19rZDE-dfXqSKCz50oFjl73opSzfS2MMJ/edit',
@@ -113,6 +113,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete(process.env.TABLA_DOCUMENTOS_PROGRAMATICOS, null, {}); 
+    await queryInterface.bulkDelete('documentos_programaticos', null, {}); 
   }
 };

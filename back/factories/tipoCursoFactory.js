@@ -1,5 +1,3 @@
-const { TipoCurso } = require('../models');
-
 const tipoCursoFactory = async (ctos = 4) => {
     let factory = [];
     for (let i = 1; i <= ctos; i++) {
@@ -11,7 +9,7 @@ const tipoCursoFactory = async (ctos = 4) => {
         };
         factory.push(tipoCurso);
     }
-    return TipoCurso.bulkCreate(factory);
+    return Promise.all(factory);
 };
 
 module.exports = {

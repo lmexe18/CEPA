@@ -3,8 +3,9 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(process.env.TABLA_TIPOS_EVENTOS, [{
+    await queryInterface.bulkInsert('tipos_eventos', [{
       nombre: 'Excursiones',
+      activo: true,
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
@@ -13,10 +14,12 @@ module.exports = {
       updatedAt: new Date()
     }, {
       nombre: 'Asociación Amigos CEPA',
+      activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       nombre: 'Días Señalados',
+      activo:true,
       createdAt: new Date(),
       updatedAt: new Date()
     }
@@ -24,7 +27,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete(process.env.TABLA_TIPOS_EVENTOS, null, {});
+    await queryInterface.bulkDelete('tipos_eventos', null, {});
 
   }
 };

@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(process.env.TABLA_TIPOS_CURSOS, [{
+    await queryInterface.bulkInsert('tipos_cursos', [{
       nombre: 'Básica Alfabetizacion',
       activo: true,
       createdAt: new Date(),
@@ -102,7 +102,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete(process.env.TABLA_TIPOS_CURSOS, null, {});
+    await queryInterface.bulkDelete('tipos_cursos', null, {});
 
   }
 };

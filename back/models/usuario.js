@@ -3,11 +3,11 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class usuario extends Model {
+  class Usuario extends Model {
     static associate(models) {
       this.hasMany(models.rolUsuario, {
         foreignKey: 'id',
-        as: process.env.MODEL_ROL_USUARIO,
+        as: 'rolUsuario',
       });
     }
   }
@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     activo: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: process.env.MODEL_USUARIO,
-    tableName: process.env.TABLA_USUARIOS
+    modelName: 'Usuario',
+    tableName: 'usuarios'
   });
   return Usuario;
 };

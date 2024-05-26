@@ -6,15 +6,15 @@ module.exports = (sequelize, DataTypes) => {
   class Aula extends Model {
 
     static associate(models) {
-      this.hasMany(models.reservaAula, {
-        foreignKey: 'idAula',
-        as: 'reservasAula'
+      this.hasMany(models.AulaHorario, {
+        foreignKey: 'idAulaHorario',
+        as: 'aulaHorario'
       });
       
-      this.belongsTo(models.tipoAula, {
-        foreignKey: 'idTipo',
+      this.belongsTo(models.TipoAula, {
+        foreignKey: 'idTipoAula',
         as: 'tipoAula'
-      });
+      })
     }
   }
   Aula.init({
@@ -23,8 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     activo: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: process.env.MODEL_AULA,
-    tableName: process.env.TABLA_AULAS
+    modelName: 'aula',
+    tableName: 'aulas'
   });
   return Aula;
 };

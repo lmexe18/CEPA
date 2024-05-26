@@ -1,4 +1,3 @@
-const { Turno } = require('../models');
 const turnoFactory = async (ctos = 4) => {
     let factory = [];
     for (let i = 1; i <= ctos; i++) {
@@ -9,7 +8,7 @@ const turnoFactory = async (ctos = 4) => {
         };
         factory.push(turno);
     }
-    return Turno.bulkCreate(factory);
+    return Promise.all(factory);
 };
 
 module.exports = {

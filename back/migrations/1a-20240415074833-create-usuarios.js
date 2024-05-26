@@ -3,16 +3,15 @@ require('dotenv').config()
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable(process.env.TABLA_USUARIOS, {
+    await queryInterface.createTable('usuarios', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-    
       nombre: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false
       },
       email: {
@@ -21,7 +20,7 @@ module.exports = {
         unique: true
       },
       password: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(128),
         allowNull: false
       },
       activo: {
@@ -42,6 +41,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable(process.env.TABLA_USUARIOS);
+    await queryInterface.dropTable('usuarios');
   }
 };

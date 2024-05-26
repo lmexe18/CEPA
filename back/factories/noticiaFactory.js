@@ -1,26 +1,22 @@
-const noticiaFactory = async (ctos,categorias) => {
+const noticiaFactory = async (ctos) => {
     let factory = []
-    let ejemplo={
-        titulo: 'noticia',
-        texto:'texto'
-    }
 
-    for(let i = 1; i <= categorias; i++) {
-        for(let x = 0; x < ctos; x++) {
-          
-            let noticia = 
-            {
-                titulo: ejemplo.titulo,
-                idTipoNoticia: i,
-                enlace: 'https://github.com/lmexe18/CEPA',
-                foto: 'CEPA.jpg',
-                visibilidad:true,
-                createdAt: new Date(),
-                updatedAt: new Date()
-            }
-     
-            factory.push(noticia)
-        }   
+    for (let i = 1; i <= ctos; i++) {
+
+        let noticia =
+        {
+            titulo: "Noticia "+i,
+            noticia: "Texto de la noticia "+i,
+            enlace: 'https://github.com/lmexe18/CEPA',
+            foto: 'CEPA.jpg',
+            visibilidad: true,
+            idTipoNoticia: i,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }
+
+        factory.push(noticia)
+
     }
     return Promise.all(factory);
 }

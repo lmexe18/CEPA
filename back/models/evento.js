@@ -4,11 +4,11 @@ module.exports = (sequelize, DataTypes) => {
   class Evento extends Model {
     static associate(models) {
       this.hasMany(models.AsistenciaEvento, {
-        foreignKey:'id',
+        foreignKey:'idEvento',
         as:'asistencias'
       });
-      this.hasMany(models.Galeria, { 
-        foreignKey:'id',
+      this.hasMany(models.EventoGaleria, { 
+        foreignKey:'idEvento',
         as:'galerias'
       });
     }
@@ -24,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     idTipoEvento: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: process.env.MODEL_EVENTO,
-    tableName: process.env.TABLA_EVENTOS
+    modelName: 'Evento',
+    tableName: 'eventos'
   });
   return Evento;
 };

@@ -1,5 +1,3 @@
-const { NoticiaGaleria } = require('../models/noticiaGaleria');
-
 const noticiaGaleriaFactory = async (ctos = 1) => {
     let factory = [];
 
@@ -13,7 +11,7 @@ const noticiaGaleriaFactory = async (ctos = 1) => {
         factory.push(galeria);
     }
     
-    return factory;
+    return Promise.all(factory);
 };
 
 module.exports = {

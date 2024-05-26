@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       this.hasMany(models.Aula, {
-        foreignKey: 'tipoId',
+        foreignKey: 'id',
         as: 'aulas'
       });
     }
@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     activo: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: process.env.MODEL_TIPO_AULA,
-    tableName: process.env.TABLA_TIPOS_AULAS
+    modelName: 'TipoAula',
+    tableName: 'tipos_aulas'
   });
   return TipoAula;
 };

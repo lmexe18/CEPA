@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.hasMany(models.rolUsuario, {
         foreignKey: 'id',
-        as: process.env.ROL_USUARIO
+        as: 'rolUsuario'
       });
     }
   }
@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     nombre: DataTypes.STRING
   }, {
     sequelize,
-    modelName: process.env.MODEL_ROL,
-    tableName: process.env.TABLA_ROLES
+    modelName: 'Rol',
+    tableName: 'roles'
   });
   return Rol;
 };

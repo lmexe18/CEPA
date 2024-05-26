@@ -14,14 +14,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   Noticia.init({
     titulo: DataTypes.STRING,
+    noticia: DataTypes.STRING,
     enlace: DataTypes.STRING,
-    idTipoEvento: DataTypes.STRING,
     foto: DataTypes.STRING,
-    visibilidad: DataTypes.BOOLEAN
+    visibilidad: DataTypes.BOOLEAN,
+    idTipoNoticia: DataTypes.STRING,
   }, {
     sequelize,
-    modelName: process.env.MODEL_ONTICIA,
-    tableName: process.env.TABLA_NOTICIAS
+    modelName: 'Noticia',
+    tableName: 'noticias'
   });
   return Noticia;
 };

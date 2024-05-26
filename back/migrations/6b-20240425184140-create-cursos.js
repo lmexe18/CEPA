@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable(process.env.TABLA_CURSOS, {
+    await queryInterface.createTable('cursos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -24,16 +24,16 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
+      horario: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       fechaInicio: {
         type: Sequelize.DATE,
         allowNull: true
       },
-      fechaFinalizacion: {
+      fechaFin: {
         type: Sequelize.DATE,
-        allowNull: true
-      },
-      horario: {
-        type: Sequelize.STRING,
         allowNull: true
       },
       idTipoCurso: {
@@ -44,7 +44,8 @@ module.exports = {
           },
           key: 'id'
         },
-        onDelete: 'CASCADE'
+        onDelete: 'CASCADE',
+        allowNull: true,
       },
       idTutor: {
         type: Sequelize.INTEGER,
@@ -54,7 +55,8 @@ module.exports = {
           },
           key: 'id'
         },
-        onDelete: 'CASCADE'
+        onDelete: 'CASCADE',
+        allowNull: true
       },
       activo: {
         type: Sequelize.BOOLEAN,
@@ -74,6 +76,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable(process.env.TABLA_GRUPOS);
+    await queryInterface.dropTable('cursos');
   }
 };
