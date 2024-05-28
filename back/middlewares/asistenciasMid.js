@@ -1,5 +1,5 @@
 const {response,request} = require('express');
-const Conexion = require('../database/conexionAsistenciaEvento');
+const Conexion = require('../database/conexionAsistencia');
 
 const asistenciaExiste = () => {
     return async (req, res, next) => {

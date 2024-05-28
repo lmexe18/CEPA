@@ -1,5 +1,3 @@
-//Jaime
-
 const { response, request } = require('express')
 const ConexionFranjas = require('../database/conexionAulaFranja')
 

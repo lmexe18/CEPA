@@ -17,36 +17,41 @@ class Server {
                 credentials: true
             }
         });
+        this.apiUsuarios = '/api/usuario';
+        this.apiRoles = '/api/roles'
+        this.apiRolesAsignados = '/api/rolesAsignados'
+        this.categoriasPath = '/api/categorias';
+        this.enlacesPath = '/api/enlaces'
+        this.noticiasPath = '/api/noticias'
+        this.seccionesPath = '/api/secciones'
+        this.aulasPath = '/api/aulas'
+        this.horariosPath = '/api/horarios'
+        this.franjasPath = '/api/franjas'
+        this.reservasPath = '/api/reservas'
+        this.chatPath = '/api/chat';
+        this.eventoPath = '/api/eventos';
+        this.mensajeChatPath = '/api/mensajeChat';
+        this.asistenciaPath = '/api/asistencia';
+        this.galeriaPath = '/api/galeria';
+        this.uploadsNoticiasPath = '/api/uploads/noticias';
+        this.uploadsSeccionesPath = '/api/uploads/secciones';
+        this.authPath = '/api/auth';
+        this.uploadsFotoEventosPath = '/api/uploads/eventos';
+        this.uploadsGaleriasPath = '/api/uploads/galerias'
         this.alumnoCursoPath = '/api/alumnoCurso'
         this.asignaturaPath = '/api/asignatura'
         this.asignaturaProfeCursoPath = '/api/asignaturaProfeCurso'
-        this.asistenciaEventoPath = '/api/asistenciaEvento'
-        this.aulaPath = '/api/aula'
-        this.authPath = '/api/auth'
-        this.rolUsuarioPath = '/api/rolUsuario'
         this.contactoPath = '/api/contacto'
         this.cursoPath = '/api/curso'
-        this.departamentoPath = '/api/departamento'
         this.documentoProgramaticoPath = '/api/documentoProgramatico'
         this.equipoDirectivoPath = '/api/equipoDirectivo'
-        this.eventoPath = '/api/evento'
-        this.eventoGaleriaPath = '/api/eventoGaleria'
-        this.horarioPath = '/api/horario'
-        this.noticiaPath = '/api/noticia'
-        this.noticiaGaleriaPath = '/api/noticiaGaleria'
-        this.reservaPath = '/api/reserva'
-        this.rolPath = '/api/rol'
-        this.rolUsuarioPath = '/api/rolUsuario'
         this.temarioPath = '/api/temario'
-        this.tipoAulaPath= '/api/tipoAula'
         this.tipoCursoPath = '/api/tipoCurso'
-        this.tipoEventoPath = '/api/tipoEvento'
-        this.tipoNoticiaPath = '/api/tipoNoticia'
-        this.usuarioPath = '/api/usuario';
-        this.uploadsFotoEventoPath = '/api/uploads/evento';
-        this.uploadsEventoGaleriaPath = '/api/uploads/eventoGaleria'
-        this.uploadsFotoNoticiaPath = '/api/uploads/noticia';
-        this.uploadsNoticiaGaleriaPath = '/api/uploads/noticiaGaleria'
+        this.categoriaRoutes = '/api/categoria'
+        this.departamentoPath = '/departamento'
+        this.turnoPath = '/turno'
+        this.tipoEventoPath = '/tipoEvento'
+        this.tipoNoticiaPath = '/tipoNoticia'
         this.middlewares();
         this.routes();
         this.sockets();
@@ -63,42 +68,39 @@ class Server {
     }
 
     routes() {
+        this.app.use(this.eventoPath, require('../routes/eventoRoutes'));
+        this.app.use(this.asistenciaPath, require('../routes/asistenciaRoutes'));
+        this.app.use(this.apiUsuarios, require('../routes/usuarioRutas'))
+        this.app.use(this.apiRoles, require('../routes/rolesRutas'))
+        this.app.use(this.apiRolesAsignados, require('../routes/rolesAsignadosRutas'))
+        this.app.use(this.categoriasPath, require('../routes/categoriasRoutes'))
+        this.app.use(this.enlacesPath, require('../routes/enlacesRoutes'))
+        this.app.use(this.noticiasPath, require('../routes/noticiasRoutes'))
+        this.app.use(this.seccionesPath, require('../routes/seccionesRoutes'))
+        this.app.use(this.aulasPath, require('../routes/aulaEspecialRoutes'))
+        this.app.use(this.horariosPath, require('../routes/aulaHorarioRoutes'))
+        this.app.use(this.franjasPath, require('../routes/aulaFranjaRoutes'))
+        this.app.use(this.reservasPath, require('../routes/aulaReservaRoutes'))
+        this.app.use(this.galeriaPath, require('../routes/galeriaRoutes'))
+        this.app.use(this.uploadsNoticiasPath, require('../routes/uploadsNoticiasRoutes'));
+        this.app.use(this.uploadsSeccionesPath, require('../routes/uploadsSeccionesRoutes'));
+        this.app.use(this.authPath, require('../routes/authRoutes'));
+        this.app.use(this.uploadsFotoEventosPath, require('../routes/uploadsFotoEventos'))
+        this.app.use(this.uploadsGaleriasPath, require('../routes/uploadsGaleriaRoutes'))
         this.app.use(this.alumnoCursoPath, require('../routes/alumnoCursoRoutes'))
         this.app.use(this.asignaturaPath, require('../routes/asignaturaRoutes'))
         this.app.use(this.asignaturaProfeCursoPath, require('../routes/asignaturaProfeCursoRoutes'))
-        this.app.use(this.asistenciaEventoPath, require('../routes/asistenciaEventoRoutes'));
-        this.app.use(this.aulaPath, require('../routes/aulaRoutes'))
-        this.app.use(this.authPath, require('../routes/authRoutes'))
-        this.app.use(this.rolUsuarioPath, require('../routes/rolUsuarioRoutes'))
         this.app.use(this.contactoPath, require('../routes/contactoRoutes'))
         this.app.use(this.cursoPath, require('../routes/cursoRoutes'))
-        this.app.use(this.departamentoPath, require('../routes/departamentoRoutes'))
         this.app.use(this.documentoProgramaticoPath, require('../routes/documentoProgramaticoRoutes'))
         this.app.use(this.equipoDirectivoPath, require('../routes/equipoDirectivoRoutes'))
-        this.app.use(this.eventoPath, require('../routes/eventoRoutes'));
-        this.app.use(this.eventoGaleriaPath, require('../routes/eventoGaleriaRoutes'))
-        this.app.use(this.horarioPath, require('../routes/horarioRoutes'))
-        this.app.use(this.noticiaPath, require('../routes/noticiaRoutes'))
-        this.app.use(this.noticiaGaleriaPath, require('../routes/noticiaGaleriaRoutes'))
-        this.app.use(this.reservaPath, require('../routes/reservaRoutes'))
-        this.app.use(this.rolPath, require('../routes/rolRoutes'))  
-        this.app.use(this.rolUsuarioPath, require('../routes/rolUsuarioRoutes'))
         this.app.use(this.temarioPath, require('../routes/temarioRoutes'))
-        this.app.use(this.tipoAulaPath, require('../routes/tipoAulaRoutes'))
         this.app.use(this.tipoCursoPath, require('../routes/tipoCursoRoutes'))
+        this.app.use(this.categoriaRoutes, require('../routes/categoriasRoutes'))
+        this.app.use(this.departamentoPath, require('../routes/departamentoRoutes'))
+        this.app.use(this.turnoPath, require('../routes/turnoRoutes'))
         this.app.use(this.tipoEventoPath, require('../routes/tipoEventoRoutes'))
         this.app.use(this.tipoNoticiaPath, require('../routes/tipoNoticiaRoutes'))
-        this.app.use(this.usuarioPath, require('../routes/usuarioRoutes'))
-        this.app.use(this.uploadsEventoGaleriaPath, require('../routes/uploadsEventoGaleriaRoutes'));
-        this.app.use(this.uploadsFotoEventoPath, require('../routes/uploadsFotoEvento'))
-        this.app.use(this.authPath, require('../routes/authRoutes'));
-        this.app.use(this.uploadsNoticiaGaleriaPath, require('../routes/uploadsNoticiaGaleriaRoutes'))
-        this.app.use(this.uploadsFotoNoticiaPath, require('../routes/uploadsFotoNoticia'))
-    }
-
-   sockets() {
-        this.io.on('connection', noticiasSocketController);
-        this.io.on('connection', eventosSocketController)
     }
 
     listen() {
@@ -107,6 +109,11 @@ class Server {
 
         this.serverWebSocket.listen(process.env.WEBSOCKETPORT, () => {
         });
+    }
+
+    sockets(){
+        this.io.on('connection', noticiasSocketController);
+        this.io.on('connection', eventosSocketController)
     }
 }
 

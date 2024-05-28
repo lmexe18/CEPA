@@ -3,12 +3,13 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Evento extends Model {
     static associate(models) {
-      this.hasMany(models.AsistenciaEvento, {
-        foreignKey:'idEvento',
+      
+      this.hasMany(models.Asistencia, {
+        foreignKey:'id',
         as:'asistencias'
       });
-      this.hasMany(models.EventoGaleria, { 
-        foreignKey:'idEvento',
+      this.hasMany(models.Galeria, { 
+        foreignKey:'id',
         as:'galerias'
       });
     }
@@ -16,12 +17,12 @@ module.exports = (sequelize, DataTypes) => {
   Evento.init({
     nombre: DataTypes.STRING,
     descripcion: DataTypes.STRING,
-    fechaHora: DataTypes.DATE,
+    fecha: DataTypes.STRING,
+    hora: DataTypes.STRING,
     fotoCartel: DataTypes.STRING,
     mg: DataTypes.INTEGER,
     visibilidad: DataTypes.BOOLEAN,
-    numAsistentes: DataTypes.INTEGER,
-    idTipoEvento: DataTypes.INTEGER
+    numAsistentes: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Evento',

@@ -6,7 +6,7 @@ module.exports = {
 
     // Turno: Mañana, Tarde, Mañana y Tarde, Noche
     //        1       2      3               4
-    await queryInterface.bulkInsert(process.env.TABLA_CURSOS, [
+    await queryInterface.bulkInsert('cursos', [
       { // 1º alfabetización
         numeroCurso: 1,
         idTurno: 2,

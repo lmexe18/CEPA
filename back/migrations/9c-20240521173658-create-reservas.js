@@ -1,28 +1,12 @@
 'use strict';
-
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('reservas', {
+    await queryInterface.createTable('aulas_reservas', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      horaInicio: {
-        allowNull: false,
-        type: Sequelize.STRING(5)
-      },
-      horaFin: {
-        allowNull: false,
-        type: Sequelize.STRING(5)
-      },
-      fecha:{
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      idTurno: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       idAula: {
@@ -30,14 +14,25 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'aulas'
+            tableName: 'aulas_especiales'
           },
           key: 'id'
         },
-        onDelete: 'CASCADE'
+        onDelete:'CASCADE'
+      },
+      idHorario: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'aulas_horarios'
+          },
+          key: 'id'
+        },
+        onDelete:'CASCADE'
       },
       idProfesor: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: {
@@ -45,22 +40,23 @@ module.exports = {
           },
           key: 'id'
         },
-        onDelete: 'CASCADE'
+        onDelete:'CASCADE'
+      },
+      fecha: {
+        allowNull: false,
+        type: Sequelize.DATEONLY
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        type: Sequelize.DATE
       }
     });
   },
-
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('reservas');
+    await queryInterface.dropTable('aulas_reservas')
   }
-};
+}

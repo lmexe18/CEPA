@@ -1,10 +1,10 @@
 'use strict';
 
-const { eventoFactory } = require('../factories/eventoFactory');
+const { eventosFactory } = require('../factories/eventoFactory');
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    const eventos = await eventoFactory(5);
+    const eventos = await eventosFactory(5);
     await queryInterface.bulkInsert('eventos', eventos, {});
   },
 

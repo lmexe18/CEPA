@@ -1,9 +1,14 @@
-require('dotenv').config();
+require('dotenv').config()
 const bcrypt = require('bcrypt');
-const { Sequelize, Op } = require('sequelize');
-const { Usuario, RolUsuario, Rol } = require('../models/index.js');
+const {
+    Sequelize,
+    sequelize,
+    Op,
+    where
+} = require('sequelize');
+const models = require('../models/index.js');
 
-class ConexionUsuario {
+class ConexionUser{
     constructor() {
         this.db = new Sequelize(process.env.DB_DEV, process.env.DB_USER, process.env.DB_PASSWORD, {
             host: process.env.DB_HOST,
@@ -17,147 +22,146 @@ class ConexionUsuario {
         });
     }
 
-    conectar() {
+    conectar = () => {
         this.db.authenticate().then(() => {
+       
         }).catch((error) => {
+            
         });
     }
-
-    desconectar() {
-        process.on('SIGINT', () => {
-            this.db.close().then(() => {
-                process.exit(0);
-            }).catch((error) => {
-                process.exit(1);
-            });
-        });
+    desconectar = () => {
+        process.on('SIGINT', () => conn.close())
     }
 
-    async getUsuarios() {
-        this.conectar();
-        let resultado = [];
-        try {
-            resultado = await Usuario.findAll();
-        } catch (error) {
-        } finally {
+    getUsuarios = async () => {
+        try{
+            let resultado = [];
+            this.conectar();
+            resultado = await models.user.findAll();
+            return resultado;
+        }catch(error){
+          throw error
+        }finally{
             this.desconectar();
         }
-        return resultado;
     }
 
-    async getUsuarioPorId(id) {
-        this.conectar();
-        let resultado;
-        try {
-            resultado = await Usuario.findByPk(id);
+    getUsuario = async (id) => {
+        try{
+            let resultado = [];
+            this.conectar();
+            resultado = await models.user.findByPk(id);
             if (!resultado) {
-                throw new Error('Usuario no encontrado');
+                throw new Error('error');
             }
-        } catch (error) {
-        } finally {
-            this.desconectar();
+            return resultado;
+        }catch(error){
+            throw error
         }
-        return resultado;
+        finally{
+            this.desconectar()
+        }
     }
 
-    async postUsuario(body) {
-        this.conectar();
+    postUsuarios = async (body) => {
         let resultado;
+        this.conectar();
         try {
             const password = await bcrypt.hash(body.password, 10);
-            const usuarioNuevo = new Usuario(body);
-            usuarioNuevo.password = password;
+            const usuarioNuevo = new models.user(body);
+            usuarioNuevo.password = password
             await usuarioNuevo.save();
-            resultado = usuarioNuevo
+            resultado = usuarioNuevo.id; 
+            return resultado
         } catch (error) {
             if (error instanceof Sequelize.UniqueConstraintError) {
-                throw new Error('El email ya está registrado');
             } else {
-                throw new Error ('Error en el registro '+error)
             }
+            throw error;
         } finally {
             this.desconectar();
         }
-        return resultado;
+
+     
     }
 
-    async deleteUsuario(id) {
-        this.conectar();
-        let resultado;
-        try {
-            resultado = await Usuario.findByPk(id);
+    deleteUsuarios = async (id) => {
+        try{
+            this.conectar();
+            let resultado = await models.user.findByPk(id);
             if (!resultado) {
-                throw new Error('Usuario no encontrado');
+                throw error;
             }
             await resultado.destroy();
-        } catch (error) {
-        } finally {
-            this.desconectar();
+            return resultado;
+        }catch(error){
+            throw error
+        }finally{
+            this.desconectar()
         }
-        return resultado;
     }
-
-    async putUsuario(id, body) {
+    putUsuarios = async (id,body) => {
+        let resultado = 0
         this.conectar();
-        let resultado;
-        try {
-            const usuario = await Usuario.findByPk(id);
-            if (!usuario) {
-                throw new Error('Usuario no encontrado');
+        try{
+            const task = await models.user.findByPk(id);
+            resultado = await task.update(body)
+            return resultado
+        }catch(error){
+            throw error
+        }finally{
+            this.desconectar()
+        }
+    }
+    //Óscar
+    checkLogin = async (email) => {
+
+        this.conectar();
+        let user = await models.user.findOne(({
+            where: {
+                email
             }
-            resultado = await usuario.update(body);
-        } catch (error) {
-        } finally {
-            this.desconectar();
-        }
-        return resultado;
-    }
+        }));
 
-    async checkLogin(email) {
-        this.conectar();
-        let userEncontrado;
-        try {
-            userEncontrado = await Usuario.findOne({
-                where: { email }
-            });
-            if (!userEncontrado) {
-                throw new Error('Email no registrado');
-            }
-        } catch (error) {
-        } finally {
-            this.desconectar();
+        this.desconectar();
+        if (!user) {
+            throw new Error('Email no registrado');
         }
-        return userEncontrado;
-    }
 
-    async getRolUsuarioPorId(idU) {
-        this.conectar();
-        let resultado;
+        return user;
+    }
+        //Óscar
+    getRolUserId = async (idU) => {
         try {
-            resultado = await Usuario.findOne({
-                attributes: ['id', 'nombre', 'email', 'createdAt', 'updatedAt'],
-                where: { id: { [Op.eq]: idU } },
-                include: [
-                    {
-                        model: RolUsuario,
-                        as: 'roles usuario',
-                        include: [
-                            {
-                                model: Rol,
-                                as: 'rol',
-                                attributes: ['nombre'],
-                            },
-                        ],
-                        attributes: ['id'],
-                    },
-                ],
+
+            let resultado = [];
+            this.conectar();
+            resultado = await models.user.findOne({
+                attributes: ['id','nombre','email','createdAt','updatedAt'],
+                where: {
+                    id: {
+                        [Op.eq]: idU
+                    }
+                },
+                include: [{
+                    model: models.rolAsignado,
+                    as: 'rolesAsignados',
+                    include: [{
+                            model: models.rol,
+                            as: 'rol',
+                            attributes: ['nombre'],
+                        },
+
+                    ],
+                    attributes: ['id'],
+                }, ],
             });
-        } catch (error) {
-        } finally {
             this.desconectar();
+            return resultado;
+        } catch (err) {
+            this.desconectar()
         }
-        return resultado;
     }
 }
 
-module.exports = ConexionUsuario
+module.exports = ConexionUser;

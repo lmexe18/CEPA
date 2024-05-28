@@ -6,13 +6,12 @@ const obtenerEventos = (req, res = response) => {
 
     conx.getEventos()
         .then((eventos) => {
+
             res.status(200).json(eventos);
         })
         .catch((err) => {
-            res.status(404).json({ 
-                'msg': 'No se han encontrado registros',
-                'error':err.message 
-            });
+ 
+            res.status(404).json({ 'msg': 'No se han encontrado registros' });
         });
 }
 
@@ -21,13 +20,12 @@ const obtenerEventoPorId = (req, res = response) => {
 
     conx.getEventoPorId(req.params.id)
         .then((evento) => {
+    
             res.status(200).json(evento);
         })
         .catch((err) => {
-            res.status(404).json({ 
-                'msg': 'No se ha encontrado el registro',
-                'error':err.message
-             });
+    
+            res.status(404).json({ 'msg': 'No se ha encontrado el registro' });
         });
 }
 
@@ -36,14 +34,12 @@ const subirEvento = (req = request, res = response) => {
 
     conx.postEvento(req.body)
         .then((evento) => {
+           
             res.status(200).json({id:evento});
         })
         .catch((err) => {
-            res.status(404).json({
-                'msg': 'No se ha podido subir el registro',
-                'error':err.message
-            })
-
+  
+            res.status(404).json(err);
         });
 }
 
@@ -52,13 +48,12 @@ const borrarEvento = (req, res = response) => {
 
     conx.deleteEvento(req.params.id)
         .then((evento) => {
+        
             res.status(200).json(evento);
         })
         .catch((err) => {
-            res.status(404).json({
-                'msg': 'No se ha podido borrar el registro',
-                'error':err.message
-            });
+
+            res.status(404).json(err);
         });
 }
 
@@ -67,13 +62,12 @@ const actualizarEvento = (req, res = response) => {
 
     conx.updateEvento(req.params.id, req.body)
         .then((evento) => {
+        
             res.status(200).json(evento);
         })
         .catch((err) => {
-            res.status(404).json({
-                'msg': 'No se ha podido actualizar el registro',
-                'error':err.message
-            });
+           
+            res.status(404).json(err);
         });
 }
 
@@ -81,13 +75,12 @@ const aumentarMg = (req, res) => {
     const conx = new EventoConexion()
     conx.plusMgEvento(req.params.id)
         .then((evento) => {
+         
             res.status(200).json(evento);
         })
         .catch((err) => {
-            res.status(404).json({
-                'msg': 'No se ha podido actualizar el registro',
-                'error':err.message
-            });
+          
+            res.status(404).json(err);
         });
 }
 
@@ -95,13 +88,12 @@ const obtenerNumAsistentes = (req, res) => {
     const conx = new EventoConexion()
     conx.getNumAsistentesEvento(req.params.id)
         .then((asistencias) => {
+
             res.status(200).json(asistencias)
         })
         .catch((err) => {
-            res.status(404).json({
-                'msg': 'No se ha podido obtener el numero de asistentes',
-                'error':err.message
-            })
+           
+            res.status(404).json(err)
         })
     
 }
@@ -110,13 +102,12 @@ const eliminarAsistente = (req, res) => {
     const conx = new EventoConexion()
     conx.deleteAsistenteEvento(req.params.id)
         .then((evento) => {
+ 
             res.status(200).json(evento);
         })
         .catch((err) => {
-            res.status(404).json({
-                'msg': 'No se ha podido eliminar el asistente',
-                'error':err.message
-            });
+        
+            res.status(404).json(err);
         });
 }
 
@@ -124,44 +115,27 @@ const anadirAsistente = (req, res) => {
     const conx = new EventoConexion()
     conx.putAsistenteEvento(req.params.id)
         .then((evento) => {
+    
             res.status(200).json(evento);
         })
         .catch((err) => {
-            res.status(404).json({
-                'msg': 'No se ha podido anadir el asistente',
-                'error':err.message
-            });
+   
+            res.status(404).json(err);
         });
 }
 
-const obtenerEventosVisibles = (req, res) => {
+const obtenerEventosActivos = (req, res) => {
     const conx = new EventoConexion();
 
-    conx.getEventosVisibles()
+    conx.getEventosActivos()
         .then((eventos) => {
+            console.log('Listado correcto!');
             res.status(200).json(eventos);
         })
         .catch((err) => {
-            res.status(404).json({
-                'msg': 'No se ha podido obtener los eventos activos',
-                'error':err.message
-            });
+            console.log('No hay registros');
+            res.status(404).json({ 'msg': 'No se han encontrado registros' });
         });
-}
-
-const obtenerEventosPorTipo =(req = request, res = response) => {
-    const conx = new EventoConexion();
-    conx.getEventosPorTipo(req.params.idTipo)
-        .then((eventos) => {
-            res.status(200).json(eventos);
-        })
-        .catch((err) => {
-            res.status(404).json({
-                'msg': 'No se ha podido obtener los eventos por tipo',
-                'error':err.message
-            });
-        })
-
 }
 
 module.exports = {
@@ -174,6 +148,5 @@ module.exports = {
     obtenerNumAsistentes,
     eliminarAsistente,
     anadirAsistente,
-    obtenerEventosVisibles,
-    obtenerEventosPorTipo
+    obtenerEventosActivos
 }
