@@ -8,7 +8,7 @@ import { Usuario } from '../../interface/usuario';
 import { FormsModule, NgModel } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageService } from 'primeng/api';
-import { AsistenciaService } from '../../services/asistenciaEvento.service';
+import { AsistenciaService } from '../../services/asistencia.service';
 import { DialogService } from 'primeng/dynamicdialog';
 import { UsersComponent } from '../users/users.component';
 import { Users } from '../../interface/users';

@@ -6,7 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/api';
 import { EventosService } from '../../services/eventos.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AsistenciaService } from '../../services/asistenciaEvento.service';
+import { AsistenciaService } from '../../services/asistencia.service';
 import { ToastModule } from 'primeng/toast';
 
 @Component({
