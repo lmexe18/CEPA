@@ -12,8 +12,7 @@ import { NuevaNoticiaComponent } from '../nueva-noticia/nueva-noticia.component'
 import { LoginComponent } from '../login/login.component';
 import { ProfileIconComponent } from '../profile-icon/profile-icon.component';
 import { AuthService } from '../../services/auth.service';
-//Óscar
-// Laura -> añadir apartado de eventos
+
 @Component({
   selector: 'app-cabecera',
   standalone: true,

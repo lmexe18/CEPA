@@ -30,7 +30,7 @@ class ConexionEvento {
         process.on('SIGINT', () => this.db.close());
     }
 
-    async getEventos(){
+    getEventos = async () => {
         this.conectar();
         let resultado = [];
         try {
@@ -43,7 +43,7 @@ class ConexionEvento {
         return resultado;
     }
 
-    async getEventosVisibles(){
+    getEventosActivos = async () => {
         this.conectar();
         let resultado = [];
         try {
@@ -61,7 +61,7 @@ class ConexionEvento {
     }
     
 
-    async getEventoPorId(id) {
+    getEventoPorId = async (id) => {
         this.conectar();
         let resultado;
         try {
@@ -74,7 +74,7 @@ class ConexionEvento {
         return resultado;
     }
 
-    async postEvento(body) {
+    postEvento = async (body) => {
         this.conectar();
         let resultado;
         try {
@@ -89,7 +89,7 @@ class ConexionEvento {
         }
     }
 
-    async updateEvento (id, body){
+    updateEvento = async (id, body) => {
         this.conectar();
         let resultado;
         try {
@@ -106,7 +106,7 @@ class ConexionEvento {
         return resultado;
     }
 
-    async deleteEvento(id){
+    deleteEvento = async (id) => {
         this.conectar();
         let resultado;
         try {
@@ -123,7 +123,7 @@ class ConexionEvento {
         return resultado;
     }
 
-    async plusMgEvento(id){
+    plusMgEvento = async (id) => {
         this.conectar();
         let resultado;
         try {
@@ -142,7 +142,7 @@ class ConexionEvento {
         return resultado;
     }
     
-    async getNumAsistentesEvento(id){
+    getNumAsistentesEvento = async  (id) => {
         this.conectar();
         let resultado;
         try {
@@ -156,7 +156,7 @@ class ConexionEvento {
         return resultado;
     }
 
-    async deleteAsistenteEvento(id){
+    deleteAsistenteEvento = async (id) => {
         this.conectar()
         let resultado
         try {
@@ -171,7 +171,7 @@ class ConexionEvento {
         return resultado;
     }
 
-    async putAsistenteEvento(id){
+    putAsistenteEvento = async (id) => {
         this.conectar()
         let resultado
         try {
@@ -182,25 +182,6 @@ class ConexionEvento {
       
         } finally {
             this.desconectar();
-        }
-        return resultado;
-    }
-
-    async getEventoPorTipo(idTipo){
-        this.conectar()
-        let resultado
-        try {
-            const evento = await models.Evento.findAll(
-                {
-                    where: {
-                        tipo: idTipo
-                    }
-                }
-            )
-            resultado = evento
-        } catch (error) { 
-        } finally{
-            this.desconectar()
         }
         return resultado;
     }

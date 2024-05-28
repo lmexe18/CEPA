@@ -18,8 +18,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      fechaHora: {
-        type: Sequelize.DATE,
+      fecha: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      hora: {
+        type: Sequelize.STRING,
         allowNull: false
       },
       fotoCartel: {
@@ -40,17 +44,6 @@ module.exports = {
       numAsistentes: {
         type: Sequelize.INTEGER,
         allowNull: false
-      },
-      idTipoEvento:{
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references:{
-          model:{
-            tableName: 'tipos_eventos'
-          },
-          key: 'id'
-        },
-        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

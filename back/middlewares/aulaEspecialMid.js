@@ -1,5 +1,5 @@
 const { response, request } = require('express')
-const ConexionAulas = require('../database/conexionAula')
+const ConexionAulas = require('../database/conexionAulaEspecial')
 
 const nombreEnUsoAula = (req, res, next) => {
     const conx = new ConexionAulas()

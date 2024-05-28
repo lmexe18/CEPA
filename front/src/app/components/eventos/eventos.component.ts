@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment.development';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { AuthService } from '../../services/auth.service';
 import { JsPDFService } from '../../services/js-pdfservice.service';
-import { AsistenciaService } from '../../services/asistencia.service';
+import { AsistenciaService } from '../../services/asistenciaEvento.service';
 import { MessageService } from 'primeng/api';
 import { GaleriaService } from '../../services/galeria.service';
 import { Galeria } from '../../interface/galeria';

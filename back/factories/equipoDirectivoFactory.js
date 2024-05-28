@@ -1,20 +1,19 @@
-const {fakerES} = require('@faker-js/faker');
+const { response, request } = require('express')
+const ConexionHorarios = require('../database/conexionAulaHorario')
 
-const equipoDirectivoFactory = async (ctos=4) => {
-    let factory = []
-    for (let i=2 ; i<ctos ; i++){
-        let equipoDirectivo = {
-            puesto: "Puesto "+i,
-            nombre: 'Usuario '+i,
-            email: fakerES.internet.email(),
-            createdAt: new Date(),
-            updatedAt: new Date()
-        }
-        factory.push(equipoDirectivo)
-    }
-    return Promise.all(factory)
+const aulaHorarioExiste = (idHorario) => {
+    return new Promise((resolve, reject) => {
+        const conx = new ConexionHorarios()
+        conx.getHorarioById(idHorario)
+        .then(msg => {
+            resolve(true)
+        })
+        .catch(err => {
+            reject(new Error('El horario seleccionado no existe'))
+        })
+    })
 }
 
-module.exports = {
-    equipoDirectivoFactory
+module.exports = { 
+    aulaHorarioExiste,
 }

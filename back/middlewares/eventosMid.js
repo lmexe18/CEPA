@@ -1,6 +1,6 @@
 const {response,request} = require('express');
 const Conexion = require('../database/conexionEvento');
-/*Laura María Pedraza Gómez* */
+
 const quedanPlazas = (req, res, next) => {
     
         const conexion = new Conexion();

@@ -1,5 +1,6 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('noticias', {
@@ -10,12 +11,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       titulo: {
-        type: Sequelize.STRING(50),
+        type: Sequelize.STRING,
         allowNull: false,
-      },
-      noticia: {
-        type: Sequelize.TEXT,
-        allowNull: false
       },
       enlace: {
         type: Sequelize.STRING,
@@ -25,17 +22,17 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      visibilidad:{
+      publicada:{
         type:Sequelize.BOOLEAN,
         allowNull:false,
         defaultValue:false
       },
-      idTipoNoticia: {
+      idCategoria: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: {
-            tableName:'tipos_noticias'
+            tableName: 'categorias'
           },
           key: 'id'
         },
@@ -43,13 +40,11 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        type: Sequelize.DATE
       }
     });
   },

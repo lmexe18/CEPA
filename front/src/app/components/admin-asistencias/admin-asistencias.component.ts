@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
-import { AsistenciaService } from '../../services/asistencia.service';
+import { AsistenciaService } from '../../services/asistenciaEvento.service';
 import { Usuario } from '../../interface/usuario';
 import { InputTextModule } from 'primeng/inputtext';
 import { ConfirmComponent } from '../confirm/confirm.component';

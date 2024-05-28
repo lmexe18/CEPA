@@ -3,8 +3,8 @@ const {rolFactory} =require('../factories/rolFactory')
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    const roles = await rolFactory(4);
-    await queryInterface.bulkInsert('roles', roles, {});
+    const rol = await rolFactory(4);
+    await queryInterface.bulkInsert('roles', rol, {});
   },
 
   async down (queryInterface, Sequelize) {
