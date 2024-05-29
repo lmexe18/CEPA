@@ -1,26 +1,43 @@
-
-
+@for (contacto of contacto; track contacto){
     <div class="container">
-    <img src="../../../assets/CEPA.jpg">
-    <div class="card2">
-        <h3>Centro Educación Personas Adultas</h3>
-        <p>Dirección: c/ Bernardo Balbuena 5, 13002 Ciudad Real <br>
-            Teléfono: 926 21 47 66 <br>
-            E-Mail: 13004067.cea&#64;edu.jccm.es</p>
-        <p class="card-footer">&copy; TODOS LOS DERECHOS RESERVADOS</p>
-    </div><br><br>
-    @if(eventos!=undefined){
+        <div class="card2">
+            <h1>{{ contacto.nombreCentro }}</h1>
+            <p>Dirección: {{ contacto.direccion }}<br>
+            Teléfono: {{ contacto.telefono }}<br>
+            E-Mail: {{ contacto.email }}</p>
+        </div><br><br>
+    </div>
+}
 
-        <h1>ÚLTIMO EVENTO</h1>
-        <app-preview-eventos [evento]="eventos[last]"></app-preview-eventos>
-    }
-    <h1>ÚLTIMAS NOTICIAS</h1>
-    <div style="max-width: 500px;">
+<div class="cuadros">
+    <img class="cuadro" src="../../../assets/CEPA1.jpg">
+    <img class="cuadro" src="../../../assets/CEPA2.jpg">
+</div>
+
+<h1>ÚLTIMAS NOTICIAS</h1>
+<div class="cuadros">
+    <div style="max-width: 500px;" class="cuadro">
         @if(noticias!=undefined){
             @for (noticia of noticias; track noticia.id) {
-                <app-preview-noticia [noticia]="noticia"></app-preview-noticia>
+                <ng-container>
+                    <app-preview-noticia [noticia]="noticia"></app-preview-noticia>
+                </ng-container>
             }
+        } @else {
+            <p>No hay noticias</p>
         }
     </div>
 </div>
 
+<h1>ÚLTIMO EVENTO</h1>
+<div class="cuadros">
+    <div style="max-width: 500px;" class="cuadro">
+        @if(eventos!=undefined){
+            <ng-container>
+                <app-preview-eventos [evento]="eventos[last]" ></app-preview-eventos>
+            </ng-container>
+        } @else {
+            <p>No hay eventos</p>
+        }
+    </div>
+</div>

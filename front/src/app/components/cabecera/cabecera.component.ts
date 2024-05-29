@@ -56,11 +56,11 @@ export class CabeceraComponent implements OnInit {
 username=''
 userroles:Array<string>=[]
   adminItems: MenuItem[] | undefined = [
-    {
+    /*{
       label: 'Administrar Categorias',
       command: () => { this.router.navigate(['/admin/categorias']) },
     },
-    {
+    */{
       label: 'Administrar Noticias',
       command: () => { this.router.navigate(['/admin/noticias']) },
 
@@ -75,6 +75,37 @@ userroles:Array<string>=[]
       label: 'Administrar Usuarios',
       command: () => { this.router.navigate(['/users']) },
 
+    },
+    /***
+     * Estarán los cursos creados a partir de su tipo de curso y toda la información relativa al curso
+     * Un botón para llevar a los usuarios del curso
+     * Otro para llevar a las asignaturas donde estarán con el profesor asociado
+     */
+    {
+      label: 'Administrar Cursos',
+      command: () => {this.router.navigate(['/admin/cursos'])}
+    },
+    /**
+     * Estarán todos los tipos de curso con su descripción y un botón para llevar a sus asignaturas
+     * Dentro de las asignaturas estará la información de estas y un botón para llevar al temario de cada una
+     */
+    {
+      label: 'Administrar Tipos de Cursos',
+      command: () => {this.router.navigate(['/admin/tipo-cursos'])}
+    },
+    {
+      label: 'Administrar Contacto',
+      command: () => { this.router.navigate(['/admin/contacto']) },
+
+    },
+    {
+      label: 'Administrar Documentos Programaticos',
+      command: () => { this.router.navigate(['/admin/documentos-programaticos']) },
+
+    },
+    {
+      label: 'Administrar Departamentos',
+      command: () => { this.router.navigate(['/admin/departamentos'])}
     },
     {
       label: 'Salir',

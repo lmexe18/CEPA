@@ -68,8 +68,8 @@ canActivate: [accesoGuard],data: { rol: ['Administrador'] }},
 {path:'admin/noticias',component: AdminNoticiaComponent,
 canActivate: [accesoGuard],data: { rol: ['Administrador'] }},
 
-{path:'admin/categorias',component:AdminCategoriasComponent,
- canActivate: [accesoGuard],data: { rol: ['Administrador'] }},
+/*{path:'admin/categorias',component:AdminCategoriasComponent,
+ canActivate: [accesoGuard],data: { rol: ['Administrador'] }},*/
 
 {path:'admin/eventos', component:AdminEventosComponent,
 canActivate:[accesoGuard], data:{rol:['Administrador']}},
@@ -77,7 +77,7 @@ canActivate:[accesoGuard], data:{rol:['Administrador']}},
 {path:'admin/asistencias/:id', component:AdminAsistenciasComponent,
 canActivate:[accesoGuard], data:{rol:['Administrador']}},
 
-{path:'eventos/evento/:id', component:EventosComponent},
+{path:'evento/:id', component:EventosComponent},
 
 {path:'eventos/tus-eventos/:id', component:TusEventosComponent},
 
@@ -85,6 +85,12 @@ canActivate:[accesoGuard], data:{rol:['Administrador']}},
 canActivate: [accesoGuard], data:{rol:['Administrador']}},
 
 {path:'eventos', component:VistaEventosComponent},
+
+{path:'admin/contacto',
+canActivate: [accesoGuard], data:{rol:['Administrador']}},
+
+{path: 'admin/documentos-programaticos',
+canActivate: [accesoGuard], data:{rol:['Administrador']}},
 
 {path: '**', component: NotFoundComponent},
 ];

@@ -1,15 +1,10 @@
-
-<!-- //Óscar -->
-
-    <p-card styleClass="mt10" >
-        <ng-template pTemplate="title">
-            <div  style="text-align: center;  overflow: hidden; margin-top: -50px;">
+<p-card styleClass="mt10" >
+        <ng-template pTemplate="header">
+            <div  style="text-align: center;  overflow: hidden; margin-top: 5px;">
             @if(noticia.enlace!=null){
-
                 <h1>
                     <a style="font-size: 20px; text-decoration: none; color: inherit; display: inline-block; max-width: 100%; word-wrap: break-word;" href="{{noticia.enlace}}"> 
                         <span>
-                            
                             {{noticia.titulo}}
                         </span>
                         <i class="pi pi-external-link "></i>
@@ -17,17 +12,14 @@
                 </h1>
             }@else {
                 <h1>
-                    <span  style="font-size: 20px; text-decoration: none; color: inherit; display: inline-block; max-width: 100%; word-wrap: break-word;" >
-                        
+                    <span  style="font-size: 20px; text-decoration: none; color: inherit; display: inline-block; max-width: 100%; word-wrap: break-word;" >  
                         {{noticia.titulo}}
-                    </span>
-                    
-                    
+                    </span>  
                 </h1>
             }
         </div>
     </ng-template>
-    <ng-template pTemplate="header">
+    <ng-template pTemplate="body">
         @if(noticia.foto!=null){
             
             @if(esUrl(noticia.foto)){

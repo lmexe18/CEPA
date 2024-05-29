@@ -14,7 +14,7 @@ const noticiasFactory = async (ctos,categorias) => {
                 titulo: ejemplo.titulo,
                 idCategoria: i,
                 enlace: 'https://github.com/lmexe18/CEPA',
-                foto: '4ce3d1e6-dfbe-4d7e-90e3-dc20fd5fdc72.jpeg',
+                foto: 'aula.jpg',
                 publicada:true,
                 createdAt: new Date(),
                 updatedAt: new Date()

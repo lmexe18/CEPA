@@ -14,7 +14,7 @@ const seccionesFactory = async (ctos,noticias) => {
                 titulo: ejemplo.titulo,
                 texto: ejemplo.texto,
                 idNoticia: i,
-                foto: '5411931e-2d94-474b-8721-d9c687167c08.jpeg',
+                foto: 'aula.jpg',
                 createdAt: new Date(),
                 updatedAt: new Date()
             }

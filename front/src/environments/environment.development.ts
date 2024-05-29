@@ -22,5 +22,6 @@ export const environment = {
     urlEventosSocket: 'http://localhost:8090',
     urlFotosEventos:'/uploads/eventos',
     urlGaleria: '/galeria',
-    urlFotosGaleria: '/uploads/galerias'
+    urlFotosGaleria: '/uploads/galerias',
+    urlContacto: '/contacto'
 };
