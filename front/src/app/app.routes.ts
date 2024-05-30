@@ -20,6 +20,11 @@ import { TusEventosComponent } from './components/tus-eventos/tus-eventos.compon
 import { AdminGaleriaComponent } from './components/admin-galeria/galeria.component';
 import { NoticiaComponent } from './components/noticia/noticia.component';
 import { VistaEventosComponent } from './components/vista-eventos/vista-eventos.component';
+import { AdminCursosComponent } from './components/admin-cursos/admin-cursos.component';
+import { AdminDepartamentosComponent } from './components/admin-departamentos/admin-departamentos.component';
+import { AdminTipoCursosComponent } from './components/admin-tipo-cursos/admin-tipo-cursos.component';
+import { AdminContactosComponent } from './components/admin-contactos/admin-contactos.component';
+import { AdminDocumentosProgComponent } from './components/admin-documentos-prog/admin-documentos-prog.component';
 
 
 export const routes: Routes = [
@@ -86,11 +91,21 @@ canActivate: [accesoGuard], data:{rol:['Administrador']}},
 
 {path:'eventos', component:VistaEventosComponent},
 
-{path:'admin/contacto',
+{path:'admin/contacto',  component: AdminContactosComponent,
 canActivate: [accesoGuard], data:{rol:['Administrador']}},
 
-{path: 'admin/documentos-programaticos',
+{path: 'admin/documentos-programaticos', component: AdminDocumentosProgComponent,
+canActivate: [accesoGuard], data:{rol:['Administrador']}},
+
+{path: 'admin/departamentos', component: AdminDepartamentosComponent,
+canActivate: [accesoGuard], data:{rol:['Administrador']}},
+
+{path: 'admin/cursos', component: AdminCursosComponent,
+canActivate:[accesoGuard], data:{rol:['Administrador']}},
+
+{path: 'admin/tipo-cursos', component: AdminTipoCursosComponent,
 canActivate: [accesoGuard], data:{rol:['Administrador']}},
 
 {path: '**', component: NotFoundComponent},
+
 ];

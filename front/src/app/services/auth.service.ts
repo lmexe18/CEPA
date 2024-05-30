@@ -7,8 +7,7 @@ import { Usuario } from '../interface/usuario';
 @Injectable({
   providedIn: 'root'
 })
-//Óscar
-// Laura -> modificación getUid()
+
 export class AuthService  {
   private baseUrl = environment.baseUrl+environment.urlAuth
 

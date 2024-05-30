@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
       .subscribe({
         next:(evento: Array<Evento>) => {
           this.eventos = evento
-          this.last = evento.length-1
+          this.last = evento?.length-1
         },
         error:(err)=>{
      

@@ -41,7 +41,7 @@ const login =  (req, res = response) => {
     }
     
 }
-//Óscar
+
 const register =  (req, res = response) => {
     try{
         const conx = new Conexion();

@@ -113,7 +113,7 @@ class ConexionUser{
             this.desconectar()
         }
     }
-    //Óscar
+    
     checkLogin = async (email) => {
 
         this.conectar();
@@ -130,7 +130,7 @@ class ConexionUser{
 
         return user;
     }
-        //Óscar
+        
     getRolUserId = async (idU) => {
         try {
 
