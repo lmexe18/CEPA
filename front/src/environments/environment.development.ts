@@ -23,5 +23,6 @@ export const environment = {
     urlFotosEventos:'/uploads/eventos',
     urlGaleria: '/galeria',
     urlFotosGaleria: '/uploads/galerias',
-    urlContacto: '/contacto'
+    urlContacto: '/contacto',
+    urlTipoCurso: '/tipoCurso'
 };

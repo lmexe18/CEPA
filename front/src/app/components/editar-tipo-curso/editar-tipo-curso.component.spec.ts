@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminTipoCursosComponent } from './admin-tipo-cursos.component';
+import { EditarTipoCursoComponent } from './editar-tipo-curso.component';
 
-describe('AdminTipoCursosComponent', () => {
-  let component: AdminTipoCursosComponent;
-  let fixture: ComponentFixture<AdminTipoCursosComponent>;
+describe('EditarTipoCursoComponent', () => {
+  let component: EditarTipoCursoComponent;
+  let fixture: ComponentFixture<EditarTipoCursoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminTipoCursosComponent]
+      imports: [EditarTipoCursoComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AdminTipoCursosComponent);
+    fixture = TestBed.createComponent(EditarTipoCursoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
