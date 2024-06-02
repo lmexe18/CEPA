@@ -5,7 +5,7 @@
         [paginator]="true"
         [rows]="5"
         [showCurrentPageReport]="true"
-        [tableStyle]="{ 'min-width': '50rem','max-width':'80rem','margin':'auto' }"
+        [tableStyle]="{ 'min-width': '50rem', 'max-width': '80rem', 'margin': 'auto' }"
         currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} tipos de cursos"
         [rowsPerPageOptions]="[5, 10, 20]"
     >
@@ -24,7 +24,9 @@
         </ng-template>
         <ng-template pTemplate="body" let-tipoCurso>
             <tr>
-                <td><app-editar-tipo-curso></app-editar-tipo-curso></td>
+                <td>
+                    <app-editar-tipo-curso [id]="tipoCurso.id" [tipoCurso]="tipoCurso"></app-editar-tipo-curso>
+                </td>
                 <td>{{ tipoCurso.nombre }}</td>
                 <td>{{ tipoCurso.activo ? 'Sí' : 'No' }}</td>
                 <td></td>

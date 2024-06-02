@@ -12,10 +12,10 @@ import { TipoCursoService } from '../../services/tipoCurso.service';
 import { TipoCurso } from '../../interface/tipoCurso';
 
 @Component({
-    selector: 'app-eventos',
+    selector: 'app-admin-tipo-cursos',
     standalone: true,
     templateUrl: './admin-tipo-cursos.component.html',
-    styleUrl: './admin-tipo-cursos.component.css',
+    styleUrls: ['./admin-tipo-cursos.component.css'],
     imports: [
         ToastModule,
         TableModule,
@@ -30,29 +30,24 @@ import { TipoCurso } from '../../interface/tipoCurso';
       TipoCursoService
   ]
 })
-
 export class AdminTipoCursosComponent implements OnInit {
 
-  @Input() tiposCursos: TipoCurso[] = []
+  @Input() tiposCursos: TipoCurso[] = [];
 
   constructor(private tipoCursoService: TipoCursoService) {}
 
   ngOnInit(): void {
     this.tipoCursoService.getTiposCursos()
       .pipe(
-        finalize(() => {
-          
-        })
+        finalize(() => {})
       )
       .subscribe({
         next: (tiposCursos: TipoCurso[]) => {
           this.tiposCursos = tiposCursos;
         },
         error: (err) => {
-
+          console.error(err);
         }
       });
   }
 }
-
-

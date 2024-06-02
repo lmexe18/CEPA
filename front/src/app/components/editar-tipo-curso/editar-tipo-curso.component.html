@@ -1,1 +1,32 @@
-<p>editar-tipo-curso works!</p>
+<p-toast></p-toast>
+<div class="card flex justify-content-center">
+  @if(tipo==0){
+  <p-button (click)="showDialog()" [raised]="true" [outlined]="true" icon="pi pi-pencil" label="Editar"></p-button>
+  }
+  <p-dialog header="Editar tipo de curso" [(visible)]="visible" [modal]="true" 
+    [draggable]="false" (onHide)="cerrar();" [resizable]="false">
+
+    <div class="card flex justify-content-center" class="custom-dialog">
+        <div class="flex flex-row gap-4">
+
+            <div class="flex flex-column">
+                <label for="titulo">Nombre</label><br>
+                <input  class="{{ validacionNombre }}" pInputText id="nombre" aria-describedby="nombre" [(ngModel)]="tipoCurso.nombre" /><br>
+                <small id="titulo">Introduce un nombre para el tipo de curso</small><br><br>
+            </div>
+
+            <div class="flex flex-column">
+                <label for="visibilidad">Activo</label>
+                <input type="checkbox" ng-model="checkboxModel.value1" ng-true-value=true ng-false-value=false class="{{ validacionActivo }}" id="visilidad" aria-describedby="tipoCurso" [(ngModel)]="tipoCurso.activo"/><br><br>
+            </div>
+
+        </div><br>
+    <div style="margin-top: 20px;" >
+        <app-confirm tipo="Guardar" icono="plus" mensaje="¿Deseas guardar los cambios?" color="success" (confirmacion)="guardar($event)"></app-confirm>
+    </div>
+    <div style="margin-top: 20px;" >
+        <app-confirm tipo="Borrar" icono="trash" mensaje="¿Deseas borrar este tipo de curso?" color="danger" (confirmacion)="eliminar($event)"></app-confirm>
+    </div>
+    </div>
+</p-dialog>
+</div>
