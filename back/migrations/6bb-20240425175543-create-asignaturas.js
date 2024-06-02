@@ -13,12 +13,12 @@ module.exports = {
         type: Sequelize.STRING(50),
         allowNull: false
       },
-      idDepartamento: {
+      idCurso: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: {
-            tableName:'departamentos'
+            tableName:'cursos'
           },
           key: 'id'
         },

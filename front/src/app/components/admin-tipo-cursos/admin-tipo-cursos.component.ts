@@ -10,6 +10,7 @@ import { NuevoTipoCursosComponent } from '../nuevo-tipo-cursos/nuevo-tipo-cursos
 import { EditarTipoCursoComponent } from '../editar-tipo-curso/editar-tipo-curso.component';
 import { TipoCursoService } from '../../services/tipoCurso.service';
 import { TipoCurso } from '../../interface/tipoCurso';
+import { AdminAsignaturasComponent } from '../admin-asignaturas/admin-asignaturas.component';
 
 @Component({
     selector: 'app-admin-tipo-cursos',
@@ -22,6 +23,7 @@ import { TipoCurso } from '../../interface/tipoCurso';
         ButtonModule,
         NuevoTipoCursosComponent,
         EditarTipoCursoComponent,
+        AdminAsignaturasComponent,
         RouterLink,
         RouterModule
     ],

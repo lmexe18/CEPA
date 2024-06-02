@@ -62,6 +62,22 @@ class ConexionAsignatura {
         return resultado;
     }
 
+    async getAsignaturasDeCurso(cursoId) {
+        this.conectar();
+        let resultado = [];
+        try {
+            resultado = await models.Asignatura.findAll({
+                where: {
+                    idCurso: cursoId
+                }
+            });
+        } catch (error) {
+        } finally {
+            this.desconectar();
+        }
+        return resultado;
+    }
+
     async postAsignatura(body) {
         this.conectar();
         let resultado;

@@ -29,7 +29,7 @@
                 </td>
                 <td>{{ tipoCurso.nombre }}</td>
                 <td>{{ tipoCurso.activo ? 'Sí' : 'No' }}</td>
-                <td></td>
+                <td><p-button routerLink="/admin/tipo-cursos/asignaturas/{{tipoCurso.id}}" icon="pi pi-eye"  [raised]="true" [outlined]="true"title=""></p-button></td>
             </tr>
         </ng-template>
         <ng-template pTemplate="paginatorleft">

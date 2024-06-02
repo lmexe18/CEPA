@@ -76,10 +76,26 @@ const borrarAsignatura = (req, res = response) => {
         });
 }
 
+const obtenerAsignaturasDeCurso = (req, res) => {
+    const conx = new ConexionAsignatura();
+
+    conx.getAsignaturasDeCurso(req.params.cursoId)
+        .then((asignaturas) => {
+            res.status(200).json(asignaturas);
+        })
+        .catch((err) => {
+            res.status(404).json({
+                'msg': 'No se ha podido obtener las asignaturas del curso',
+                'error': err
+            });
+        });
+}
+
 module.exports = {
     obtenerAsignaturas,
     obtenerAsignaturaPorId,
     subirAsignatura,
     actualizarAsignatura,
-    borrarAsignatura
+    borrarAsignatura,
+    obtenerAsignaturasDeCurso
 }

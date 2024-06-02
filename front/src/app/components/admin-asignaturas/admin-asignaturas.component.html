@@ -1,0 +1,43 @@
+<app-nueva-asignatura></app-nueva-asignatura>
+<p-toast></p-toast>
+<div style="margin-top: 100px;" class="card">
+    <p-table
+        [value]="asignaturas"
+        [paginator]="true"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem','max-width':'80rem','margin':'auto' }"
+        currentPageReportTemplate="Mostrando asignaturas"
+        [rowsPerPageOptions]="[5, 10, 20]"
+    >
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+           Administrar Asignaturas
+        </div>
+    </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:2%">Editar</th>
+                <th style="width:25%">Nombre</th>
+                <th style="width:25%">Activo</th>
+                <th style="width:25%">Temario</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-asignatura>
+            <tr>
+                <td>
+                   <app-editar-asignatura></app-editar-asignatura>
+                </td>
+                <td>{{ asignatura.nombre }}</td>
+                <td>{{ asignatura.activo ? 'Si' : 'No' }}</td>
+                <td></td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</div>

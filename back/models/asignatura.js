@@ -6,11 +6,6 @@ module.exports = (sequelize, DataTypes) => {
   class Asignatura extends Model {
 
     static associate(models) {
-      // Una asignatura pertenece a un departamento
-      Asignatura.belongsTo(models.Departamento, {
-        foreignKey: 'idDepartamento',
-        as: 'asignaturaDepartamento'
-      });
 
       // Una asignatura tiene muchos temarios
       Asignatura.hasMany(models.Temario, {
@@ -30,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Asignatura.init({
     nombre: DataTypes.STRING,
-    idDepartamento: DataTypes.INTEGER,
+    idCurso: DataTypes.INTEGER,
     activo: DataTypes.BOOLEAN,
   }, {
     sequelize,
