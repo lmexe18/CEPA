@@ -12,14 +12,6 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'idTemario',
         as: 'asignaturaTemario'
       });
-
-      // Una asignatura tiene muchos grupos
-      Asignatura.belongsToMany(models.Curso, {
-        through: models.AsignaturaProfeCurso,
-        foreignKey: 'idCurso',
-        as: 'asignaturaCurso'
-      });
-
       
     }
   }

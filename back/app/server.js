@@ -88,7 +88,6 @@ class Server {
         this.app.use(this.uploadsGaleriasPath, require('../routes/uploadsGaleriaRoutes'))
         this.app.use(this.alumnoCursoPath, require('../routes/alumnoCursoRoutes'))
         this.app.use(this.asignaturaPath, require('../routes/asignaturaRoutes'))
-        this.app.use(this.asignaturaProfeCursoPath, require('../routes/asignaturaProfeCursoRoutes'))
         this.app.use(this.contactoPath, require('../routes/contactoRoutes'))
         this.app.use(this.cursoPath, require('../routes/cursoRoutes'))
         this.app.use(this.documentoProgramaticoPath, require('../routes/documentoProgramaticoRoutes'))
