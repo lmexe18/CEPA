@@ -40,7 +40,6 @@ class Server {
         this.uploadsGaleriasPath = '/api/uploads/galerias'
         this.alumnoCursoPath = '/api/alumnoCurso'
         this.asignaturaPath = '/api/asignatura'
-        this.asignaturaProfeCursoPath = '/api/asignaturaProfeCurso'
         this.contactoPath = '/api/contacto'
         this.cursoPath = '/api/curso'
         this.documentoProgramaticoPath = '/api/documentoProgramatico'

@@ -108,6 +108,10 @@ userroles:Array<string>=[]
       command: () => { this.router.navigate(['/admin/departamentos'])}
     },
     {
+      label: 'Administrar Equipo Directivo',
+      command: () => { this.router.navigate(['/admin/equipo-directivo'])}
+    },
+    {
       label: 'Salir',
       command: () => {
         this.servicioAutenticacion.clearAccess()
