@@ -26,5 +26,6 @@ export const environment = {
     urlContacto: '/contacto',
     urlTipoCurso: '/tipoCurso',
     urlAsignatura: '/asignatura',
-    urlTemario: '/temario'
+    urlTemario: '/temario',
+    urlDocumentoProgramatico: '/documentoProgramatico'
 };

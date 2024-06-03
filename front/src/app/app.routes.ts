@@ -27,6 +27,7 @@ import { AdminContactosComponent } from './components/admin-contactos/admin-cont
 import { AdminDocumentosProgComponent } from './components/admin-documentos-prog/admin-documentos-prog.component';
 import { AdminAsignaturasComponent } from './components/admin-asignaturas/admin-asignaturas.component';
 import { AdminTemarioComponent } from './components/admin-temario/admin-temario.component';
+import { AdminEquipoDirectivoComponent } from './components/admin-equipo-directivo/admin-equipo-directivo.component';
 
 
 export const routes: Routes = [
@@ -113,6 +114,9 @@ canActivate: [accesoGuard], data:{rol:['Administrador']}},
 
 {path: 'admin/tipo-cursos/asignaturas/temarios/:id', component: AdminTemarioComponent,
 canActivate: [accesoGuard], data:{rol:['Admimistrador']}},
+
+{path: 'admin/equipo-directivo', component: AdminEquipoDirectivoComponent,
+canActivate: [accesoGuard], data:{rol:['Administrador']}},
 
 {path: '**', component: NotFoundComponent},
 
