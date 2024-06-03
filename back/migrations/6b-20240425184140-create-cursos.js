@@ -13,17 +13,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      idTurno:{
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references:{
-          model:{
-            tableName:'turnos'
-          },
-          key:'id'
-        },
-        onDelete: 'CASCADE'
-      },
       horario: {
         type: Sequelize.STRING,
         allowNull: true

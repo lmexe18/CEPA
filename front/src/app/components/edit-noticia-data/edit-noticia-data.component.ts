@@ -308,4 +308,3 @@ export class EditNoticiaDataComponent implements OnInit {
     this.fotoPreview=null
   }
 }
-

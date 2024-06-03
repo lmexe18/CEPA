@@ -21,10 +21,11 @@
         <ng-template pTemplate="header">
         
                 <tr class="header-glass" style="border: none;" >
-                    <th style="width:10%"><app-nueva-noticia></app-nueva-noticia></th>
-                    <th style="width:40%">Nombre</th>
+                    <th style="width:20%"><app-nueva-noticia></app-nueva-noticia></th>
+                    <th style="width:20%">Nombre</th>
                     <th style="width:20%">Categoria</th>
-                    <th style="width:30%">Enlace</th>
+                    <th style="width:20%">Enlace</th>
+                    <th style="width:20%">Tipo</th>
                 </tr>
             
         </ng-template>
@@ -43,6 +44,7 @@
                 }@else {
                     <td>[Sin enlace]</td>
                 }
+                <td>{{ noticia.tipo }}</td>
              
             </tr>
             

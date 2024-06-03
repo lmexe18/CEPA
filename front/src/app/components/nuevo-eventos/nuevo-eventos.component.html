@@ -43,6 +43,12 @@
             </div>
 
             <div class="flex flex-column">
+                <label for="tipo">Tipo de evento</label><br>
+                <p-dropdown [options]="tipoEventos" [(ngModel)]="nuevoEvento.tipo" optionLabel="label" placeholder="Selecciona un tipo"></p-dropdown><br>
+                <small id="tipo">Escoge un tipo de evento</small><br><br>
+            </div>
+
+            <div class="flex flex-column">
                 <label for="fotoCartel">Foto de cartel</label><br><br>
                     <input #archivo type="file" id="archivo" class="form-control" accept="image/*" (change)="uplodadFoto($event)" ><br>
                     @if(fotoPreview){

@@ -16,6 +16,7 @@ const noticiasFactory = async (ctos,categorias) => {
                 enlace: 'https://github.com/lmexe18/CEPA',
                 foto: 'aula.jpg',
                 publicada:true,
+                tipo: 'La voz del mes',
                 createdAt: new Date(),
                 updatedAt: new Date()
             }

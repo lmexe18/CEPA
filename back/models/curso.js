@@ -43,7 +43,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Curso.init({
     numeroCurso: DataTypes.INTEGER,
-    idTurno: DataTypes.INTEGER,
     horario: DataTypes.STRING, // Es un link de drive que contiene el horario, el tutor y la clase
     fechaInicio: DataTypes.DATE,
     fechaFin: DataTypes.DATE,

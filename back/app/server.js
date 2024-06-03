@@ -48,7 +48,6 @@ class Server {
         this.tipoCursoPath = '/api/tipoCurso'
         this.categoriaRoutes = '/api/categoria'
         this.departamentoPath = '/departamento'
-        this.turnoPath = '/turno'
         this.middlewares();
         this.routes();
         this.sockets();
@@ -94,7 +93,6 @@ class Server {
         this.app.use(this.tipoCursoPath, require('../routes/tipoCursoRoutes'))
         this.app.use(this.categoriaRoutes, require('../routes/categoriasRoutes'))
         this.app.use(this.departamentoPath, require('../routes/departamentoRoutes'))
-        this.app.use(this.turnoPath, require('../routes/turnoRoutes'))
     }
 
     listen() {

@@ -16,7 +16,7 @@
     </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th style="width:5%"><app-nuevo-eventos></app-nuevo-eventos></th>
+                <th style="width:1%"><app-nuevo-eventos></app-nuevo-eventos></th>
                 <th style="width:5%">Ver Asistentes</th>
                 <th style="width:5%">Galería</th>
                 <th style="width:5%">Nombre</th>
@@ -26,6 +26,7 @@
                 <th style="width:5%">Me gusta</th>
                 <th style="width:5%">Visibilidad</th>
                 <th style="width:5%">Plazas Restantes</th>
+                <th style="width:5%">Tipo</th>
                 <th style="width:5%">Foto Cartel</th>
             </tr>
         </ng-template>
@@ -41,6 +42,7 @@
                 <td>{{ evento.mg }}</td>
                 <td>{{ evento.visibilidad ? 'Si' : 'No' }}</td>
                 <td>{{ evento.numAsistentes }} </td>
+                <td>{{ evento.tipo }}</td>
                 <td><img [src]=evento.fotoCartel alt="Foto de evento" style="width: auto; height: 200px;"></td>
         </ng-template>
         <ng-template pTemplate="paginatorleft">

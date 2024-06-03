@@ -1,4 +1,4 @@
-/*Laura María Pedraza Gómez* */
+
 export interface Evento {
     id:             number | null;
     nombre:         string;
@@ -9,6 +9,7 @@ export interface Evento {
     mg:             number;
     visibilidad:    boolean;
     numAsistentes:  number;    
+    tipo: string;
     createdAt?:     string;
     updatedAt?:     string;
 }

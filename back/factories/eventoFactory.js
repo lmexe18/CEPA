@@ -14,6 +14,7 @@ const eventosFactory = async (ctos = 1) => {
             mg:0,
             visibilidad: Math.random() < 0.5 ? true : false,
             numAsistentes: Math.random() * 19+1,
+            tipo: 'Excursiones',
             createdAt: new Date(),
             updatedAt: new Date()
         };

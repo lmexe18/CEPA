@@ -37,14 +37,14 @@ export class AsignaturaService {
     )
   }
 
-  insertEvento(asignatura: Asignatura): Observable<any | undefined> {
+  insertAsignatura(asignatura: Asignatura): Observable<any | undefined> {
    
      return this.http.post<any>(this.baseUrl,asignatura,{params: {auth: true}}).pipe(
      
      )
   }
 
-  updateEvento(asignatura:Asignatura, id:number):Observable<any|undefined>{
+  updateAsignatura(asignatura:Asignatura, id:number):Observable<any|undefined>{
 
     return this.http.put<any>(this.baseUrl+'/'+id,asignatura,{params: {auth: true}}).pipe(
 

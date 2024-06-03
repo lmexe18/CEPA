@@ -1,5 +1,4 @@
 
-//Óscar
 export interface Noticia {
     id:          number |null;
     titulo:      string;
@@ -7,6 +6,7 @@ export interface Noticia {
     idCategoria: number | null;
     foto?:        string | null;
     publicada?:boolean;
+    tipo?: string;
     createdAt?:   string;
     updatedAt?:   string;
     secciones?:   Seccion[];

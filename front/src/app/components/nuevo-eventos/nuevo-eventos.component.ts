@@ -77,8 +77,16 @@ export class NuevoEventosComponent{
     fotoCartel: '',
     mg: 0,
     numAsistentes: 0,
-    visibilidad: false
+    visibilidad: false,
+    tipo: ''
   }
+
+  tipoEventos: any[] = [
+    { label: 'Excursiones', value: 'Excursiones' },
+    { label: 'Actos', value: 'Actos' },
+    { label: 'Asociación Amigos CEPA', value: 'Asociación Amigos CEPA' },
+    { label: 'Días señalados', value: 'Días señalados' }
+  ]
 
   formularioFoto: FormData | null = null
   fotoPreview: string | null = null
