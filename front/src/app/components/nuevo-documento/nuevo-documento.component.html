@@ -1,1 +1,38 @@
-<p>nuevo-documento works!</p>
+<p-toast></p-toast>
+<div class="card flex justify-content-center">
+    <p-button severity="success" (click)="showDialog()" [raised]="true" [outlined]="true" icon="pi pi-plus" label="Nuevo"></p-button>
+    <p-dialog header="Crear documento" [(visible)]="visible" [modal]="true" 
+        [draggable]="false" (onHide)="cerrar();" [resizable]="false">
+
+        <div class="card flex justify-content-center custom-dialog" style="flex-direction: column; height: 100%;">
+            <div class="flex flex-row gap-4" style="flex: 1;">
+                <div class="flex flex-column">
+                    <label for="nombre">Nombre</label><br>
+                    <input class="{{ validacionNombre }}" pInputText id="nombre" aria-describedby="nombre" [(ngModel)]="nuevoDocumento.nombre" /><br>
+                    <small id="nombre">Introduce un nombre para el nuevo documento</small><br><br>
+                </div>
+
+                <div class="flex flex-column">
+                    <label for="link">Link</label><br>
+                    <input class="{{ validacionLink }}" pInputText id="link" aria-describedby="link" [(ngModel)]="nuevoDocumento.link" /><br>
+                    <small id="link">Introduce un link para el nuevo documento</small><br><br>
+                </div>
+
+                <div class="flex flex-column">
+                    <label for="tipo">Tipo de documento</label><br>
+                    <input class="{{ validacionTipo }}" pInputText id="tipo" aria-describedby="tipo" [(ngModel)]="nuevoDocumento.tipo" /><br>
+                    <small id="tipo">Introduce el tipo de documento</small><br><br>
+                </div>
+
+                <div class="flex flex-column">
+                    <label for="activo">Activo</label>
+                    <input type="checkbox" [(ngModel)]="nuevoDocumento.activo" class="{{ validacionActivo }}" id="activo" aria-describedby="documento" /><br><br>
+                </div>
+            </div><br>
+
+            <div style="margin-top: auto;">
+                <app-confirm tipo="Crear" icono="plus" mensaje="¿Deseas crear este documento?" color="success" (confirmacion)="crear($event)"></app-confirm>
+            </div>
+        </div>
+    </p-dialog>
+</div>
