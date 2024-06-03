@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     fotoCartel: DataTypes.STRING,
     mg: DataTypes.INTEGER,
     visibilidad: DataTypes.BOOLEAN,
-    numAsistentes: DataTypes.INTEGER
+    numAsistentes: DataTypes.INTEGER,
+    tipo: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Evento',
@@ -30,3 +31,12 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Evento;
 };
+
+
+/*
+Tipos de eventos
+'Excursiones'
+'Actos'
+'Asociación Amigos CEPA'
+'Días Señalados'
+*/

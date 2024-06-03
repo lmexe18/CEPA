@@ -19,6 +19,7 @@ router.post('', [
     check('mg').isInt(),
     check('visibilidad').isBoolean(),
     check('numAsistentes').isInt(),
+    check('tipo'),
     validateValues
 ], authMid.validarJWT,accessMid.esAdmin, controller.subirEvento);
 router.delete('/:id', controller.borrarEvento);
@@ -31,6 +32,7 @@ router.put('/:id', [
     check('mg').isInt(),
     check('visibilidad').isBoolean(),
     check('numAsistentes').isInt(),
+    check('tipo'),
     validateValues
 ], authMid.validarJWT,accessMid.esAdmin, controller.actualizarEvento);
 router.put('/mg/:id', controller.aumentarMg)

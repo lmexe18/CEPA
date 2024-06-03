@@ -49,8 +49,6 @@ class Server {
         this.categoriaRoutes = '/api/categoria'
         this.departamentoPath = '/departamento'
         this.turnoPath = '/turno'
-        this.tipoEventoPath = '/tipoEvento'
-        this.tipoNoticiaPath = '/tipoNoticia'
         this.middlewares();
         this.routes();
         this.sockets();
@@ -97,8 +95,6 @@ class Server {
         this.app.use(this.categoriaRoutes, require('../routes/categoriasRoutes'))
         this.app.use(this.departamentoPath, require('../routes/departamentoRoutes'))
         this.app.use(this.turnoPath, require('../routes/turnoRoutes'))
-        this.app.use(this.tipoEventoPath, require('../routes/tipoEventoRoutes'))
-        this.app.use(this.tipoNoticiaPath, require('../routes/tipoNoticiaRoutes'))
     }
 
     listen() {

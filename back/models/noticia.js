@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     enlace: DataTypes.STRING,
     idCategoria: DataTypes.STRING,
     foto: DataTypes.STRING,
-    publicada: DataTypes.BOOLEAN
+    publicada: DataTypes.BOOLEAN,
+    tipo: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Noticia',
@@ -30,3 +31,10 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Noticia;
 };
+/**
+ * Tipos de noticias:
+ * 'Erasmus'
+  'La voz del mes'
+  'Convocatorias'
+  'Notas de prensa'
+ */

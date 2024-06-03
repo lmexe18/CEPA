@@ -30,7 +30,7 @@ import { AdminAsignaturasComponent } from './components/admin-asignaturas/admin-
 
 export const routes: Routes = [
 {path: '', component:HomeComponent },
-{path: 'administrador', pathMatch: 'full', redirectTo: '/admin'},
+{path: 'administrador', pathMatch: 'full', redirectTo: '/users'},
 {path:'admin',component: AdminCategoriasComponent ,
  canActivate: [accesoGuard],data: { rol: ['Administrador'] }},
  {path: 'jefedeestudios', pathMatch: 'full', redirectTo: '/aulas'},
