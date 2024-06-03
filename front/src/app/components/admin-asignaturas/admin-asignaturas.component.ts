@@ -10,8 +10,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DialogService } from 'primeng/dynamicdialog';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { ToastModule } from 'primeng/toast';
-import { ActivatedRoute } from '@angular/router';
-import { EventosService } from '../../services/eventos.service';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AsignaturaService } from '../../services/asignatura.service';
 import { EditarAsignaturaComponent } from '../editar-asignatura/editar-asignatura.component';
 import { NuevaAsignaturaComponent } from '../nueva-asignatura/nueva-asignatura.component';
@@ -35,7 +34,8 @@ import { NuevaAsignaturaComponent } from '../nueva-asignatura/nueva-asignatura.c
         DialogModule,
         ToastModule,
         EditarAsignaturaComponent,
-        NuevaAsignaturaComponent
+        NuevaAsignaturaComponent,
+        RouterLink
     ]
 })
 export class AdminAsignaturasComponent implements OnInit {

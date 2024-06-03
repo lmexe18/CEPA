@@ -103,6 +103,18 @@ class ConexionTemario {
         }
         return resultado;
     }
+
+    async getTemarioDeAsignatura(idAsignatura) {
+        this.conectar();
+        let resultado;
+        try {
+            resultado = await Temario.findAll({ where: { idAsignatura: idAsignatura } });
+        } catch (error) {
+        } finally {
+            this.desconectar();
+        }
+        return resultado;
+    }
 }
 
 module.exports = ConexionTemario;

@@ -26,11 +26,11 @@
         <ng-template pTemplate="body" let-asignatura>
             <tr>
                 <td>
-                   <app-editar-asignatura></app-editar-asignatura>
+                   <app-editar-asignatura  [asignaturas]="asignatura" [id]="asignatura.id"></app-editar-asignatura>
                 </td>
                 <td>{{ asignatura.nombre }}</td>
                 <td>{{ asignatura.activo ? 'Si' : 'No' }}</td>
-                <td></td>
+                <td><p-button routerLink="/admin/tipo-cursos/asignaturas/temarios/{{ asignatura.id }}" icon="pi pi-eye"  [raised]="true" [outlined]="true"title=""></p-button></td>
             </tr>
         </ng-template>
         <ng-template pTemplate="paginatorleft">

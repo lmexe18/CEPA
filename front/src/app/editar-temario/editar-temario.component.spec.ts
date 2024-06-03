@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminTemarioComponent } from './admin-temario.component';
+import { EditarTemarioComponent } from './editar-temario.component';
 
-describe('AdminTemarioComponent', () => {
-  let component: AdminTemarioComponent;
-  let fixture: ComponentFixture<AdminTemarioComponent>;
+describe('EditarTemarioComponent', () => {
+  let component: EditarTemarioComponent;
+  let fixture: ComponentFixture<EditarTemarioComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminTemarioComponent]
+      imports: [EditarTemarioComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AdminTemarioComponent);
+    fixture = TestBed.createComponent(EditarTemarioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

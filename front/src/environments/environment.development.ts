@@ -25,5 +25,6 @@ export const environment = {
     urlFotosGaleria: '/uploads/galerias',
     urlContacto: '/contacto',
     urlTipoCurso: '/tipoCurso',
-    urlAsignatura: '/asignatura'
+    urlAsignatura: '/asignatura',
+    urlTemario: '/temario'
 };

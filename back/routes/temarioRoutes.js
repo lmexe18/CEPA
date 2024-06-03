@@ -24,5 +24,6 @@ router.put('/:id', [
     validateValues
 ], authMid.validarJWT, controller.actualizarTemario);
 router.delete('/:id', authMid.validarJWT, controller.eliminarTemario);
+router.get('/asignatura/:idAsignatura', controller.obtenerTemarioDeAsignatura)
 
 module.exports = router;

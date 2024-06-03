@@ -66,10 +66,24 @@ const eliminarTemario = async (req, res = response) => {
     }
 };
 
+const obtenerTemarioDeAsignatura = async (req, res) => {
+    const conx = new ConexionTemario();
+    try {
+        const resultado = await conx.getTemarioDeAsignatura(req.params.idAsignatura);
+        res.status(202).json(resultado);
+    } catch (err) {
+        res.status(404).json({
+            msg: 'No se ha podido obtener el temario de la asignatura',
+            error: err.message
+        });
+    }
+}
+
 module.exports = {
     obtenerTemarios,
     obtenerTemarioPorId,
     crearTemario,
     actualizarTemario,
-    eliminarTemario
+    eliminarTemario,
+    obtenerTemarioDeAsignatura
 };
