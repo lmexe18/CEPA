@@ -56,9 +56,11 @@ export class NuevaNoticiaComponent implements OnInit {
   nuevaNoticia: Noticia = { id: null, titulo: '', idCategoria: null, tipo: '' }
   tipoNoticias: Array<{ label: string, value: string }> = [
     { label: 'Erasmus', value: 'Erasmus' },
-    { label: 'La voz del mes', value: 'La voz del mes' },
-    { label: 'Convocatorias', value: 'Convocatorias' },
-    { label: 'Notas de prensa', value: 'Notas de prensa' }
+    { label: 'Plan de garantía juvenil', value: 'Plan de garantía juvenil' },
+    { label: 'Pruebas', value: 'Pruebas' },
+    { label: 'Aula mentor', value: 'Aula mentor' },
+    { label: 'General', value: 'General'},
+    { label: 'Pruebas', value: 'Pruebas'}
   ];
 
   estiloValidacionNombre = ''

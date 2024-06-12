@@ -18,31 +18,36 @@ import { AuthService } from '../../services/auth.service';
     ButtonModule,
     PreviewNoticiaComponent
   ],
-  providers:[NoticiaService],
+  providers: [NoticiaService],
   templateUrl: './noticias-categoria.component.html',
   styleUrl: './noticias-categoria.component.css'
 })
-//Óscar
+
 export class NoticiasCategoriaComponent implements OnInit {
   constructor(
-    private servicioNoticia:NoticiaService,
+    private servicioNoticia: NoticiaService,
     private rutaActiva: ActivatedRoute,
-    private authService : AuthService
-  ){}
-  id=new Subscription
-  listaNoticias:Array<Noticia>=[]
-  subscripcionCategorias: Subscription=new Subscription;
+    private authService: AuthService
+  ) { }
+  id = new Subscription
+  listaNoticias: Array<Noticia> = []
+  subscripcionCategorias: Subscription = new Subscription;
   ngOnInit(): void {
     this.authService.clearAccess()
-    this.id = this.rutaActiva.params.subscribe(params => {
-      this.subscripcionCategorias = this.servicioNoticia.getAllNoticiasByCategoria(params['id']).subscribe({
-        next: (data: Array<Noticia>) => {
-          this.listaNoticias=data
-        },
-        error: (err) => {
+
+    this.subscripcionCategorias = this.servicioNoticia.getAllNoticias().subscribe({
+      next: (data) => {
+        for (let i = 0; i < data.length; i++) {
+          let tipo = data[i].tipo?.toLocaleLowerCase()
+          if (!(tipo.includes('erasmus') &&
+              !(tipo.includes('aula mentor')) &&
+              !(tipo.includes('pruebas')))) {
+            this.listaNoticias.push(data[i])
+          }
         }
-      });
-    })
+      },
+      error: (err) => {
+      }
+    });
   }
-  
 }

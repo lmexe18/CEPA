@@ -15,8 +15,8 @@ router.get('/tipocurso/:idTipoCurso', controller.obtenerCursosPorTipoCurso);
 router.post('/', [
     check('numeroCurso').isInt({ min: 1 }).withMessage('El número del curso debe de ser un número entero mayor a 0.'),
     check('horario').isString().withMessage('El horario no puede estar vacío.'),
-    check('fechaInicio').isISO8601().withMessage('La fecha de inicio debe ser una fecha válida.'),
-    check('fechaFin').isISO8601().withMessage('La fecha de fin debe ser una fecha válida.'),
+    check('fechaInicio').isString().withMessage('La fecha de inicio debe ser una fecha válida.'),
+    check('fechaFin').isString().withMessage('La fecha de fin debe ser una fecha válida.'),
     check('idTipoCurso').isInt({ min: 1 }).withMessage('El id del tipo de curso debe de ser un número entero mayor a 0.'),
     check('idTutor').isInt({ min: 1 }).withMessage('El id del tutor debe de ser un número entero mayor a 0.'),
     check('activo').isBoolean().withMessage('El campo activo debe ser verdadero o falso.'),
@@ -26,8 +26,8 @@ router.post('/', [
 router.put('/:id', [
     check('numeroCurso').isInt({ min: 1 }).optional().withMessage('El número del curso debe de ser un número entero mayor a 0.'),
     check('horario').isString().optional().withMessage('El horario no puede estar vacío.'),
-    check('fechaInicio').isISO8601().toDate().optional().withMessage('La fecha de inicio debe ser una fecha válida.'),
-    check('fechaFin').isISO8601().toDate().optional().withMessage('La fecha de fin debe ser una fecha válida.'),
+    check('fechaInicio').isString().optional().withMessage('La fecha de inicio debe ser una fecha válida.'),
+    check('fechaFin').isString().optional().withMessage('La fecha de fin debe ser una fecha válida.'),
     check('idTipoCurso').isInt({ min: 1 }).optional().withMessage('El id del tipo de curso debe de ser un número entero mayor a 0.'),
     check('idTutor').isInt({ min: 1 }).optional().withMessage('El id del tutor debe de ser un número entero mayor a 0.'),
     check('activo').isBoolean().optional().withMessage('El campo activo debe ser verdadero o falso.'),

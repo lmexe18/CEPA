@@ -1,35 +1,14 @@
 img {
-    border-radius: 10px ;
+  border-radius: 10px ;
+  width: 90%;
 }
 .mt10{
-    margin-top: 30px;
+  margin-top: 30px;
 }
 p-card{
-    border-radius: 10px;
+  border-radius: 10px;
 }
-
-.p-card {
-    margin: auto;
-    margin-top: 20px;
-    z-index: -1;
-    border: 1px solid rgba(255, 255, 255, .25);
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.45);
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-    padding: 15px;
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
-    max-width: 350px;
-    text-align: center;
-  }
-
-  .p-card-body img {
-    max-width: 80%;
-    max-height: 250px;
-    margin-left:2%;
-    margin-top:2%;
-  }
-
-  .p-card-body{
-    padding-bottom: 5px;
-  }
+h2{
+  text-align: center;
+  margin-top:70px;
+}

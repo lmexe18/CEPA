@@ -1,0 +1,24 @@
+
+<div class="center-container">
+    <h1>SECUNDARIA DISTANCIA</h1>
+    <div class="card-container">
+        @for (ensenanza of ensenanzas; track ensenanza) {
+            <div class="card-wrapper">
+                <p-card class="custom-card mt10"
+                    [style]="{'width': '400px', 'height': '250px', 'margin-top': '20px'}">
+                    <ng-template pTemplate="header">
+                        <div class="card-header">
+                            <h2>{{ ensenanza.nombre }}</h2>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="body">
+                        <div class="card-body">
+                            <p>Ver asignaturas y temarios</p>
+                            <p>Ver grupos existentes</p>
+                        </div>
+                    </ng-template>
+                </p-card>
+            </div>
+        }
+    </div>
+</div>

@@ -19,7 +19,7 @@ import { FotosNoticiasService} from '../../services/fotosNoticias.service';
 import { environment } from '../../../environments/environment.development';
 import { Router } from '@angular/router';
 import { FileUploadModule } from 'primeng/fileupload';
-//Óscar
+
 @Component({
   selector: 'app-edit-noticia-data',
   standalone: true,

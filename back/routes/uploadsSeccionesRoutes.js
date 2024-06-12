@@ -4,7 +4,7 @@ const { validarArchivoSubir } = require('../middlewares/validar-archivo');
 const { cargarArchivo, actualizarImagen, obtenerImagen, borrarImagen } = require('../controllers/uploadsSeccionesController');
 const authMid=require('../middlewares/validarJWT')
 const accessMid=require('../middlewares/validarRoles')
-const remoteController=require('../controllers/RemoteUploadsSeccionesController')
+// const remoteController=require('../controllers/RemoteUploadsSeccionesController')
 
 const router = Router();
 

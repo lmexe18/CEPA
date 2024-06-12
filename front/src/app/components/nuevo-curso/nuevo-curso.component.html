@@ -1,0 +1,47 @@
+<p-toast></p-toast>
+<div class="card flex justify-content-center">
+  <p-button severity="success" (click)="showDialog()" [raised]="true" [outlined]="true" icon="pi pi-plus" label="Nuevo Curso"></p-button>
+  <p-dialog header="Crear Curso" [(visible)]="visible" [modal]="true" [draggable]="false" (onHide)="cerrar();" [resizable]="false">
+    <div class="card flex justify-content-center custom-dialog">
+      <div class="flex flex-row gap-4">
+        <div class="flex flex-column">
+          <label for="numeroCurso">Número de Curso</label><br>
+          <input class="{{ validacionNombre }}" pInputText id="numeroCurso" aria-describedby="numeroCurso" [(ngModel)]="nuevoCurso.numeroCurso" /><br>
+          <small id="numeroCurso">Introduce el número del curso</small><br><br>
+        </div>
+        <div class="flex flex-column">
+          <label for="horario">Horario</label><br>
+          <input class="{{ validacionHorario }}" pInputText id="horario" aria-describedby="horario" [(ngModel)]="nuevoCurso.horario" /><br>
+          <small id="horario">Introduce el horario del curso</small><br><br>
+        </div><br>
+        <div class="flex flex-column">
+          <label for="fechaInicio">Fecha de Inicio</label><br>
+          <input class="{{ validacionFecha }}" pInputText id="fechaInicio" placeholder="DD/MM/YYYY" aria-describedby="fechaInicio" [(ngModel)]="nuevoCurso.fechaInicio" /><br>
+          <small id="fechaInicio">Introduce la fecha de inicio del curso</small><br><br>
+        </div><br>
+        <div class="flex flex-column">
+          <label for="fechaFin">Fecha de Fin</label><br>
+          <input class="{{ validacionFecha }}" pInputText id="fechaFin" placeholder="DD/MM/YYYY" aria-describedby="fechaFin" [(ngModel)]="nuevoCurso.fechaFin" /><br>
+          <small id="fechaFin">Introduce la fecha de fin del curso</small><br><br>
+        </div><br>
+        <div class="flex flex-column">
+          <label for="idTipoCurso">Tipo de Curso</label><br>
+          <input class="{{ validacionTipoCurso }}" pInputText id="idTipoCurso" aria-describedby="idTipoCurso" [(ngModel)]="nuevoCurso.idTipoCurso" /><br>
+          <small id="idTipoCurso">Introduce el tipo de curso</small><br><br>
+        </div><br>
+        <div class="flex flex-column">
+          <label for="idTutor">ID del Tutor</label><br>
+          <input class="{{ validacionIdTutor }}" pInputText id="idTutor" aria-describedby="idTutor" [(ngModel)]="nuevoCurso.idTutor" /><br>
+          <small id="idTutor">Introduce el ID del tutor del curso</small><br><br>
+        </div><br>
+        <div class="flex flex-column">
+          <label for="activo">Activo</label><br>
+          <input type="checkbox" pCheckbox [(ngModel)]="nuevoCurso.activo" /><br><br>
+        </div>
+      </div><br>
+      <div style="margin-top: 20px;">
+        <app-confirm tipo="Crear" icono="pi pi-save" mensaje="¿Deseas crear este curso?" color="success" (confirmacion)="crear($event)"></app-confirm>
+      </div>
+    </div>
+  </p-dialog>
+</div>

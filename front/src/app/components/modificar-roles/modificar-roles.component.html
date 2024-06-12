@@ -1,34 +1,39 @@
-<!--Raul--> 
-
 <p-toast></p-toast>
 
-    <div class="card flex justify-content-center">
+<div class="card flex justify-content-center">
 
-        @if(tipo==0){
-            <p-button (click)="showDialog()" label="Roles" icon="pi pi-cog"></p-button>
-        }
-        <p-dialog header="Roles" [(visible)]="visible" [modal]="true" 
-        [draggable]="false" (onHide)="cerrar()" [resizable]="false">
+    @if(tipo==0){
+        <p-button (click)="showDialog()" label="Roles" icon="pi pi-cog"></p-button>
+    }
 
-        <div class="card flex justify-content-center" class="custom-dialog">
+    <p-dialog header="Roles" [(visible)]="visible" [modal]="true" [draggable]="false" (onHide)="cerrar()" [resizable]="false">
+
+        <div class="card flex justify-content-center custom-dialog">
             <div class="flex flex-row gap-4">
 
                 <div class="flex flex-column">
-                    <input type="checkbox" [(ngModel)]="esAdmin"> Administrador
+                    <label for="adminSwitch">Administrador</label>
+                    <p-inputSwitch [(ngModel)]="esAdmin" id="adminSwitch"></p-inputSwitch>
+                    <small>Indica si el usuario es administrador</small>
                 </div>
 
                 <div class="flex flex-column">
-                    <input type="checkbox" [(ngModel)]="esJefe"> Jefe de estudios
+                    <label for="jefeSwitch">Jefe de estudios</label>
+                    <p-inputSwitch [(ngModel)]="esJefe" id="jefeSwitch"></p-inputSwitch>
+                    <small>Indica si el usuario es jefe de estudios</small>
                 </div>
 
                 <div class="flex flex-column">
-                    <input type="checkbox" [(ngModel)]="esProfe"> Profesor
+                    <label for="profeSwitch">Profesor</label>
+                    <p-inputSwitch [(ngModel)]="esProfe" id="profeSwitch"></p-inputSwitch>
+                    <small>Indica si el usuario es profesor</small>
                 </div>
 
-                <div style="margin-top: 20px;" >
-
+                <div style="margin-top: 20px;">
                     <app-confirm tipo="Guardar" icono="plus" mensaje="¿Deseas guardar los cambios?" color="success" (confirmacion)="guardar($event)"></app-confirm>
                 </div>
             </div>
         </div>
 
+    </p-dialog>
+</div>

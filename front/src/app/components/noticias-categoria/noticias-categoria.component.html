@@ -1,11 +1,11 @@
-<div class="galeria" >
-    <!-- //Óscar -->
+<br><h1>NOTICIAS GENERALES</h1>
+
+@if (listaNoticias.length>0){
     @for (noticia of listaNoticias; track noticia.id) {
-            <div clas="card">
-
-                <app-preview-noticia [noticia]="noticia"></app-preview-noticia>
-            </div>
-            
-
+        <ng-container>
+            <app-preview-noticia [noticia]="noticia"></app-preview-noticia>
+        </ng-container>
     }
-</div>
+} @else {
+    <p>No hay noticias.</p>
+}

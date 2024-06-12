@@ -33,6 +33,12 @@ export class VistaEventosComponent implements OnInit{
       )
       .subscribe({
         next:(eventos: Array<Evento>) => {
+          for (let i=0 ; i<eventos.length ; i++){
+            let tipo = eventos[i].tipo
+            if (!(tipo.includes('Asociación Amigos CEPA'))){
+              this.eventos.push(eventos[i])
+            }
+          }
           this.eventos = eventos;
         },
         error:(err)=>{

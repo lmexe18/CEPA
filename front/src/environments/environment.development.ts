@@ -5,8 +5,6 @@ export const environment = {
     urlSecciones:'/secciones',
     urlEventos: '/eventos',
     urlEnlace:'/enlaces',
-    urlFotosNoticias:'/uploads/noticias',
-    urlFotosSecciones:'/uploads/secciones',
     urlAuth:'/auth',
     urlLogin:'/login',
     urlRegistro:'/register',
@@ -21,11 +19,16 @@ export const environment = {
     urlReservas:'/reservas',
     urlEventosSocket: 'http://localhost:8090',
     urlFotosEventos:'/uploads/eventos',
-    urlGaleria: '/galeria',
     urlFotosGaleria: '/uploads/galerias',
+    urlFotosNoticias: '/uploads/noticias',
+    urlFotosSecciones:'/uploads/secciones',
+    urlGaleria: '/galeria',
     urlContacto: '/contacto',
     urlTipoCurso: '/tipoCurso',
     urlAsignatura: '/asignatura',
     urlTemario: '/temario',
-    urlDocumentoProgramatico: '/documentoProgramatico'
+    urlDocumentoProgramatico: '/documentoProgramatico',
+    urlDepartamento: '/departamento',
+    urlEquipoDirectivo: '/equipoDirectivo',
+    urlCurso: '/curso'
 };

@@ -1,0 +1,25 @@
+<h1>PROGRAMACIÓN GENERAL DE AULAS ANUAL</h1>
+<br>
+<div class="card-container">
+    @if (programaciones != []){
+        @for (programacion of programaciones; track programacion){
+            <div class="card-wrapper">
+              <p-card class="custom-card mt10" [style]="{'width': '400px', 'height': '200px', 'margin-top':'20px'}">
+                <ng-template pTemplate="header">
+                  <div class="card-header">
+                    <h2>{{ programacion.nombre }}</h2>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="body">
+                  <div class="card-body">
+                    <a [href]="programacion.link" target="_blank">Ver documento</a>
+                  </div>
+                </ng-template>
+              </p-card>
+            </div>
+          }
+    } @else {
+        <p>No hay documentos programáticos de programación general de aulas anual.</p>
+    }
+  
+</div>

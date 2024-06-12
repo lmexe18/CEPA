@@ -28,6 +28,25 @@ import { AdminDocumentosProgComponent } from './components/admin-documentos-prog
 import { AdminAsignaturasComponent } from './components/admin-asignaturas/admin-asignaturas.component';
 import { AdminTemarioComponent } from './components/admin-temario/admin-temario.component';
 import { AdminEquipoDirectivoComponent } from './components/admin-equipo-directivo/admin-equipo-directivo.component';
+import { EquipoDirectivoComponent } from './components/equipo-directivo/equipo-directivo.component';
+import { ProgramacionGeneralAulasComponent } from './components/programacion-general-aulas/programacion-general-aulas.component';
+import { PlanDigitalizacionComponent } from './components/plan-digitalizacion/plan-digitalizacion.component';
+import { DepartamentosComponent } from './components/departamentos/departamentos.component';
+import { EnsenanzasBasicasComponent } from './components/ensenanzas-basicas/ensenanzas-basicas.component';
+import { SecundariaPresencialComponent } from './components/secundaria-presencial/secundaria-presencial.component';
+import { SecundariaDistanciaComponent } from './components/secundaria-distancia/secundaria-distancia.component';
+import { CursosComponent } from './components/cursos/cursos.component';
+import { MedioFpComponent } from './components/medio-fp/medio-fp.component';
+import { ErasmusComponent } from './components/erasmus/erasmus.component';
+import { PlanGarantiaJuvenilComponent } from './components/plan-garantia-juvenil/plan-garantia-juvenil.component';
+import { PruebasCursosPreparatoriosComponent } from './components/pruebas-cursos-preparatorios/pruebas-cursos-preparatorios.component';
+import { AulaMentorComponent } from './components/aula-mentor/aula-mentor.component';
+import { AmigosCepaComponent } from './components/amigos-cepa/amigos-cepa.component';
+import { ElCentroComponent } from './components/el-centro/el-centro.component';
+import { DocumentoProgramaticoService } from './services/documentoProgramatico.service';
+import { DocumentosProgramaticosComponent } from './components/documentos-programaticos/documentos-programaticos.component';
+import { EnsenanzasComponent } from './components/ensenanzas/ensenanzas.component';
+import { SecundariaComponent } from './components/secundaria/secundaria.component';
 
 
 export const routes: Routes = [
@@ -66,9 +85,9 @@ export const routes: Routes = [
  {path:'reservas/aulas/:id/horarios',component:ReservarAulaComponent,
  canActivate: [accesoGuard],data: { rol: ['Profesor'] } },
 
-{path:'categoria/:id',component: NoticiasCategoriaComponent},
+{path:'noticias',component: NoticiasCategoriaComponent},
 
-{path:'categoria/:id/noticia/:noticia',component: NoticiaComponent},
+{path:'noticia/:noticia',component: NoticiaComponent},
 
 {path:'noticia/contenido/:id',component: EditContentNoticiaComponent,
 canActivate: [accesoGuard],data: { rol: ['Administrador'] }},
@@ -85,7 +104,7 @@ canActivate:[accesoGuard], data:{rol:['Administrador']}},
 {path:'admin/asistencias/:id', component:AdminAsistenciasComponent,
 canActivate:[accesoGuard], data:{rol:['Administrador']}},
 
-{path:'evento/:id', component:EventosComponent},
+{path:'eventos/:id', component:EventosComponent},
 
 {path:'eventos/tus-eventos/:id', component:TusEventosComponent},
 
@@ -117,6 +136,42 @@ canActivate: [accesoGuard], data:{rol:['Admimistrador']}},
 
 {path: 'admin/equipo-directivo', component: AdminEquipoDirectivoComponent,
 canActivate: [accesoGuard], data:{rol:['Administrador']}},
+
+{path: 'categoria/8', component:EquipoDirectivoComponent},
+
+{path: 'categoria/15', component:ProgramacionGeneralAulasComponent},
+
+{path: 'categoria/16', component:PlanDigitalizacionComponent},
+
+{path:'categoria/12', component:DepartamentosComponent},
+
+{path: 'categoria/10', component:EnsenanzasBasicasComponent},
+
+{path:'categoria/17', component:SecundariaPresencialComponent},
+
+{path: 'categoria/18', component:SecundariaDistanciaComponent},
+
+{path: 'categoria/13', component:CursosComponent},
+
+{path: 'categoria/14', component:MedioFpComponent},
+
+{path: 'categoria/3', component:ErasmusComponent},
+
+{path:'categoria/4', component:PlanGarantiaJuvenilComponent},
+
+{path: 'categoria/5', component: PruebasCursosPreparatoriosComponent},
+
+{path: 'categoria/6', component: AulaMentorComponent},
+
+{path: 'categoria/7', component:AmigosCepaComponent},
+
+{path:'categoria/1', component:ElCentroComponent},
+
+{path: 'categoria/9', component:DocumentosProgramaticosComponent},
+
+{path:'categoria/2', component:EnsenanzasComponent},
+
+{path:'categoria/11', component:SecundariaComponent},
 
 {path: '**', component: NotFoundComponent},
 

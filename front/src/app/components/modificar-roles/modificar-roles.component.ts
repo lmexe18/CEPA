@@ -1,17 +1,16 @@
-//Raul
-
-import { Component, EventEmitter ,Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
-import { DialogService} from 'primeng/dynamicdialog';
+import { DialogService } from 'primeng/dynamicdialog';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ConfirmComponent } from '../confirm/confirm.component';
-import { Subscription } from 'rxjs';
+import { Subscription, forkJoin } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { RolAsignadoService } from '../../services/rol-asignado.service';
 import { RolAsignado } from '../../interface/rolAsignado';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 @Component({
   selector: 'app-modificar-roles',
@@ -22,11 +21,12 @@ import { RolAsignado } from '../../interface/rolAsignado';
     ButtonModule,
     DialogModule,
     InputTextModule,
-    ConfirmComponent
+    ConfirmComponent,
+    InputSwitchModule
   ],
   templateUrl: './modificar-roles.component.html',
-  styleUrl: './modificar-roles.component.css',
-  providers:[
+  styleUrls: ['./modificar-roles.component.css'],
+  providers: [
     DialogService,
     MessageService,
     RolAsignadoService
@@ -35,72 +35,70 @@ import { RolAsignado } from '../../interface/rolAsignado';
 export class ModificarRolesComponent {
 
   constructor(
-    public messageService:MessageService,
-    private servicioRolAsig:RolAsignadoService
-  ){}
+    public messageService: MessageService,
+    private servicioRolAsig: RolAsignadoService
+  ) { }
 
-  @Input() idUser!: number
-  ro! : RolAsignado
-  rolAsignado : RolAsignado = {
-    id:0,
-    idUser: 0,
-    idRol: 0
-  }
+  @Input() idUser!: number;
   @Output() cerrarModal = new EventEmitter<void>();
-  
-  @Input() visible: boolean = false
 
-  @Input() tipo = 0
+  @Input() visible: boolean = false;
+  @Input() tipo = 0;
 
-  @Input() esAdmin: boolean = false
-  @Input() esJefe: boolean = false
-  @Input() esProfe: boolean = false
+  @Input() esAdmin: boolean = false;
+  @Input() esJefe: boolean = false;
+  @Input() esProfe: boolean = false;
 
-  showDialog(){
+  showDialog() {
     this.servicioRolAsig.rolesAsignadosGetIdUsu(this.idUser!).subscribe({
-  
       next: (rolesAsignados: RolAsignado[]) => {
-        rolesAsignados.forEach(rol => {
-          if (rol.idRol === 1) {
-            this.esAdmin = true;
-          } else if (rol.idRol === 2) {
-            this.esJefe = true;
-          } else if (rol.idRol === 3) {
-            this.esProfe = true;
-          }
-        });
-  
+        this.esAdmin = rolesAsignados.some(rol => rol.idRol === 1);
+        this.esJefe = rolesAsignados.some(rol => rol.idRol === 2);
+        this.esProfe = rolesAsignados.some(rol => rol.idRol === 3);
+
         this.visible = true;
       },
       error: (e) => {
-  
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error al cargar los roles', life: 3000 });
       }
-    })
+    });
   }
 
-  async guardar(b:Boolean){
-    if(b){
-      this.messageService.add({ severity: 'info', summary:'Modificación de los roles', detail:'En curso', life:3000});
-      if(this.esAdmin){
-        this.servicioRolAsig.rolesAsignadosPost(this.idUser, 1)
-      }else{
-        this.servicioRolAsig.rolesAsignadosDelete(this.idUser,1)
+  guardar(b: Boolean) {
+    if (b) {
+      this.messageService.add({ severity: 'info', summary: 'Modificación de los roles', detail: 'En curso', life: 3000 });
+
+      const observables = [];
+
+      if (this.esAdmin) {
+        observables.push(this.servicioRolAsig.rolesAsignadosPost(this.idUser, 1));
+      } else {
+        observables.push(this.servicioRolAsig.rolesAsignadosDelete(this.idUser, 1));
       }
 
-      if(this.esJefe){
-        this.servicioRolAsig.rolesAsignadosPost(this.idUser,2)
-      }else{
-        this.servicioRolAsig.rolesAsignadosDelete(this.idUser,2)
+      if (this.esJefe) {
+        observables.push(this.servicioRolAsig.rolesAsignadosPost(this.idUser, 2));
+      } else {
+        observables.push(this.servicioRolAsig.rolesAsignadosDelete(this.idUser, 2));
       }
 
-      if(this.esProfe){
-        this.servicioRolAsig.rolesAsignadosPost(this.idUser,3)
-      }else{
-        this.servicioRolAsig.rolesAsignadosDelete(this.idUser,3)
+      if (this.esProfe) {
+        observables.push(this.servicioRolAsig.rolesAsignadosPost(this.idUser, 3));
+      } else {
+        observables.push(this.servicioRolAsig.rolesAsignadosDelete(this.idUser, 3));
       }
+
+      forkJoin(observables).subscribe({
+        next: () => {
+          this.messageService.add({ severity: 'success', summary: 'Modificación de los roles', detail: 'Terminada', life: 3000 });
+          this.visible = false;
+          this.cerrarModal.emit();
+        },
+        error: (e) => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error al modificar los roles', life: 3000 });
+        }
+      });
     }
-    this.messageService.add({ severity: 'success', summary:'Modificación de los roles', detail:'Terminada', life:3000});
-    this.visible = false
   }
 
   cerrar(): void {

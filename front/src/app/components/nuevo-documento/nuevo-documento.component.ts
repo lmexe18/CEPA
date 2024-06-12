@@ -123,7 +123,7 @@ export class NuevoDocumentoComponent {
               this.nuevoDocumento.activo = false;
               this.cerrar();
             });
-            this.router.navigate(['/documentos']);
+            this.router.navigate(['/documentos-programaticos']);
           },
           error: (error) => {
             this.messageService.add({ severity: 'error', summary: 'Crear documento', detail: 'Algo ha ido mal al crear el documento, inténtelo de nuevo', life: 3000 });

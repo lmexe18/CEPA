@@ -61,54 +61,45 @@ userroles:Array<string>=[]
       command: () => { this.router.navigate(['/admin/categorias']) },
     },
     */{
-      label: 'Administrar Noticias',
+      label: 'Noticias',
       command: () => { this.router.navigate(['/admin/noticias']) },
 
     }
     ,
     {
-      label: 'Administrar Eventos',
+      label: 'Eventos',
       command: () => { this.router.navigate(['/admin/eventos']) },
 
     },
     {
-      label: 'Administrar Usuarios',
+      label: 'Usuarios',
       command: () => { this.router.navigate(['/users']) },
 
     },
-    /***
-     * Estarán los cursos creados a partir de su tipo de curso y toda la información relativa al curso
-     * Un botón para llevar a los usuarios del curso
-     * Otro para llevar a las asignaturas donde estarán con el profesor asociado
-     */
     {
-      label: 'Administrar Cursos',
+      label: 'Cursos',
       command: () => {this.router.navigate(['/admin/cursos'])}
     },
-    /**
-     * Estarán todos los tipos de curso con su descripción y un botón para llevar a sus asignaturas
-     * Dentro de las asignaturas estará la información de estas y un botón para llevar al temario de cada una
-     */
     {
-      label: 'Administrar Tipos de Cursos',
+      label: 'Tipos de Cursos',
       command: () => {this.router.navigate(['/admin/tipo-cursos'])}
     },
     {
-      label: 'Administrar Contacto',
+      label: 'Contacto',
       command: () => { this.router.navigate(['/admin/contacto']) },
 
     },
     {
-      label: 'Administrar Documentos Programaticos',
+      label: 'Documentos Programaticos',
       command: () => { this.router.navigate(['/admin/documentos-programaticos']) },
 
     },
     {
-      label: 'Administrar Departamentos',
+      label: 'Departamentos',
       command: () => { this.router.navigate(['/admin/departamentos'])}
     },
     {
-      label: 'Administrar Equipo Directivo',
+      label: 'Equipo Directivo',
       command: () => { this.router.navigate(['/admin/equipo-directivo'])}
     },
     {
@@ -172,7 +163,12 @@ userroles:Array<string>=[]
           command:()=>{this.router.navigate(['/eventos'])},
           replaceUrl:true,
         })
-        this.items?.unshift({ label: 'Inicio',command: () => { this.router.navigate(['']) }, })
+        this.items?.unshift({
+          label: 'NOTICIAS GENERALES',
+          command:()=>{this.router.navigate(['/noticias'])},
+          replaceUrl:true,
+        })
+        this.items?.unshift({ label: 'INICIO',command: () => { this.router.navigate(['']) }, })
 
       },
       error: (err) => {

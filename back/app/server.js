@@ -47,7 +47,7 @@ class Server {
         this.temarioPath = '/api/temario'
         this.tipoCursoPath = '/api/tipoCurso'
         this.categoriaRoutes = '/api/categoria'
-        this.departamentoPath = '/departamento'
+        this.departamentoPath = '/api/departamento'
         this.middlewares();
         this.routes();
         this.sockets();

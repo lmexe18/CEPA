@@ -18,18 +18,14 @@ class ConexionDepartamento {
 
     conectar = () => {
         this.db.authenticate().then(() => {
-            console.log('Conexión establecida correctamente.');
+     
         }).catch((error) => {
-            console.error('No se pudo conectar a la base de datos:', error);
+           
         });
     }
 
     desconectar = () => {
-        this.db.close().then(() => {
-            console.log('Conexión cerrada correctamente.');
-        }).catch((error) => {
-            console.error('Error al cerrar la conexión:', error);
-        });
+        process.on('SIGINT', () => this.db.close());
     }
 
     async getDepartamentos() {
@@ -38,7 +34,6 @@ class ConexionDepartamento {
         try {
             resultado = await models.Departamento.findAll();
         } catch (error) {
-            console.error('Error al obtener departamentos:', error);
         } finally {
             this.desconectar();
         }
@@ -56,7 +51,6 @@ class ConexionDepartamento {
                 resultado = departamento;
             }
         } catch (error) {
-            console.error('Error al obtener departamento por id:', error);
         } finally {
             this.desconectar();
         }
@@ -69,7 +63,6 @@ class ConexionDepartamento {
         try {
             resultado = await models.Departamento.create(body);
         } catch (error) {
-            console.error('Error al crear departamento:', error);
         } finally {
             this.desconectar();
         }
@@ -81,13 +74,12 @@ class ConexionDepartamento {
         let resultado;
         try {
             let departamento = await models.Departamento.findByPk(id);
-            if (!asignaturaProfeCurso) {
+            if (!departamento) {
                 throw new Error(`Departamento con ID ${id} no encontrado`);
             } else {
                 resultado = await departamento.update(body);
             }
         } catch (error) {
-            console.error('Error al actualizar departamento:', error);
         } finally {
             this.desconectar();
         }
@@ -105,7 +97,6 @@ class ConexionDepartamento {
                 resultado = await departamento.destroy();
             }
         } catch (error) {
-            console.error('Error al eliminar departamento:', error);
         } finally {
             this.desconectar();
         }
@@ -122,7 +113,6 @@ class ConexionDepartamento {
                 }
             });
         } catch (error) {
-            console.error('Error al obtener departamentos por jefe:', error);
         } finally {
             this.desconectar();
         }

@@ -15,14 +15,14 @@
         </div>
     </ng-template>
         <ng-template pTemplate="header">
-            <tr>
+            <tr class="header-glass">
                 <th style="width:20%"><app-nuevo-asistente-evento></app-nuevo-asistente-evento></th>
                 <th style="width:40%">Nombre</th>
                 <th style="width:40%">Email</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-usuario>
-            <tr>
+            <tr class="glass">
                 <td>
                     <app-confirm tipo="Eliminar" icono="trash" mensaje="¿Deseas borrar este asistente?" color="danger" (confirmacion)="eliminar(usuario.id, $event)"></app-confirm>
                 </td>

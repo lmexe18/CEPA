@@ -10,6 +10,8 @@ import { ConfirmComponent } from '../confirm/confirm.component';
 import { EventosService } from '../../services/eventos.service';
 import { Evento } from '../../interface/evento';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { Dropdown, DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-editar-evento',
@@ -21,6 +23,8 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     ButtonModule,
     InputTextModule,
     ConfirmComponent,
+    InputSwitchModule,
+    DropdownModule
   ],
   templateUrl: './editar-evento.component.html',
   styleUrls: ['./editar-evento.component.css'],
@@ -31,6 +35,13 @@ export class EditarEventoComponent {
     private servicioEvento: EventosService,
     private messageService: MessageService,
   ) {}
+
+  @Input() tiposEventos = [
+    { label: 'Excursiones', value: 'Excursiones' },
+    { label: 'Actos', value: 'Actos' },
+    { label: 'Asociación Amigos CEPA', value: 'Asociación Amigos CEPA' },
+    { label: 'Días señalados', value: 'Días señalados' }
+  ];
 
   @Input() eventos?: any 
   @Input() tipo=0

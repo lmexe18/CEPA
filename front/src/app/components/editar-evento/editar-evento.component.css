@@ -1,0 +1,6 @@
+.number, #hora, #descripcion{
+    padding:10px;
+    border-radius: 5px;
+    border-color: rgb(219, 219, 219);
+    border-width: 0.1;
+}

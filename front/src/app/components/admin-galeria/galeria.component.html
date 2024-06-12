@@ -22,7 +22,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-galerias>
             <tr class="glass">
-                <td><app-confirm tipo="" icono="trash" mensaje="¿Deseas borrar esta fotografía?" color="danger" (confirmacion)="eliminar(galerias.id, $event)"></app-confirm></td>
+                <td><app-confirm tipo="Eliminar" icono="trash" mensaje="¿Deseas borrar esta fotografía?" color="danger" (confirmacion)="eliminar(galerias.id, $event)"></app-confirm></td>
                 <td><img [src]=galerias.foto alt="Foto de evento" style="width: auto; height: 200px;"></td>
         </ng-template>
         <ng-template pTemplate="paginatorleft">

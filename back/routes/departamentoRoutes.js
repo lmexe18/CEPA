@@ -8,7 +8,6 @@ const accessMid = require('../middlewares/validarRoles');
 
 router.get('/', controller.obtenerDepartamentos);
 router.get('/:id', controller.obtenerDepartamentoPorId);
-router.get('/jefe/:idJefeDepartamento', controller.obtenerDepartamentosPorJefe);
 
 router.post('/', [
     check('nombre').isString().isLength({ min:1, max:50 }).notEmpty().withMessage('El nombre no puede estar vacío.'),
@@ -17,7 +16,7 @@ router.post('/', [
     check('idJefeDepartamento').isInt({ min: 1 }).optional().withMessage('El id del jefe de departamento debe de ser un número entero mayor a 0.'),
     check('activo').isBoolean().notEmpty().withMessage('El campo activo debe ser verdadero o falso.'),
     validateValues
-], /*authMid.validarJWT, accessMid.validarRoles('admin'),*/ controller.crearDepartamento);
+], authMid.validarJWT, controller.crearDepartamento);
 
 router.put('/:id', [
     check('nombre').isString().withMessage('El nombre debe ser un texto.'),
@@ -26,8 +25,8 @@ router.put('/:id', [
     check('idJefeDepartamento').isInt({ min: 1 }).optional().withMessage('El id del jefe de departamento debe de ser un número entero mayor a 0.'),
     check('activo').isBoolean().withMessage('El campo activo debe ser verdadero o falso.'),
     validateValues
-], /*authMid.validarJWT, accessMid.validarRoles('admin'),*/ controller.actualizarDepartamento);
+], authMid.validarJWT, controller.actualizarDepartamento);
 
-router.delete('/:id', /*authMid.validarJWT, accessMid.validarRoles('admin'),*/ controller.borrarDepartamento);
+router.delete('/:id', authMid.validarJWT, controller.borrarDepartamento);
 
 module.exports = router;

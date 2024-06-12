@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of } from 'rxjs';
 import { TipoCurso } from '../interface/tipoCurso';
+import { identifierName } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'

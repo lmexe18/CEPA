@@ -9,7 +9,7 @@
     <div class="card flex justify-content-center" class="custom-dialog">
         <div class="flex flex-row gap-4">
 
-            <div class="flex flex-column">
+            <br><div class="flex flex-column">
                 <label for="titulo">Nombre</label><br>
                 <input  class="{{ validacionNombre }}" pInputText id="nombre" aria-describedby="nombre" [(ngModel)]="eventoModal.nombre" /><br>
                 <small id="titulo">Introduce un nombre para el nuevo evento</small><br><br>
@@ -19,7 +19,7 @@
                 <label for="descripcion">Descripción</label><br>
                 <textarea  class="{{ validacionDescripcion }}" rows="20" cols="60" id="descripcion" aria-describedby="descripcion" [(ngModel)]="eventoModal.descripcion"></textarea><br>
                 <small id="descripcion">Introduce una descripción para el nuevo evento</small><br><br>
-            </div><br>
+            </div>
 
             <div class="datepicker-container" cdkOverlayContainer>
                 <label for="descripcion">Fecha</label><br><br>
@@ -29,28 +29,23 @@
 
             <div class="flex felx-column">
                 <label for="hora">Hora</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="time" class="{{ validacionHora }}"id="hora" name="hora" [(ngModel)]="eventoModal.hora">&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="time" class="{{ validacionHora }} "id="hora" name="hora" [(ngModel)]="eventoModal.hora">&nbsp;&nbsp;&nbsp;&nbsp;
                 <small id="hora">Introduce una hora para el nuevo evento</small>
             </div><br>
 
             <div class="flex flex-column">
                 <label for="visibilidad">Visibilidad</label>
-                <input type="checkbox" ng-model="checkboxModel.value1" ng-true-value=true ng-false-value=false class="{{ validacionVisibilidad }}" id="visilidad" aria-describedby="evento" [(ngModel)]="eventoModal.visibilidad"/><br><br>
+                <p-inputSwitch ng-model="checkboxModel.value1" ng-true-value=true ng-false-value=false class="{{ validacionVisibilidad }}" id="visilidad" aria-describedby="evento" [(ngModel)]="eventoModal.visibilidad"></p-inputSwitch><br>
             </div>
 
             <div class="flex flex-column">
                 <label for="asistentes">Asistentes</label><br>
-                <input type="number" id="asistentes" pInputNumber min="0" [(ngModel)]="eventoModal.numAsistentes"><br>
+                <input class="number" type="number" id="asistentes" pInputNumber min="0" [(ngModel)]="eventoModal.numAsistentes"><br>
                 <small id="asistentes">Introduce un número máximo de asistentes para el evento</small><br><br>
             </div>
             <div class="flex flex-column">
                 <label for="tipo">Tipo de evento</label><br>
-                <select id="tipo" [(ngModel)]="eventoModal.tipo">
-                    <option value="Excursiones">Excursiones</option>
-                    <option value="Actos">Actos</option>
-                    <option value="Asociación Amigos CEPA">Asociación Amigos CEPA</option>
-                    <option value="Días señalados">Días señalados</option>
-                </select><br>
+                <p-dropdown [options]="tiposEventos" [(ngModel)]="eventoModal.tipo" placeholder="Selecciona un tipo"></p-dropdown><br>
                 <small id="tipo">Escoge un tipo de evento</small><br><br>
             </div>
         </div><br>

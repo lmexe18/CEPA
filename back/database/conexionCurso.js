@@ -13,30 +13,36 @@ class ConexionCurso {
                 acquire: 30000,
                 idle: 10000
             },
-        });
+        })
     }
 
     conectar = () => {
         this.db.authenticate().then(() => {
-            console.log('Conexión establecida correctamente.');
         }).catch((error) => {
-            console.error('No se pudo conectar a la base de datos:', error);
-        });
+        })
     }
-
     desconectar = () => {
-        this.db.close().then(() => {
-            console.log('Conexión cerrada correctamente.');
-        }).catch((error) => {
-            console.error('Error al cerrar la conexión:', error);
-        });
+        process.on('SIGINT', () => conn.close())
     }
 
     async getCursos() {
         this.conectar();
         let resultado = [];
         try {
-            resultado = await models.Curso.findAll();
+            resultado = await models.Curso.findAll({
+                include: [
+                    {
+                        model: models.TipoCurso,
+                        as: 'tipoCurso',
+                        attributes: ['nombre']
+                    },
+                    {
+                        model: models.user,
+                        as:'tutor',
+                        attributes:['nombre']
+                    }]
+            });
+
         } catch (error) {
             console.error('Error al obtener cursos:', error);
         } finally {
@@ -103,7 +109,7 @@ class ConexionCurso {
         try {
             resultado = await models.Curso.findAll({
                 where: {
-                    idTipoCurso : tipoCursoId
+                    idTipoCurso: tipoCursoId
                 }
             });
         } catch (error) {
@@ -131,8 +137,8 @@ class ConexionCurso {
         this.conectar();
         let resultado;
         try {
-            let curso = await models.AsignaturaProfeCurso.findByPk(id);
-            if (!asignaturaProfeCurso) {
+            let curso = await models.Curso.findByPk(id);
+            if (!curso) {
                 throw new Error(`Curso con ID ${id} no encontrado`);
             } else {
                 resultado = await curso.update(body);

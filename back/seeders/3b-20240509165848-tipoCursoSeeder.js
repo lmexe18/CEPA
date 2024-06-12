@@ -21,7 +21,7 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      nombre: 'Basica Castellano para extranjeros',
+      nombre: 'Básica Castellano para extranjeros',
       activo: true,
       createdAt: new Date(),
       updatedAt: new Date()
