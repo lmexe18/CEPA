@@ -9,3 +9,9 @@
     <li>Por último, desde el mismo CDM, ejecutar el comando <b>npx sequelize-cli db:seed:all</b> para cargar todos los datos predefinidos de las tablas.</li>
 </ul>
 <br><br>Se ha utilizado la nomenclatura lowerCamelCase en todo el proyecto.
+<h2>CREDENCIALES</h2>
+<ul>
+<li>Administrador -> correo: example@example.com ; contraseña: 1234</li><br>
+<li>Jefe de estudios -> correo: example2@example.com ; contraseña: 1234</li><br>
+<li>Profesor -> correo: example3@example.com ; contraseña: 1234</li><br>
+<li>Usuario normal -> correo: example4@example.com ; contraseña: 1234</li>

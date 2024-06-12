@@ -1,0 +1,32 @@
+<div style="float:left; margin-left:20px; margin-top:30px; margin-bottom:30px ;justify-content: space-evenly;">
+    <p-card styleClass="mt10" [style]="{'width': '350px', 'height': '460px', 'margin-top':'20px'}" routerLink="/noticia/{{ noticia.id }}">
+        <ng-template pTemplate="header">
+            <div style="text-align: center;  overflow: hidden; margin-top: 30px;">
+                <h1>
+                    <span
+                        style="font-size: 20px; text-decoration: none; color: inherit; display: inline-block; max-width: 100%; word-wrap: break-word;">
+                        {{noticia.titulo}}
+                    </span>
+                </h1>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="body">
+            <div
+                style="display: flex; flex-direction: column; justify-content: center; margin-top: -30px; align-items: center; height: 100%;">
+                @if(noticia.foto!=null){
+                @if(esUrl(noticia.foto)){
+                <div style="width: 90%; max-width: 100%;">
+                    <img alt="noticia" src="{{noticia.foto}}" style="height:200px; width:auto; max-width: 100%; border-radius: 10px;" class="shadow-4" />
+                </div>
+                } @else {
+                <div style="width: 90%; max-width: 100%;">
+                    <img [src]="env.baseUrl+env.urlFotosNoticias+'/'+noticia.foto" style="height:200px; width:auto; max-width: 100%; border-radius: 10px;" class="shadow-4" />
+                </div>
+                }
+                }
+                <br><p>{{ fechaFormateada }}</p>
+                <p>{{ horaFormateada }}</p>
+            </div>
+        </ng-template>
+    </p-card>
+</div>

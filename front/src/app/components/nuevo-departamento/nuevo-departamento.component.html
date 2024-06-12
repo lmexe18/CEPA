@@ -1,0 +1,53 @@
+<p-toast></p-toast>
+<div class="card flex justify-content-center">
+    <p-button severity="success" (click)="showDialog()" [raised]="true" [outlined]="true" icon="pi pi-plus" label="Nuevo"></p-button>
+    <p-dialog header="Crear departamento" [(visible)]="visible" [modal]="true" 
+    [draggable]="false" (onHide)="cerrar();" [resizable]="false">
+
+    <div class="card flex justify-content-center" class="custom-dialog">
+        <div class="flex flex-row gap-4">
+
+            <div class="flex flex-column">
+                <label for="nombre">Nombre</label><br>
+                <input  class="{{ validacionNombre }}" pInputText id="nombre" aria-describedby="nombre" [(ngModel)]="nuevoDepartamento.nombre" /><br>
+                <small id="nombre">Introduce un nombre para el nuevo departamento</small><br><br>
+            </div>
+
+            <div class="flex flex-column">
+                <label for="descripcion">Descripción</label><br>
+                <textarea  class="{{ validacionDescripcion }}" rows="20" cols="60" id="descripcion" aria-describedby="descripcion" [(ngModel)]="nuevoDepartamento.descripcion"></textarea><br>
+                <small id="descripcion">Introduce una descripción para el nuevo departamento</small><br><br>
+            </div><br>
+
+            <div class="flex flex-column">
+                <label for="jefeDepartamento">Jefe de Departamento</label><br>
+                <input  class="{{ validacionJefe }}" pInputText id="jefeDepartamento" aria-describedby="jefeDepartamento" [(ngModel)]="nuevoDepartamento.jefeDepartamento" /><br>
+                <small id="jefeDepartamento">Introduce el nombre del jefe del departamento</small><br><br>
+            </div>
+
+           
+           <!-- <div class="flex flex-column">
+                <label for="fotoCartel">Foto de Departamento</label><br><br>
+                    <input #archivo type="file" id="archivo" class="form-control" accept="image/*" (change)="uploadFoto($event)" ><br>
+                    @if(fotoPreview){
+                        <p-button (onClick)="limpiarFoto(archivo)">Limpiar</p-button>
+                    }
+                <small id="fotoCartel">Sube la foto del nuevo departamento</small><br>
+            </div>
+            <br>
+            @if(fotoPreview){
+                <img [src]="fotoPreview">
+            } -->
+
+            <!-- <div class="flex flex-column">
+                <label for="activo">Activo</label>
+                <input type="checkbox" [(ngModel)]="nuevoDepartamento.activo" aria-describedby="activo"/>
+            </div> -->
+
+        </div><br>
+        <div style="margin-top: 20px;">
+            <app-confirm tipo="Crear" icono="plus" mensaje="¿Deseas crear este departamento?" color="success" (confirmacion)="crear($event)"></app-confirm>
+        </div>
+        </div>
+    </p-dialog>
+</div>

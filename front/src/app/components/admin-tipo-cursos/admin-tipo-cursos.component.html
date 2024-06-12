@@ -1,0 +1,42 @@
+<!-- <app-nuevo-tipo-cursos></app-nuevo-tipo-cursos> -->
+<div style="margin-top: 100px;" class="card">
+    <p-table
+        [value]="tiposCursos"
+        [paginator]="true"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem', 'max-width': '80rem', 'margin': 'auto' }"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} tipos de cursos"
+        [rowsPerPageOptions]="[5, 10, 20]"
+    >
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                Administrar Tipos de Cursos
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+               <!-- <th style="width:20%">Editar</th> -->
+                <th style="width:30%">Nombre</th>
+                <th style="width:30%">Activo</th>
+                <th style="width:30%">Asignaturas</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-tipoCurso>
+            <tr class="glass">
+                <!--<td>
+                    <app-editar-tipo-curso [id]="tipoCurso.id" [tipoCurso]="tipoCurso"></app-editar-tipo-curso>
+                </td>-->
+                <td>{{ tipoCurso.nombre }}</td>
+                <td>{{ tipoCurso.activo ? 'Sí' : 'No' }}</td>
+                <td><p-button routerLink="/admin/tipo-cursos/asignaturas/{{tipoCurso.id}}" icon="pi pi-eye"  [raised]="true" [outlined]="true"title=""></p-button></td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</div>

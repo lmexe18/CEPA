@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(process.env.TABLA_EQUIPOS_DIRECTIVOS, [
+    await queryInterface.bulkInsert('equipos_directivos', [
       {
         puesto: 'Directora',
         nombre: 'Mª Luisa García Baeza',
@@ -43,6 +43,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete(process.env.TABLA_EQUIPOS_DIRECTIVOS, null, {});
+    await queryInterface.bulkDelete('equipos_directivos', null, {});
   }
 };

@@ -1,0 +1,43 @@
+<div style="margin-top: 100px;" class="card">
+    <p-table
+        [value]="departamentos"
+        [paginator]="true"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem', 'max-width': '80rem', 'margin': 'auto' }"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} departamentos"
+        [rowsPerPageOptions]="[5, 10, 20]"
+    >
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                Administrar Departamentos
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:5%"><app-nuevo-departamento></app-nuevo-departamento></th>
+                <th style="width:10%">Nombre</th>
+                <th style="width:60%">Descripción</th>
+                <th style="width:10%">Jefe de Departamento</th>
+               <!-- <th style="width:5%">Activo</th> -->
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-departamento>
+            <tr class="glass">
+                <td><app-editar-departamento [departamentos]="departamentos" [id]="departamento.id"></app-editar-departamento></td>
+                <td>{{ departamento.nombre }}</td>
+                <td>{{ departamento.descripcion }}</td>
+                <td>{{ departamento.jefeDepartamento }}</td>
+                <!-- <td>{{ departamento.activo ? 'Sí' : 'No' }}</td> -->
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,38 +1,41 @@
-/**
- * Se pueden almacenar tanto reservas como horarios
- */
-
+//Jaime
+//Óscar(cambiado nombre de tablas y asociaciones)
 'use strict';
 const {
   Model
 } = require('sequelize');
 
-const Aula = require('./aula');
-const RangoHorario = require('./rangoHorario');
+const AulaEspecial = require('./aulaespecial');
+const AulaFranja = require('./aulafranja');
 
 module.exports = (sequelize, DataTypes) => {
   class AulaHorario extends Model {
     static associate(models) {
-      this.belongsTo(models.Aula, {
+      this.belongsTo(models.AulaEspecial, {
         foreignKey: 'idAula',
         as: 'aula'
       });
-      this.belongsTo(models.RangoHorario, {
-        foreignKey: 'idRangoHorario',
-        as: 'rangoHorario'
+      this.belongsTo(models.AulaFranja, {
+        foreignKey: 'idFranja',
+        as: 'franja'
+      });
+      this.hasMany(models.AulaReserva, {
+        foreignKey: 'idHorario',
+        as: 'reservas'
       });
     }
   }
   AulaHorario.init({
-    idAula:DataTypes.INTEGER,
-    idRangoHorario: DataTypes.INTEGER,
-    reserva: DataTypes.BOOLEAN, // Para saber si ha sido una reserva (true) o si pertenece a un horario (false)
-    idUsuario: DataTypes.INTEGER, // Para saber quien ha realizado la reserva
-    activo: DataTypes.BOOLEAN // Se puede cancelar la reserva pero se quedaría almacenada (soft delete)
+    idAula: {
+      type: DataTypes.INTEGER,
+    },
+    idFranja: {
+      type: DataTypes.INTEGER,
+    }
   }, {
     sequelize,
-    modelName: process.env.MODEL_AULA_HORARIO,
-    tableName: process.env.TABLA_AULAS_HORARIOS
+    modelName: 'AulaHorario',
+    tableName: 'aulas_horarios'
   });
   return AulaHorario;
 };

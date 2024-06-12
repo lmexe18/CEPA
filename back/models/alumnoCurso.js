@@ -3,18 +3,19 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class alumnoCurso extends Model {
+  class AlumnoCurso extends Model {
 
     static associate(models) {
     }
   }
   AlumnoCurso.init({
     idUsuario: DataTypes.NUMBER, 
-    idCurso: DataTypes.NUMBER
+    idCurso: DataTypes.NUMBER,
+    activo: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: process.env.MODEL_ALUMNO_CURSO,
-    tableName: process.env.TABLA_ALUMNOS_CURSOS
+    modelName: 'AlumnoCurso',
+    tableName: 'alumnos_cursos'
   });
   return AlumnoCurso;
 };

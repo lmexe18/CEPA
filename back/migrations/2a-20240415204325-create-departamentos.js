@@ -3,39 +3,28 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable(process.env.TABLA_DEPARTAMENTOS, {
+    await queryInterface.createTable('departamentos', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nombreFoto:{
-        type: Sequelize.STRING,
-        allowNull: true
-      },
-      extensionFoto:{
-        type: Sequelize.STRING,
-        allowNull: true
-      },
       nombre: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
       descripcion: {
         type: Sequelize.TEXT,
         allowNull: false
       },
-      idJefeDepartamento: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: {
-            tableName:'usuarios'
-          },
-          key: 'id'
-        },
-        onDelete: 'CASCADE'
+      foto:{
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      jefeDepartamento:{
+        type: Sequelize.STRING,
+        allowNull:true
       },
       activo: {
         type: Sequelize.BOOLEAN,
@@ -56,6 +45,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-   await queryInterface.dropTable(process.env.TABLA_DEPARTAMENTOS);
+   await queryInterface.dropTable('departamentos');
   }
 };

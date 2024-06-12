@@ -1,0 +1,36 @@
+<div class="card flex justify-content-center">
+    <p-toast></p-toast>
+    @if (tipo == 0){
+        <p-button (click)="showDialog()" [raised]="true" [outlined]="true" icon="pi pi-pencil" label="Editar"></p-button>
+    }
+    <p-dialog header="Editar equipo directivo" [(visible)]="visible" [modal]="true" 
+      [draggable]="false" (onHide)="cerrar();" [resizable]="false">
+      <div class="card flex justify-content-center custom-dialog">
+          <div class="flex flex-row gap-4">
+              <div class="flex flex-column">
+                  <label for="nombre">Nombre</label><br>
+                  <input class="{{ validacionNombre }}" pInputText id="nombre" aria-describedby="nombre" [(ngModel)]="equipoModal.nombre" /><br>
+                  <small id="nombre">Introduce el nombre del miembro del equipo directivo</small><br><br>
+              </div>
+              <div class="flex flex-column">
+                  <label for="puesto">Puesto</label><br>
+                  <input class="{{ validacionPuesto }}" pInputText id="puesto" aria-describedby="puesto" [(ngModel)]="equipoModal.puesto" /><br>
+                  <small id="puesto">Introduce el puesto del miembro del equipo directivo</small><br><br>
+              </div>
+              <div class="flex flex-column">
+                <label for="puesto">Email</label><br>
+                <input class="{{ validacionEmail }}" pInputText id="email" aria-describedby="email" [(ngModel)]="equipoModal.email" /><br>
+                <small id="email">Introduce el email del miembro del equipo directivo</small><br><br>
+            </div>
+            <div style="margin-top: 20px;">
+              <app-confirm tipo="Guardar" icono="plus" mensaje="¿Deseas guardar los cambios?" color="success" (confirmacion)="guardar($event)"></app-confirm>
+            </div>
+            <div style="margin-top: 20px;">
+              <app-confirm tipo="Borrar" icono="trash" mensaje="¿Deseas borrar este equipo directivo?" color="danger" (confirmacion)="eliminar($event)"></app-confirm>
+            </div>
+          </div>
+          
+      </div>
+    </p-dialog>
+  </div>
+  

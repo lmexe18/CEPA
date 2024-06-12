@@ -3,20 +3,24 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Rol extends Model {
+  class rol extends Model {
     static associate(models) {
-      this.hasMany(models.rolUsuario, {
-        foreignKey: 'id',
-        as: process.env.ROL_USUARIO
+      this.hasMany(models.rolAsignado, {
+        foreignKey: 'idRol',
+        as: 'rolAsignado'
       });
     }
   }
-  Rol.init({
+  rol.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     nombre: DataTypes.STRING
   }, {
     sequelize,
-    modelName: process.env.MODEL_ROL,
-    tableName: process.env.TABLA_ROLES
+    modelName: 'rol',
+    tableName: 'roles'
   });
-  return Rol;
+  return rol;
 };

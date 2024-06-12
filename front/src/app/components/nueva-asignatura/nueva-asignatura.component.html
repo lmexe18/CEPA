@@ -1,0 +1,25 @@
+
+<p-toast></p-toast>
+<div class="card flex justify-content-center">
+  <p-button severity="success" (click)="showDialog()" [raised]="true" [outlined]="true" icon="pi pi-plus" label="Nueva"></p-button>
+  <p-dialog header="Crear Asignatura" [(visible)]="visible" [modal]="true" 
+            [draggable]="false" (onHide)="cerrar();" [resizable]="false">
+    <div class="card flex justify-content-center" class="custom-dialog">
+      <div class="flex flex-row gap-4">
+        <div class="flex flex-column">
+          <label for="nombre">Nombre</label><br>
+          <input class="{{ validacionNombre }}" pInputText id="nombre" aria-describedby="nombre" [(ngModel)]="nuevoAsignatura.nombre" /><br>
+          <small id="nombre">Introduce un nombre para la nueva asignatura</small><br><br>
+        </div>
+        <!-- <div class="flex flex-column">
+          <label for="activo">Activo</label><br>
+          <p-inputSwitch [(ngModel)]="nuevoAsignatura.activo"></p-inputSwitch><br>
+          <small id="activo">¿Está activo?</small><br><br>
+        </div> -->
+      </div><br>
+      <div style="margin-top: 20px;">
+        <app-confirm tipo="Crear" icono="plus" mensaje="¿Deseas crear esta asignatura?" color="success" (confirmacion)="crear($event)"></app-confirm>
+      </div>
+    </div>
+  </p-dialog>
+</div>

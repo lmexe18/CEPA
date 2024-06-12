@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable(process.env.TABLA_EVENTOS, {
+    await queryInterface.createTable('eventos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,15 +11,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nombre: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false
       },
       descripcion: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      fechaHora: {
-        type: Sequelize.DATE,
+      fecha: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      hora: {
+        type: Sequelize.STRING,
         allowNull: false
       },
       fotoCartel: {
@@ -28,7 +32,10 @@ module.exports = {
       },
       mg: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          min: 0
+        }
       },
       visibilidad: {
         type: Sequelize.BOOLEAN,
@@ -38,16 +45,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      idTipoEvento:{
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references:{
-          model:{
-            tableName: 'tipos_eventos'
-          },
-          key: 'id'
-        },
-        onDelete: 'CASCADE'
+      tipo:{
+        type: Sequelize.STRING(50),
       },
       createdAt: {
         allowNull: false,
@@ -63,6 +62,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable(process.env.TABLA_EVENTOS);
+    await queryInterface.dropTable('eventos');
   }
 };

@@ -1,22 +1,21 @@
-const { AulaHorario } = require('../models');
+const { AulaHorario } = require('../models')
+const faker = require('@faker-js/faker')
 
-const aulaHorarioFactory = async (ctos = 4) => {
-    let factory = [];
-    for (let i = 0; i < ctos; i++) {
+const aulaHorarioFactory = async (ctos = 1) => {
+    let factory = []
+
+    for (let i = 1; i <= ctos; i++) {
         let aulaHorario = {
             idAula: i,
-            idRangoHorario: i,
-            reserva: Math.random() < 0.5 ? true : false,
-            idUsuario: i, 
-            activo: Math.random() < 0.5 ? true : false,
+            idFranja: i,
             createdAt: new Date(),
             updatedAt: new Date()
-        };
-        factory.push(aulaHorario);
+        }
+        factory.push(aulaHorario)
     }
-    return AulaHorario.bulkCreate(factory);
-};
+    return factory
+}
 
 module.exports = {
     aulaHorarioFactory
-};
+}

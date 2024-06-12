@@ -5,10 +5,10 @@ const { usuarioFactory } = require('../factories/usuarioFactory');
 module.exports = {
   async up (queryInterface, Sequelize) {
     const usuarios = await usuarioFactory(4);
-    await queryInterface.bulkInsert(process.env.TABLA_USUARIOS, usuarios, {});
+    await queryInterface.bulkInsert('usuarios', usuarios, {});
   },
 
   async down (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete(process.env.TABLA_USUARIOS, null, {});
+    return queryInterface.bulkDelete('usuarios', null, {});
   }
 };

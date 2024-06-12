@@ -1,8 +1,9 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable(process.env.TABLA_NOTICIAS, {
+    await queryInterface.createTable('noticias', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -21,7 +22,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      visibilidad:{
+      publicada:{
         type:Sequelize.BOOLEAN,
         allowNull:false,
         defaultValue:false
@@ -31,25 +32,26 @@ module.exports = {
         allowNull: false,
         references: {
           model: {
-            tableName:'tipos_noticias'
+            tableName: 'categorias'
           },
           key: 'id'
         },
         onDelete:'CASCADE'
       },
+      tipo: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        type: Sequelize.DATE
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable(process.env.TABLA_NOTICIAS);
+    await queryInterface.dropTable('noticias');
   }
 };

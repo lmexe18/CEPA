@@ -1,0 +1,41 @@
+<div style="margin-top: 100px;" class="card">
+    <p-table
+      [value]="temarios"
+      [paginator]="true"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      [tableStyle]="{ 'min-width': '50rem','max-width':'80rem','margin':'auto' }"
+      currentPageReportTemplate="Mostrando temarios"
+      [rowsPerPageOptions]="[5, 10, 20]"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+           Administrar Temarios
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width:2%">Editar</th>
+          <th style="width:25%">Tema</th>
+          <th style="width:25%">Link</th>
+          <th style="width:25%">Visibilidad</th>
+          <th style="width:25%">Activo</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-temario>
+        <tr>
+          <td><!-- Aquí coloca el componente para editar temario --></td>
+          <td>{{ temario.tema }}</td>
+          <td>{{ temario.link }}</td>
+          <td>{{ temario.visibilidad ? 'Visible' : 'Oculto' }}</td>
+          <td>{{ temario.activo ? 'Si' : 'No' }}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorleft">
+        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+    </ng-template>
+    </p-table>
+  </div>  

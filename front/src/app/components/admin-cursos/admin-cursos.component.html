@@ -1,0 +1,47 @@
+<div style="margin-top: 100px;" class="card">
+    <p-table
+        [value]="cursos"
+        [paginator]="true"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem', 'max-width': '80rem', 'margin': 'auto' }"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} cursos"
+        [rowsPerPageOptions]="[5, 10, 20]"
+    >
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                Administrar Cursos
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:1%"><app-nuevo-curso></app-nuevo-curso></th>
+                <th style="width:5%">Número Curso</th>
+                <th style="width:5%">Horario</th>
+                <th style="width:5%">Fecha Inicio</th>
+                <th style="width:5%">Fecha Fin</th>
+                <th style="width:5%">Tipo de Curso</th>
+                <th style="width:5%">Tutor</th>
+            <!--    <th style="width:5%">Activo</th> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-curso>
+            <tr class="glass">
+                <td><app-editar-curso [cursos]="cursos" [id]="curso.id"></app-editar-curso></td>
+                <td>{{ curso.numeroCurso }}</td>
+                <td>{{ curso.horario }}</td>
+                <td>{{ curso.fechaInicio }}</td>
+                <td>{{ curso.fechaFin }}</td>
+                <td>{{ curso.tipoCurso ? curso.tipoCurso.nombre : '-' }}</td>
+                <td>{{ curso.tutor ? curso.tutor.nombre: '-' }}</td>
+             <!--   <td>{{ curso.activo ? 'Sí' : 'No' }}</td> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</div>

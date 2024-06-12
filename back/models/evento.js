@@ -3,7 +3,8 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Evento extends Model {
     static associate(models) {
-      this.hasMany(models.AsistenciaEvento, {
+      
+      this.hasMany(models.Asistencia, {
         foreignKey:'id',
         as:'asistencias'
       });
@@ -16,16 +17,26 @@ module.exports = (sequelize, DataTypes) => {
   Evento.init({
     nombre: DataTypes.STRING,
     descripcion: DataTypes.STRING,
-    fechaHora: DataTypes.DATE,
+    fecha: DataTypes.STRING,
+    hora: DataTypes.STRING,
     fotoCartel: DataTypes.STRING,
     mg: DataTypes.INTEGER,
     visibilidad: DataTypes.BOOLEAN,
     numAsistentes: DataTypes.INTEGER,
-    idTipoEvento: DataTypes.INTEGER
+    tipo: DataTypes.STRING
   }, {
     sequelize,
-    modelName: process.env.MODEL_EVENTO,
-    tableName: process.env.TABLA_EVENTOS
+    modelName: 'Evento',
+    tableName: 'eventos'
   });
   return Evento;
 };
+
+
+/*
+Tipos de eventos
+'Excursiones'
+'Actos'
+'Asociación Amigos CEPA'
+'Días Señalados'
+*/

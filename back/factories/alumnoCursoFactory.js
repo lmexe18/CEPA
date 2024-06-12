@@ -7,7 +7,7 @@ const alumnoCursoFactory = async (ctos=4) => {
             createdAt: new Date(),
             updatedAt: new Date()
         }
-        factory.push(asignatura)
+        factory.push(alumnoCurso)
     }
     return Promise.all(factory)
 }

@@ -1,0 +1,41 @@
+<div style="margin-top: 100px;" class="card">
+    <p-table
+        [value]="documentos"
+        [paginator]="true"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem','max-width':'80rem','margin':'auto' }"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} documentos programáticos"
+        [rowsPerPageOptions]="[5, 10, 20]"
+    >
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+             Administrar Documentos Programáticos
+        </div>
+    </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:1%"><app-nuevo-documento></app-nuevo-documento></th>
+                <th style="width:5%">Nombre</th>
+                <th style="width:5%">Link</th>
+                <th style="width:5%">Tipo</th>
+            <!--    <th style="width:5%">Activo</th> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-documento>
+            <tr class="glass">
+                <td><app-editar-documento [documentos]="documentos" [id]="documento.id"></app-editar-documento></td>
+                <td>{{ documento.nombre }}</td>
+                <td><a [href]="documento.link" target="_blank">Ver Documento</a></td>
+                <td>{{ documento.tipo }}</td>
+             <!--   <td>{{ documento.activo ? 'Sí' : 'No' }}</td> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</div>
