@@ -1,7 +1,7 @@
-<<<<<<< HEAD
+
 # CEPA
-=======
-<h1>CEPA</h1>
+
+
 <h2>INICIALIZAR EL PROYECTO</h2><br>
 <ul>
     <li>Inicializar XAMPP</li><br>
@@ -18,4 +18,4 @@
 <li>Jefe de estudios -> correo: example2@example.com ; contraseña: 1234</li><br>
 <li>Profesor -> correo: example3@example.com ; contraseña: 1234</li><br>
 <li>Usuario normal -> correo: example4@example.com ; contraseña: 1234</li>
->>>>>>> dev
+
