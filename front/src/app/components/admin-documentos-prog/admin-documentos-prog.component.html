@@ -19,16 +19,16 @@
                 <th style="width:5%">Nombre</th>
                 <th style="width:5%">Link</th>
                 <th style="width:5%">Tipo</th>
-                <th style="width:5%">Activo</th>
+            <!--    <th style="width:5%">Activo</th> -->
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-documento>
-            <tr>
+            <tr class="glass">
                 <td><app-editar-documento [documentos]="documentos" [id]="documento.id"></app-editar-documento></td>
                 <td>{{ documento.nombre }}</td>
                 <td><a [href]="documento.link" target="_blank">Ver Documento</a></td>
                 <td>{{ documento.tipo }}</td>
-                <td>{{ documento.activo ? 'Sí' : 'No' }}</td>
+             <!--   <td>{{ documento.activo ? 'Sí' : 'No' }}</td> -->
             </tr>
         </ng-template>
         <ng-template pTemplate="paginatorleft">

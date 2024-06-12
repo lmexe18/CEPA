@@ -1,6 +1,6 @@
 <p-toast></p-toast>
 <div class="card flex justify-content-center">
-    <p-button severity="success" (click)="showDialog()" [raised]="true" [outlined]="true" icon="pi pi-plus" label="Nuevo Departamento"></p-button>
+    <p-button severity="success" (click)="showDialog()" [raised]="true" [outlined]="true" icon="pi pi-plus" label="Nuevo"></p-button>
     <p-dialog header="Crear departamento" [(visible)]="visible" [modal]="true" 
     [draggable]="false" (onHide)="cerrar();" [resizable]="false">
 
@@ -26,7 +26,7 @@
             </div>
 
            
-            <div class="flex flex-column">
+           <!-- <div class="flex flex-column">
                 <label for="fotoCartel">Foto de Departamento</label><br><br>
                     <input #archivo type="file" id="archivo" class="form-control" accept="image/*" (change)="uploadFoto($event)" ><br>
                     @if(fotoPreview){
@@ -37,12 +37,12 @@
             <br>
             @if(fotoPreview){
                 <img [src]="fotoPreview">
-            }
+            } -->
 
-            <div class="flex flex-column">
+            <!-- <div class="flex flex-column">
                 <label for="activo">Activo</label>
                 <input type="checkbox" [(ngModel)]="nuevoDepartamento.activo" aria-describedby="activo"/>
-            </div>
+            </div> -->
 
         </div><br>
         <div style="margin-top: 20px;">

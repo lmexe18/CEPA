@@ -22,13 +22,14 @@
                 <input class="{{ validacionEmail }}" pInputText id="email" aria-describedby="email" [(ngModel)]="equipoModal.email" /><br>
                 <small id="email">Introduce el email del miembro del equipo directivo</small><br><br>
             </div>
+            <div style="margin-top: 20px;">
+              <app-confirm tipo="Guardar" icono="plus" mensaje="¿Deseas guardar los cambios?" color="success" (confirmacion)="guardar($event)"></app-confirm>
+            </div>
+            <div style="margin-top: 20px;">
+              <app-confirm tipo="Borrar" icono="trash" mensaje="¿Deseas borrar este equipo directivo?" color="danger" (confirmacion)="eliminar($event)"></app-confirm>
+            </div>
           </div>
-          <div style="margin-top: 20px;">
-            <app-confirm tipo="Guardar" icono="plus" mensaje="¿Deseas guardar los cambios?" color="success" (confirmacion)="guardar($event)"></app-confirm>
-          </div>
-          <div style="margin-top: 20px;">
-            <app-confirm tipo="Borrar" icono="trash" mensaje="¿Deseas borrar este equipo directivo?" color="danger" (confirmacion)="eliminar($event)"></app-confirm>
-          </div>
+          
       </div>
     </p-dialog>
   </div>

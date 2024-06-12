@@ -63,7 +63,7 @@ export class NuevoDepartamentoComponent {
     this.cerrarModal.emit();
   }
 
-  uploadFoto(event: any) {
+  /*uploadFoto(event: any) {
     const file = event.target.files[0];
     if (file) {
       const permitidas = ['.jpeg', '.jpg', '.png'];
@@ -88,7 +88,7 @@ export class NuevoDepartamentoComponent {
     this.formularioFoto = null;
     this.fotoPreview = null;
   }
-
+*/
   validarCampos(): boolean {
     let validacion = true;
 

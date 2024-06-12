@@ -84,11 +84,11 @@ userroles:Array<string>=[]
       label: 'Tipos de Cursos',
       command: () => {this.router.navigate(['/admin/tipo-cursos'])}
     },
-    {
+    /*{
       label: 'Contacto',
       command: () => { this.router.navigate(['/admin/contacto']) },
 
-    },
+    },*/
     {
       label: 'Documentos Programaticos',
       command: () => { this.router.navigate(['/admin/documentos-programaticos']) },

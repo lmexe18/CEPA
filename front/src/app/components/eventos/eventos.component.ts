@@ -118,9 +118,10 @@ export class EventosComponent implements OnInit{
   downloadPDF(): void {
     const doc = this.jsPDFService.getPDF();
    
-    if (this.evento.fotoCartel && this.evento.fotoCartel.includes('http')) {
+    if (this.evento.fotoCartel || this.evento.fotoCartel.includes('http')) {
        const img = new Image();
        img.crossOrigin = 'Anonymous';
+       
        img.src = this.evento.fotoCartel;
        img.onload = () => {
          doc.addImage(img, 'JPEG', 10, 10, 190, 250);

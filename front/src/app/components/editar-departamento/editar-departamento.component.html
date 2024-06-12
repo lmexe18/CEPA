@@ -22,18 +22,19 @@
                     <input class="{{ validacionJefe }}" pInputText id="jefeDepartamento" aria-describedby="jefeDepartamento" [(ngModel)]="departamentoModal.jefeDepartamento" /><br>
                     <small id="jefeDepartamento">Introduce el nombre del jefe del departamento</small><br><br>
                 </div>
-                <div class="flex flex-column">
+              <!--  <div class="flex flex-column">
                     <label for="activo">Activo</label>
                     <input type="checkbox" [(ngModel)]="departamentoModal.activo" aria-describedby="activo"/>
+                </div> -->
+                <div style="margin-top: 20px;">
+                    <app-confirm tipo="Guardar" icono="pi pi-check" mensaje="¿Deseas guardar los cambios?" color="success" (confirmacion)="guardar($event)"></app-confirm>
+                </div>
+                <div style="margin-top: 20px;">
+                    <app-confirm tipo="Borrar" icono="pi pi-trash" mensaje="¿Deseas borrar este departamento?" color="danger" (confirmacion)="eliminar($event)"></app-confirm>
                 </div>
             </div>
             <br>
-            <div style="margin-top: 20px;">
-                <app-confirm tipo="Guardar" icono="pi pi-check" mensaje="¿Deseas guardar los cambios?" color="success" (confirmacion)="guardar($event)"></app-confirm>
-            </div>
-            <div style="margin-top: 20px;">
-                <app-confirm tipo="Borrar" icono="pi pi-trash" mensaje="¿Deseas borrar este departamento?" color="danger" (confirmacion)="eliminar($event)"></app-confirm>
-            </div>
+            
         </div>
     </p-dialog>
 </div>

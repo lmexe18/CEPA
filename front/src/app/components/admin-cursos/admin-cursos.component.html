@@ -22,11 +22,11 @@
                 <th style="width:5%">Fecha Fin</th>
                 <th style="width:5%">Tipo de Curso</th>
                 <th style="width:5%">Tutor</th>
-                <th style="width:5%">Activo</th>
+            <!--    <th style="width:5%">Activo</th> -->
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-curso>
-            <tr>
+            <tr class="glass">
                 <td><app-editar-curso [cursos]="cursos" [id]="curso.id"></app-editar-curso></td>
                 <td>{{ curso.numeroCurso }}</td>
                 <td>{{ curso.horario }}</td>
@@ -34,7 +34,7 @@
                 <td>{{ curso.fechaFin }}</td>
                 <td>{{ curso.tipoCurso ? curso.tipoCurso.nombre : '-' }}</td>
                 <td>{{ curso.tutor ? curso.tutor.nombre: '-' }}</td>
-                <td>{{ curso.activo ? 'Sí' : 'No' }}</td>
+             <!--   <td>{{ curso.activo ? 'Sí' : 'No' }}</td> -->
             </tr>
         </ng-template>
         <ng-template pTemplate="paginatorleft">

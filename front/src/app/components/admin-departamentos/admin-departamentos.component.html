@@ -19,18 +19,18 @@
                 <th style="width:10%">Nombre</th>
                 <th style="width:60%">Descripción</th>
                 <th style="width:10%">Jefe de Departamento</th>
-                <th style="width:5%">Activo</th>
-                <th style="width:10%">Foto</th>
+               <!-- <th style="width:5%">Activo</th> -->
+                
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-departamento>
-            <tr>
+            <tr class="glass">
                 <td><app-editar-departamento [departamentos]="departamentos" [id]="departamento.id"></app-editar-departamento></td>
                 <td>{{ departamento.nombre }}</td>
                 <td>{{ departamento.descripcion }}</td>
                 <td>{{ departamento.jefeDepartamento }}</td>
-                <td>{{ departamento.activo ? 'Sí' : 'No' }}</td>
-                <td><img [src]="departamento.foto" alt="Foto del departamento" style="width: auto; height: 200px;"></td>
+                <!-- <td>{{ departamento.activo ? 'Sí' : 'No' }}</td> -->
+                
             </tr>
         </ng-template>
         <ng-template pTemplate="paginatorleft">

@@ -21,13 +21,13 @@
                 <div class="flex flex-column">
                     <label for="tipo">Tipo de documento</label><br>
                     <input class="{{ validacionTipo }}" pInputText id="tipo" aria-describedby="tipo" [(ngModel)]="nuevoDocumento.tipo" /><br>
-                    <small id="tipo">Introduce el tipo de documento</small><br><br>
+                    <small id="tipo">Introduce el tipo de documento. Escriba plan de digitalización o plan general anual.</small><br><br>
                 </div>
 
-                <div class="flex flex-column">
+                <!-- <div class="flex flex-column">
                     <label for="activo">Activo</label>
                     <input type="checkbox" [(ngModel)]="nuevoDocumento.activo" class="{{ validacionActivo }}" id="activo" aria-describedby="documento" /><br><br>
-                </div>
+                </div> -->
             </div><br>
 
             <div style="margin-top: auto;">
