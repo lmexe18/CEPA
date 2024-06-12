@@ -1,0 +1,10 @@
+<br><h1>ERASMUS+</h1>
+@if (noticias.length > 0) {
+    @for (noticia of noticias; track noticia) {
+        <ng-container>
+            <app-preview-noticia [noticia]="noticia"></app-preview-noticia>
+        </ng-container>
+    }
+} @else {
+    <p>No hay noticias Erasmus disponibles.</p>
+}

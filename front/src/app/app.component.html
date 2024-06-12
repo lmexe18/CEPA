@@ -1,0 +1,6 @@
+<p-toast></p-toast>
+@if( headerService.isVisible){
+
+    <app-cabecera  [isLogged]="logged" (eventoLogin)="login($event)"></app-cabecera>
+}
+<router-outlet  (activate)="onActivate($event)"></router-outlet>

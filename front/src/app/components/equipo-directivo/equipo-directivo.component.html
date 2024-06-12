@@ -1,0 +1,23 @@
+<div class="center-container">
+    <h1>EQUIPO DIRECTIVO</h1>
+    <div class="card-container">
+        @for (equipoDirectivo of equiposDirectivos; track equipoDirectivo) {
+            <div class="card-wrapper">
+                <p-card class="custom-card mt10"
+                    [style]="{'width': '400px', 'height': '250px', 'margin-top': '20px'}">
+                    <ng-template pTemplate="header">
+                        <div class="card-header">
+                            <h2>{{ equipoDirectivo.nombre }}</h2>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="body">
+                        <div class="card-body">
+                            <p>{{ equipoDirectivo.nombre }}</p>
+                            <p>{{ equipoDirectivo.email }}</p>
+                        </div>
+                    </ng-template>
+                </p-card>
+            </div>
+        }
+    </div>
+</div>
